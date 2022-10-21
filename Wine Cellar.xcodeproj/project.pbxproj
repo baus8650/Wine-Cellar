@@ -10,12 +10,12 @@
 		22E8067529031187006E0629 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067429031187006E0629 /* AppDelegate.swift */; };
 		22E8067729031187006E0629 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067629031187006E0629 /* SceneDelegate.swift */; };
 		22E8067929031187006E0629 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067829031187006E0629 /* ViewController.swift */; };
-		22E8067C29031187006E0629 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E8067A29031187006E0629 /* Main.storyboard */; };
 		22E8067E29031188006E0629 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22E8067D29031188006E0629 /* Assets.xcassets */; };
 		22E8068129031188006E0629 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22E8067F29031188006E0629 /* LaunchScreen.storyboard */; };
 		22E8068C29031188006E0629 /* Wine_CellarTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8068B29031188006E0629 /* Wine_CellarTests.swift */; };
 		22E8069629031188006E0629 /* Wine_CellarUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8069529031188006E0629 /* Wine_CellarUITests.swift */; };
 		22E8069829031188006E0629 /* Wine_CellarUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8069729031188006E0629 /* Wine_CellarUITestsLaunchTests.swift */; };
+		22E806A629031233006E0629 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E806A529031233006E0629 /* HomeTabBarController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +40,6 @@
 		22E8067429031187006E0629 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E8067629031187006E0629 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		22E8067829031187006E0629 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		22E8067B29031187006E0629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		22E8067D29031188006E0629 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22E8068029031188006E0629 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22E8068229031188006E0629 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -49,6 +48,7 @@
 		22E8069129031188006E0629 /* Wine CellarUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Wine CellarUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E8069529031188006E0629 /* Wine_CellarUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine_CellarUITests.swift; sourceTree = "<group>"; };
 		22E8069729031188006E0629 /* Wine_CellarUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine_CellarUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		22E806A529031233006E0629 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +101,7 @@
 			children = (
 				22E8067429031187006E0629 /* AppDelegate.swift */,
 				22E8067629031187006E0629 /* SceneDelegate.swift */,
-				22E8067829031187006E0629 /* ViewController.swift */,
-				22E8067A29031187006E0629 /* Main.storyboard */,
+				22E806A4290311FB006E0629 /* View Controllers */,
 				22E8067D29031188006E0629 /* Assets.xcassets */,
 				22E8067F29031188006E0629 /* LaunchScreen.storyboard */,
 				22E8068229031188006E0629 /* Info.plist */,
@@ -125,6 +124,15 @@
 				22E8069729031188006E0629 /* Wine_CellarUITestsLaunchTests.swift */,
 			);
 			path = "Wine CellarUITests";
+			sourceTree = "<group>";
+		};
+		22E806A4290311FB006E0629 /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				22E8067829031187006E0629 /* ViewController.swift */,
+				22E806A529031233006E0629 /* HomeTabBarController.swift */,
+			);
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -233,7 +241,6 @@
 			files = (
 				22E8068129031188006E0629 /* LaunchScreen.storyboard in Resources */,
 				22E8067E29031188006E0629 /* Assets.xcassets in Resources */,
-				22E8067C29031187006E0629 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -260,6 +267,7 @@
 			files = (
 				22E8067929031187006E0629 /* ViewController.swift in Sources */,
 				22E8067529031187006E0629 /* AppDelegate.swift in Sources */,
+				22E806A629031233006E0629 /* HomeTabBarController.swift in Sources */,
 				22E8067729031187006E0629 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,14 +305,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		22E8067A29031187006E0629 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				22E8067B29031187006E0629 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		22E8067F29031188006E0629 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -442,7 +442,7 @@
 				INFOPLIST_FILE = "Wine Cellar/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -470,7 +470,7 @@
 				INFOPLIST_FILE = "Wine Cellar/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UIMainStoryboardFile = "";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
