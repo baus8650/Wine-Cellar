@@ -1,13 +1,13 @@
 import Foundation
 
-final class MainTaskBuilder {
+final class WineBuilder {
     private var name = "Test Wine"
     private var type = Constants.WineType.still
     private var wineColor = Constants.WineColor.red
     private var vintage = 2022
     private var varietal = Constants.Varietal
     private var company = "Test Wine Company"
-//    private var vineyard = VineyardBuilder().build()
+    private var vineyard = VineyardBuilder().build()
     private var ava = "Test AVA"
     private var abv = 12.5
     private var visualDetails = VisualDetails(
@@ -27,43 +27,90 @@ final class MainTaskBuilder {
     private var notes = Note(
         tastingNotes: [
             TastingNote(
-            noteOrigin: Constants.TastingNotesOrigin.userGenerated,
-            tastingNoteText: "Test Tasting Note")
+                noteOrigin: Constants.TastingNotesOrigin.userGenerated,
+                tastingNoteText: "Test Tasting Note")
         ])
     private var personalDetails = PersonalDetails(
         opinions: "Test Opinion",
         mood: "Test Mood")
     private var historicalWeather = WeatherData(hourly: [], daily: [])
     private var numberOwned = 1
-    private var 
-                             
+    private var image = nil
+    private var isFavorited: Bool = true
+    
     
     func name(_ name: String) -> Self {
         self.name = name
         return self
     }
     
-    func isCompleted(_ isCompleted: Bool) -> Self {
-        self.isCompleted = isCompleted
+    func type(_ type: Constants.WineType) -> Self {
+        self.type = type
+        return self
+    }
+    func wineColor(_ wineColor: UIColor) -> Self {
+        self.wineColor = wineColor
+        return self
+    }
+    func vintage(_ vintage: Int) -> Self {
+        self.vintage = vintage
+        return self
+    }
+    func varietal(_ varietal: Constants.Varietal) -> Self {
+        self.varietal = varietal
+        return self
+    }
+    func company(_ company: String) -> Self {
+        self.company = company
+        return self
+    }
+    func ava(_ ava: String) -> Self {
+        self.ava = ava
+        return self
+    }
+    func abv(_ abv: Double) -> Self {
+        self.abv = abv
+        return self
+    }
+    func visualDetails(_ visualDetails: VisualDetails) -> Self {
+        self.visualDetails = visualDetails
+        return self
+    }
+    func tasteDetails(_ tasteDetails: TasteDetails) -> Self {
+        self.tasteDetails = tasteDetails
+        return self
+    }
+    func smellDetails(_ smellDetails: SmellDetails) -> Self {
+        self.smellDetails = smellDetails
+        return self
+    }
+    func notes(_ notes: Note) -> Self {
+        self.notes = notes
+        return self
+    }
+    func personalDetails(_ personalDetails: PersonalDetails) -> Self {
+        self.personalDetails = personalDetails
+        return self
+    }
+    func historicalWeather(_ historicalWeather: WeatherData) -> Self {
+        self.historicalWeather = historicalWeather
+        return self
+    }
+    func numberOwned(_ numberOwned: Int) -> Self {
+        self.numberOwned = numberOwned
+        return self
+    }
+    func image(_ image: UIImage) -> Self {
+        self.image = image
+        return self
+    }
+    func isFavorited(_ isFavorited: Bool) -> Self {
+        self.isFavorited = isFavorited
         return self
     }
     
-    func dateCreated(_ dateCreated: Date) -> Self {
-        self.dateCreated = dateCreated
-        return self
-    }
     
-    func dateDue(_ dateDue: Date) -> Self {
-        self.dateDue = dateDue
-        return self
-    }
-    
-    func id(_ id: UUID) -> Self {
-        self.id = id
-        return self
-    }
-    
-    func build() -> TestMainTask {
-        return TestMainTask(name: name, isCompleted: isCompleted, dateCreated: dateCreated, dateDue: dateDue, id: id)
+    func build() -> Wine {
+        return Wine(name: name, type: type, wineColor: wineColor, vintage: vintage, varietal: varietal, company: company, vineyard: vineyard, ava: ava, abv: abv, visualDetails: visualDetails, tasteDetails: tasteDetails, smellDetails: smellDetails, notes: notes, personalDetails: personalDetails, historicalWeather: historicalWeather, numberOwned: numberOwned, image: image, isFavorited: isFavorited)
     }
 }
