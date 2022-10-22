@@ -6,7 +6,7 @@ struct Wine {
     let type: Constants.WineType
     let wineColor: Constants.WineColor
     let vintage: Int
-    let varietal: String
+    let varietal: Constants.Varietal
     let company: String
     let vineyard: Vineyard?
     let ava: String?

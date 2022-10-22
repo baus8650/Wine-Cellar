@@ -29,6 +29,96 @@ final class Constants {
         case red
     }
     
+    enum Varietal {
+        case albariño
+        case aligoté
+        case amarone
+        case arneis
+        case astiSpumante
+        case auslese
+        case banylus
+        case barbaresco
+        case bardolino
+        case barolo
+        case beaujolais
+        case blancDeBlancs
+        case blancDeNoirs
+        case blush
+        case boal
+        case bual
+        case brunello
+        case cabernetFranc
+        case cabernetSauvignon
+        case carignan
+        case carmenere
+        case cava
+        case charbono
+        case champagne
+        case chardonnay
+        case châteauneufDuPape
+        case cheninBlanc
+        case chianti
+        case chiantiClassico
+        case claret
+        case colombard
+        case constantia
+        case cortese
+        case dolcetto
+        case eiswein
+        case frascati
+        case fuméBlanc
+        case gamay
+        case gamayBeaujolais
+        case gattinara
+        case gewürztraminer
+        case grappa
+        case grenache
+        case johannisbergRiesling
+        case kir
+        case lambrusco
+        case liebfraumilch
+        case madeira
+        case malbec
+        case marc
+        case marsala
+        case marsanne
+        case mead
+        case meritage
+        case merlot
+        case montepulciano
+        case moscato
+        case mourvedre
+        case müllerThurgau
+        case muscat
+        case nebbiolo
+        case petitVerdot
+        case petiteSirah
+        case pinotBlanc
+        case pinotGrigio
+        case pinotGris
+        case pinoMeunier
+        case pinoNoir
+        case pinotage
+        case port
+        case retsina
+        case rosé
+        case roussanne
+        case sangiovese
+        case sauterns
+        case sauvignonBlanc
+        case sémillon
+        case sherry
+        case soave
+        case tokay
+        case traminer
+        case trebbiano
+        case ugniBlanc
+        case valpolicella
+        case verdicchio
+        case viognier
+        case zinfandel
+    }
+    
     enum TastingNotesOrigin {
         case userGenerated
         case wineryGenerated
