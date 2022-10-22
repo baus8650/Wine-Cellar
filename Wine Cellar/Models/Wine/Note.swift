@@ -5,11 +5,6 @@ struct Note {
 }
 
 struct TastingNote {
-    let noteOrigin: TastingNotesOrigin
+    let noteOrigin: Constants.TastingNotesOrigin
     let tastingNoteText: String
-    
-    enum TastingNotesOrigin {
-        case userGenerated
-        case wineryGenerated
-    }
 }
