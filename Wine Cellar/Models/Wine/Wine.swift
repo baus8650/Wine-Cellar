@@ -18,6 +18,6 @@ struct Wine {
     let personalDetails: PersonalDetails
     var historicalWeather: WeatherData
     let numberOwned: Int
-    let image: UIImage
+    let image: UIImage?
     var isFavorited: Bool = false
 }
