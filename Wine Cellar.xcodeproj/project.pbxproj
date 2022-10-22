@@ -23,6 +23,8 @@
 		2282974F290448C30081742D /* Vineyard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FB7FDA290359950058F90B /* Vineyard.swift */; };
 		22829751290451D10081742D /* VineyardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22829750290451D10081742D /* VineyardBuilder.swift */; };
 		22829754290459D00081742D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22829753290459D00081742D /* Launch Screen.storyboard */; };
+		2282975629045DCD0081742D /* FoodPairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282975529045DCD0081742D /* FoodPairing.swift */; };
+		2282975729045E090081742D /* FoodPairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282975529045DCD0081742D /* FoodPairing.swift */; };
 		22E8067529031187006E0629 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067429031187006E0629 /* AppDelegate.swift */; };
 		22E8067729031187006E0629 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067629031187006E0629 /* SceneDelegate.swift */; };
 		22E8067929031187006E0629 /* CellarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067829031187006E0629 /* CellarViewController.swift */; };
@@ -71,6 +73,7 @@
 		2282973D2904447E0081742D /* WineBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineBuilder.swift; sourceTree = "<group>"; };
 		22829750290451D10081742D /* VineyardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineyardBuilder.swift; sourceTree = "<group>"; };
 		22829753290459D00081742D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
+		2282975529045DCD0081742D /* FoodPairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPairing.swift; sourceTree = "<group>"; };
 		22E8067129031187006E0629 /* Wine Cellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wine Cellar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E8067429031187006E0629 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E8067629031187006E0629 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +139,7 @@
 				22FB7FD629032A470058F90B /* VisualDetails.swift */,
 				22FB7FE3290373DE0058F90B /* WeatherData.swift */,
 				22FB7FCD290328C30058F90B /* Wine.swift */,
+				2282975529045DCD0081742D /* FoodPairing.swift */,
 			);
 			path = Wine;
 			sourceTree = "<group>";
@@ -405,6 +409,7 @@
 			files = (
 				22FB7FD529032A370058F90B /* SmellDetails.swift in Sources */,
 				22FB7FF52903AB160058F90B /* Extensions.swift in Sources */,
+				2282975629045DCD0081742D /* FoodPairing.swift in Sources */,
 				22FB7FD729032A470058F90B /* VisualDetails.swift in Sources */,
 				22829739290442120081742D /* WineTasting.swift in Sources */,
 				22E8067929031187006E0629 /* CellarViewController.swift in Sources */,
@@ -431,6 +436,7 @@
 			files = (
 				2282973E2904447E0081742D /* WineBuilder.swift in Sources */,
 				22829751290451D10081742D /* VineyardBuilder.swift in Sources */,
+				2282975729045E090081742D /* FoodPairing.swift in Sources */,
 				22829746290448C00081742D /* WineTasting.swift in Sources */,
 				2282974B290448C30081742D /* Wine.swift in Sources */,
 				22829749290448C30081742D /* Note.swift in Sources */,
@@ -590,7 +596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Wine Cellar/Wine Cellar.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89JNN3239D;
@@ -619,7 +625,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
-				CODE_SIGN_ENTITLEMENTS = "Wine Cellar/Wine Cellar.entitlements";
+				CODE_SIGN_ENTITLEMENTS = "";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 89JNN3239D;

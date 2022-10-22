@@ -34,6 +34,7 @@ final class WineBuilder {
         opinions: "Test Opinion",
         mood: "Test Mood")
     private var historicalWeather = WeatherData(hourly: [], daily: [])
+    private var foodPairings = [FoodPairing(name: "Test Pairing")]
     private var numberOwned = 1
     private var image = nil
     private var isFavorited: Bool = true
@@ -104,6 +105,10 @@ final class WineBuilder {
         self.image = image
         return self
     }
+    func foodPairings(_ foodPairings: [FoodPairing]) -> Self {
+        self.foodPairings = foodPairings
+        return self
+    }
     func isFavorited(_ isFavorited: Bool) -> Self {
         self.isFavorited = isFavorited
         return self
@@ -111,6 +116,6 @@ final class WineBuilder {
     
     
     func build() -> Wine {
-        return Wine(name: name, type: type, wineColor: wineColor, vintage: vintage, varietal: varietal, company: company, vineyard: vineyard, ava: ava, abv: abv, visualDetails: visualDetails, tasteDetails: tasteDetails, smellDetails: smellDetails, notes: notes, personalDetails: personalDetails, historicalWeather: historicalWeather, numberOwned: numberOwned, image: image, isFavorited: isFavorited)
+        return Wine(name: name, type: type, wineColor: wineColor, vintage: vintage, varietal: varietal, company: company, vineyard: vineyard, ava: ava, abv: abv, visualDetails: visualDetails, tasteDetails: tasteDetails, smellDetails: smellDetails, notes: notes, personalDetails: personalDetails, historicalWeather: historicalWeather, numberOwned: numberOwned, image: image,foodPairings: foodPairings, isFavorited: isFavorited)
     }
 }

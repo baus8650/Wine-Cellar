@@ -19,5 +19,6 @@ struct Wine {
     var historicalWeather: WeatherData
     let numberOwned: Int
     let image: UIImage?
+    let foodPairings: [FoodPairing]?
     var isFavorited: Bool = false
 }
