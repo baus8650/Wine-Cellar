@@ -1,7 +1,7 @@
 import Foundation
 
 final class SmellDetailsBuilder {
-    private var id = UUID(uuidString: "C5016210-5BEB-437F-8A11-944973966B3F")
+    private var id = UUID(uuidString: "C5016210-5BEB-437F-8A11-944973966B3F")!
     private var primaryAroma = ["Primary Aroma"]
     private var secondaryAroma = ["Secondary Aroma"]
     private var tertiaryAroma = ["Tertiary Aroma"]
