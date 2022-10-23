@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21279" systemVersion="21G115" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="DailyData" representedClassName="DailyData" syncable="YES" codeGenerationType="class">
+        <attribute name="rain" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="snow" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="tempMax" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="tempMin" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="time" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <attribute name="windgusts" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="windspeed" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <relationship name="weatherData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherData" inverseName="dailyData" inverseEntity="WeatherData"/>
+    </entity>
+    <entity name="Flight" representedClassName="Flight" syncable="YES" codeGenerationType="class">
+        <attribute name="numberOfWines" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine"/>
+        <relationship name="wineTasting" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WineTasting" inverseName="flight" inverseEntity="WineTasting"/>
+    </entity>
+    <entity name="FoodPairing" representedClassName="FoodPairing" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="HourlyData" representedClassName="HourlyData" syncable="YES" codeGenerationType="class">
+        <attribute name="cloudcover" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
+        <attribute name="dewpoint" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="humidity" optional="YES" attributeType="Transformable" customClassName="[Int]"/>
+        <attribute name="precipitation" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="rain" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="snowfall" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilMoisture0_7" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilMoisture7_28" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilMoisture28_100" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilMoisture100_255" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilTemp0_7" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilTemp7_28" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilTemp28_100" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="soilTemp100_255" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="temperature" optional="YES" attributeType="Transformable" customClassName="[Double]"/>
+        <attribute name="time" optional="YES" attributeType="Transformable" customClassName="[String]"/>
+        <relationship name="weatherData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="WeatherData" inverseName="hourlyData" inverseEntity="WeatherData"/>
+    </entity>
+    <entity name="Notes" representedClassName="Notes" syncable="YES" codeGenerationType="class">
+        <relationship name="tastingNotes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TastingNote" inverseName="note" inverseEntity="TastingNote"/>
+    </entity>
+    <entity name="PersonalDetails" representedClassName="PersonalDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="mood" optional="YES" attributeType="String"/>
+        <attribute name="opinion" optional="YES" attributeType="String"/>
+    </entity>
+    <entity name="Scent" representedClassName="Scent" syncable="YES" codeGenerationType="class">
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="smellDetails" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SmellDetails"/>
+    </entity>
+    <entity name="SmellDetails" representedClassName="SmellDetails" syncable="YES" codeGenerationType="class">
+        <relationship name="primaryAroma" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Scent"/>
+        <relationship name="secondaryAroma" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Scent"/>
+        <relationship name="tertiaryAroma" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Scent"/>
+    </entity>
+    <entity name="TasteDetails" representedClassName="TasteDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="acidity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="alcohol" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="body" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sweetness" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tannin" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+    </entity>
+    <entity name="TastingNote" representedClassName="TastingNote" syncable="YES" codeGenerationType="class">
+        <attribute name="noteOrigin" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="tastingNoteText" optional="YES" attributeType="String"/>
+        <relationship name="note" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Notes" inverseName="tastingNotes" inverseEntity="Notes"/>
+    </entity>
+    <entity name="Vineyard" representedClassName="Vineyard" syncable="YES" codeGenerationType="class">
+        <attribute name="address" optional="YES" attributeType="String"/>
+        <attribute name="latitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="longitude" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+        <relationship name="wine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="vineyard" inverseEntity="Wine"/>
+    </entity>
+    <entity name="VisualDetails" representedClassName="VisualDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="clarity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="color" optional="YES" attributeType="String"/>
+        <attribute name="viscosity" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="wine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="visualDetails" inverseEntity="Wine"/>
+    </entity>
+    <entity name="WeatherData" representedClassName="WeatherData" syncable="YES" codeGenerationType="class">
+        <relationship name="dailyData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyData" inverseName="weatherData" inverseEntity="DailyData"/>
+        <relationship name="hourlyData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="HourlyData" inverseName="weatherData" inverseEntity="HourlyData"/>
+    </entity>
+    <entity name="Wine" representedClassName="Wine" syncable="YES" codeGenerationType="class">
+        <attribute name="abv" optional="YES" attributeType="Float" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="ava" optional="YES" attributeType="String"/>
+        <attribute name="company" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="isFavorited" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <attribute name="numberOwned" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="type" optional="YES" attributeType="String"/>
+        <attribute name="varietal" optional="YES" attributeType="String"/>
+        <attribute name="vintage" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="wineColor" optional="YES" attributeType="String"/>
+        <relationship name="flight" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="flight" inverseEntity="Wine"/>
+        <relationship name="foodPairing" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FoodPairing"/>
+        <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Notes"/>
+        <relationship name="personalDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PersonalDetails"/>
+        <relationship name="smellDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SmellDetails"/>
+        <relationship name="tasteDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TasteDetails"/>
+        <relationship name="vineyard" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Vineyard" inverseName="wine" inverseEntity="Vineyard"/>
+        <relationship name="visualDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="VisualDetails" inverseName="wine" inverseEntity="VisualDetails"/>
+        <relationship name="weatherData" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="WeatherData"/>
+    </entity>
+    <entity name="WineTasting" representedClassName="WineTasting" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="winery" optional="YES" attributeType="String"/>
+        <relationship name="flight" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Flight" inverseName="wineTasting" inverseEntity="Flight"/>
+    </entity>
+</model>

@@ -25,6 +25,10 @@
 		22829754290459D00081742D /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22829753290459D00081742D /* Launch Screen.storyboard */; };
 		2282975629045DCD0081742D /* FoodPairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282975529045DCD0081742D /* FoodPairing.swift */; };
 		2282975729045E090081742D /* FoodPairing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282975529045DCD0081742D /* FoodPairing.swift */; };
+		22B07FB929045F1F00312C34 /* WineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FB829045F1F00312C34 /* WineViewModel.swift */; };
+		22B07FBE290461AE00312C34 /* PureLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 22B07FBD290461AE00312C34 /* PureLayout */; };
+		22B07FC0290463AA00312C34 /* TestableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FBF290463AA00312C34 /* TestableConstants.swift */; };
+		22B07FC32904B98800312C34 /* WIne_Cellar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FC12904B98800312C34 /* WIne_Cellar.xcdatamodeld */; };
 		22E8067529031187006E0629 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067429031187006E0629 /* AppDelegate.swift */; };
 		22E8067729031187006E0629 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067629031187006E0629 /* SceneDelegate.swift */; };
 		22E8067929031187006E0629 /* CellarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067829031187006E0629 /* CellarViewController.swift */; };
@@ -74,6 +78,9 @@
 		22829750290451D10081742D /* VineyardBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineyardBuilder.swift; sourceTree = "<group>"; };
 		22829753290459D00081742D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2282975529045DCD0081742D /* FoodPairing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPairing.swift; sourceTree = "<group>"; };
+		22B07FB829045F1F00312C34 /* WineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineViewModel.swift; sourceTree = "<group>"; };
+		22B07FBF290463AA00312C34 /* TestableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableConstants.swift; sourceTree = "<group>"; };
+		22B07FC22904B98800312C34 /* WIne Cellar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "WIne Cellar.xcdatamodel"; sourceTree = "<group>"; };
 		22E8067129031187006E0629 /* Wine Cellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wine Cellar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E8067429031187006E0629 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E8067629031187006E0629 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -115,6 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B07FBE290461AE00312C34 /* PureLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -166,8 +174,24 @@
 			isa = PBXGroup;
 			children = (
 				22FB7FE629037EB70058F90B /* DummyWeatherData.json */,
+				22B07FBF290463AA00312C34 /* TestableConstants.swift */,
 			);
 			path = "Dummy Data";
+			sourceTree = "<group>";
+		};
+		22B07FB729045F0300312C34 /* WineViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				22B07FB829045F1F00312C34 /* WineViewModel.swift */,
+			);
+			path = WineViewModel;
+			sourceTree = "<group>";
+		};
+		22B07FBC290461AE00312C34 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		22E8066829031187006E0629 = {
@@ -177,6 +201,7 @@
 				22E8068A29031188006E0629 /* Wine CellarTests */,
 				22E8069429031188006E0629 /* Wine CellarUITests */,
 				22E8067229031187006E0629 /* Products */,
+				22B07FBC290461AE00312C34 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -198,8 +223,10 @@
 				22FB7FCF290328C80058F90B /* Models */,
 				22FB7FE829037FC80058F90B /* Views */,
 				22E806A4290311FB006E0629 /* View Controllers */,
+				22B07FB729045F0300312C34 /* WineViewModel */,
 				22FB7FE0290372800058F90B /* Supporting Files */,
 				22FB7FF32903AB0F0058F90B /* Utilities */,
+				22B07FC12904B98800312C34 /* WIne_Cellar.xcdatamodeld */,
 			);
 			path = "Wine Cellar";
 			sourceTree = "<group>";
@@ -304,9 +331,13 @@
 			buildRules = (
 			);
 			dependencies = (
+				22B07FBB2904617000312C34 /* PBXTargetDependency */,
 				22E8068929031188006E0629 /* PBXTargetDependency */,
 			);
 			name = "Wine CellarTests";
+			packageProductDependencies = (
+				22B07FBD290461AE00312C34 /* PureLayout */,
+			);
 			productName = "Wine CellarTests";
 			productReference = 22E8068729031188006E0629 /* Wine CellarTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -411,11 +442,13 @@
 				22FB7FF52903AB160058F90B /* Extensions.swift in Sources */,
 				2282975629045DCD0081742D /* FoodPairing.swift in Sources */,
 				22FB7FD729032A470058F90B /* VisualDetails.swift in Sources */,
+				22B07FB929045F1F00312C34 /* WineViewModel.swift in Sources */,
 				22829739290442120081742D /* WineTasting.swift in Sources */,
 				22E8067929031187006E0629 /* CellarViewController.swift in Sources */,
 				22FB7FD1290329BA0058F90B /* TasteDetails.swift in Sources */,
 				22FB7FCE290328C30058F90B /* Wine.swift in Sources */,
 				22FB7FD929032A620058F90B /* Note.swift in Sources */,
+				22B07FC32904B98800312C34 /* WIne_Cellar.xcdatamodeld in Sources */,
 				22FB7FDB290359950058F90B /* Vineyard.swift in Sources */,
 				22E8067529031187006E0629 /* AppDelegate.swift in Sources */,
 				22E806A629031233006E0629 /* HomeTabBarController.swift in Sources */,
@@ -448,6 +481,7 @@
 				22829748290448C30081742D /* SmellDetails.swift in Sources */,
 				2282974A290448C30081742D /* WeatherData.swift in Sources */,
 				228297452904489D0081742D /* Constants.swift in Sources */,
+				22B07FC0290463AA00312C34 /* TestableConstants.swift in Sources */,
 				2282974F290448C30081742D /* Vineyard.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -464,6 +498,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		22B07FBB2904617000312C34 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			productRef = 22B07FBA2904617000312C34 /* PureLayout */;
+		};
 		22E8068929031188006E0629 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 22E8067029031187006E0629 /* Wine Cellar */;
@@ -778,12 +816,35 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		22B07FBA2904617000312C34 /* PureLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22FB7FDD2903697C0058F90B /* XCRemoteSwiftPackageReference "PureLayout" */;
+			productName = PureLayout;
+		};
+		22B07FBD290461AE00312C34 /* PureLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22FB7FDD2903697C0058F90B /* XCRemoteSwiftPackageReference "PureLayout" */;
+			productName = PureLayout;
+		};
 		22FB7FDE2903697C0058F90B /* PureLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 22FB7FDD2903697C0058F90B /* XCRemoteSwiftPackageReference "PureLayout" */;
 			productName = PureLayout;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		22B07FC12904B98800312C34 /* WIne_Cellar.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22B07FC22904B98800312C34 /* WIne Cellar.xcdatamodel */,
+			);
+			currentVersion = 22B07FC22904B98800312C34 /* WIne Cellar.xcdatamodel */;
+			path = WIne_Cellar.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 22E8066929031187006E0629 /* Project object */;
 }
