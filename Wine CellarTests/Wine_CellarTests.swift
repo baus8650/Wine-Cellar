@@ -5,17 +5,25 @@
 //  Created by Tim Bausch on 10/21/22.
 //
 
-import XCTest
+import CoreData
 @testable import Wine_Cellar
+import XCTest
 
 final class Wine_CellarTests: XCTestCase {
 
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
+    var coreDataStack: CoreDataStack!
+    var wineService: WineService!
+    
+    override func setUp() {
+        super.setUp()
+        coreDataStack = TestCoreDataStack()
+        wineService = WineService(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
     }
-
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
+    
+    override func tearDown() {
+        super.tearDown()
+        coreDataStack = nil
+        wineService = nil
     }
 
     func testExample() throws {
