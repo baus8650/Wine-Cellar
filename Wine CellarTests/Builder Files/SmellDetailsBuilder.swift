@@ -1,21 +1,21 @@
 import Foundation
 
 final class SmellDetailsBuilder {
-    private var primaryAroma = [ScentBuilder().name("Primary Aroma").build()]
-    private var secondaryAroma = [ScentBuilder().name("Secondary Aroma").build()]
-    private var tertiaryAroma = [ScentBuilder().name("Tertiary Aroma").build()]
+    private var primaryAroma = ["Primary Aroma"]
+    private var secondaryAroma = ["Secondary Aroma"]
+    private var tertiaryAroma = ["Tertiary Aroma"]
     
-    func primaryAroma(_ primaryAroma: [ScentBuilderModel]) -> Self {
+    func primaryAroma(_ primaryAroma: [String]) -> Self {
         self.primaryAroma = primaryAroma
         return self
     }
     
-    func secondaryAroma(_ secondaryAroma: [ScentBuilderModel]) -> Self {
+    func secondaryAroma(_ secondaryAroma: [String]) -> Self {
         self.secondaryAroma = secondaryAroma
         return self
     }
     
-    func tertiaryAroma(_ tertiaryAroma: [ScentBuilderModel]) -> Self {
+    func tertiaryAroma(_ tertiaryAroma: [String]) -> Self {
         self.tertiaryAroma = tertiaryAroma
         return self
     }
