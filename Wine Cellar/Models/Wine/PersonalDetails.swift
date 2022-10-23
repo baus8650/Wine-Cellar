@@ -1,6 +1,6 @@
 import Foundation
 
-struct PersonalDetails {
-    let opinions: String
-    let mood: String
-}
+//struct PersonalDetails {
+//    let opinions: String
+//    let mood: String
+//}

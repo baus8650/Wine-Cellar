@@ -1,5 +1,5 @@
 import Foundation
 
-struct FoodPairing {
-    let name: String
-}
+//struct FoodPairing {
+//    let name: String
+//}
