@@ -13,34 +13,26 @@ public final class WineService {
 
 extension WineService {
     @discardableResult
-    public func add(_ newWine: Wine) -> Wine {
+    public func add(id: UUID, abv: Float, ava: String, company: String, isFavorited: Bool, numberOwned: Int16, type: String, varietal: String, vintage: Int16, wineColor: String) -> Wine {
         let wine = Wine(context: managedObjectContext)
-        wine.abv = newWine.abv
-        wine.ava = newWine.ava
-        wine.company = newWine.company
-        wine.image = newWine.image
-        wine.isFavorited = newWine.isFavorited
-        wine.numberOwned = newWine.numberOwned
-        wine.type = newWine.type
-        wine.varietal = newWine.varietal
-        wine.vintage = newWine.vintage
-        wine.wineColor = newWine.wineColor
-        wine.weatherData = newWine.weatherData
-        wine.visualDetails = newWine.visualDetails
-        wine.vineyard = newWine.vineyard
-        wine.tasteDetails = newWine.tasteDetails
-        wine.smellDetails = newWine.smellDetails
-        wine.personalDetails = newWine.personalDetails
-        wine.notes = newWine.notes
-        wine.foodPairing = newWine.foodPairing
-        wine.flight = newWine.flight
+        wine.id = id
+        wine.abv = abv
+        wine.ava = ava
+        wine.company = company
+        wine.isFavorited = isFavorited
+        wine.numberOwned = numberOwned
+        wine.type = type
+        wine.varietal = varietal
+        wine.vintage = vintage
+        wine.wineColor = wineColor
         
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
-    public func getReports() -> [Wine]? {
+    public func getWines() -> [Wine]? {
         let wineFetch: NSFetchRequest<Wine> = Wine.fetchRequest()
+        
         do {
             let results = try managedObjectContext.fetch(wineFetch)
             return results
@@ -48,6 +40,69 @@ extension WineService {
             print("Fetch error: \(error) description: \(error.userInfo)")
         }
         return nil
+    }
+    
+    public func getWine(with id: UUID) -> Wine? {
+        let wineFetch: NSFetchRequest<Wine> = Wine.fetchRequest()
+        wineFetch.fetchLimit = 1
+        wineFetch.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        do {
+            let result = try managedObjectContext.fetch(wineFetch)
+            return result.first ?? nil
+        } catch let error as NSError {
+            print("Fetch error: \(error) description: \(error.userInfo)")
+        }
+        return nil
+    }
+    
+    public func addVineyard(_ vineyard: Vineyard, to wine: Wine) -> Wine {
+        let originalWine = Wine(context: managedObjectContext)
+        originalWine.id = wine.id
+        originalWine.abv = wine.abv
+        originalWine.ava = wine.ava
+        originalWine.company = wine.company
+        originalWine.isFavorited = wine.isFavorited
+        originalWine.numberOwned = wine.numberOwned
+        originalWine.type = wine.type
+        originalWine.varietal = wine.varietal
+        originalWine.vintage = wine.vintage
+        originalWine.wineColor = wine.wineColor
+        
+        let originalVineyard = Vineyard(context: managedObjectContext)
+        originalVineyard.id = vineyard.id
+        originalVineyard.name = vineyard.name
+        originalVineyard.address = vineyard.address
+        originalVineyard.latitude = vineyard.latitude
+        originalVineyard.longitude = vineyard.longitude
+        
+        vineyard.addToWine(wine)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removeVineyard(_ vineyard: Vineyard, from wine: Wine) -> Wine {
+        let originalWine = Wine(context: managedObjectContext)
+        originalWine.id = wine.id
+        originalWine.abv = wine.abv
+        originalWine.ava = wine.ava
+        originalWine.company = wine.company
+        originalWine.isFavorited = wine.isFavorited
+        originalWine.numberOwned = wine.numberOwned
+        originalWine.type = wine.type
+        originalWine.varietal = wine.varietal
+        originalWine.vintage = wine.vintage
+        originalWine.wineColor = wine.wineColor
+        
+        let originalVineyard = Vineyard(context: managedObjectContext)
+        originalVineyard.id = vineyard.id
+        originalVineyard.name = vineyard.name
+        originalVineyard.address = vineyard.address
+        originalVineyard.latitude = vineyard.latitude
+        originalVineyard.longitude = vineyard.longitude
+        
+        vineyard.removeFromWine(wine)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
     }
     
     @discardableResult

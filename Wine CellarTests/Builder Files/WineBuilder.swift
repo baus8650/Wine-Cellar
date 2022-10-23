@@ -2,7 +2,7 @@ import Foundation
 import UIKit
 
 final class WineBuilder {
-    private var name = "Test Wine"
+    private var id = UUID(uuidString: "7F13D07E-667D-4ECF-9F37-36B2607A9D46")
     private var type = Constants.WineType.still
     private var wineColor = Constants.WineColor.red
     private var vintage = 2022
@@ -22,9 +22,8 @@ final class WineBuilder {
     private var image: UIImage? = nil
     private var isFavorited: Bool = true
     
-    
-    func name(_ name: String) -> Self {
-        self.name = name
+    func id(_ id: UUID) -> Self {
+        self.id = id
         return self
     }
     
@@ -99,6 +98,6 @@ final class WineBuilder {
     
     
     func build() -> WineBuilderModel {
-        return WineBuilderModel(type: type, wineColor: wineColor, vintage: vintage, varietal: varietal, company: company, vineyard: vineyard, ava: ava, abv: abv, visualDetails: visualDetails, tasteDetails: tasteDetails, smellDetails: smellDetails, notes: notes, personalDetails: personalDetails, historicalWeather: historicalWeather, numberOwned: numberOwned, image: image,foodPairings: foodPairings, isFavorited: isFavorited)
+        return WineBuilderModel(id: id!, type: type, wineColor: wineColor, vintage: vintage, varietal: varietal, company: company, vineyard: vineyard, ava: ava, abv: abv, visualDetails: visualDetails, tasteDetails: tasteDetails, smellDetails: smellDetails, notes: notes, personalDetails: personalDetails, historicalWeather: historicalWeather, numberOwned: numberOwned, image: image,foodPairings: foodPairings, isFavorited: isFavorited)
     }
 }
