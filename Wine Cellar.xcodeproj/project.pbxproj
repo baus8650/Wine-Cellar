@@ -27,7 +27,6 @@
 		2282975729045E090081742D /* FoodPairingBuilderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2282975529045DCD0081742D /* FoodPairingBuilderModel.swift */; };
 		22B07FB929045F1F00312C34 /* WineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FB829045F1F00312C34 /* WineViewModel.swift */; };
 		22B07FBE290461AE00312C34 /* PureLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 22B07FBD290461AE00312C34 /* PureLayout */; };
-		22B07FC0290463AA00312C34 /* TestableConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FBF290463AA00312C34 /* TestableConstants.swift */; };
 		22B07FC32904B98800312C34 /* WIne_Cellar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FC12904B98800312C34 /* WIne_Cellar.xcdatamodeld */; };
 		22B07FC52904C8F100312C34 /* TestCoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FC42904C8F100312C34 /* TestCoreDataStack.swift */; };
 		22B07FC72904C94F00312C34 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FC62904C94F00312C34 /* CoreDataStack.swift */; };
@@ -94,7 +93,6 @@
 		22829753290459D00081742D /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		2282975529045DCD0081742D /* FoodPairingBuilderModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPairingBuilderModel.swift; sourceTree = "<group>"; };
 		22B07FB829045F1F00312C34 /* WineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineViewModel.swift; sourceTree = "<group>"; };
-		22B07FBF290463AA00312C34 /* TestableConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestableConstants.swift; sourceTree = "<group>"; };
 		22B07FC22904B98800312C34 /* WIne Cellar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "WIne Cellar.xcdatamodel"; sourceTree = "<group>"; };
 		22B07FC42904C8F100312C34 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
 		22B07FC62904C94F00312C34 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -216,7 +214,6 @@
 			isa = PBXGroup;
 			children = (
 				22FB7FE629037EB70058F90B /* DummyWeatherData.json */,
-				22B07FBF290463AA00312C34 /* TestableConstants.swift */,
 			);
 			path = "Dummy Data";
 			sourceTree = "<group>";
@@ -549,7 +546,6 @@
 				22B07FDC2904DA3600312C34 /* DailyDataBuilder.swift in Sources */,
 				2282974A290448C30081742D /* WeatherDataBuilderModel.swift in Sources */,
 				228297452904489D0081742D /* Constants.swift in Sources */,
-				22B07FC0290463AA00312C34 /* TestableConstants.swift in Sources */,
 				2282974F290448C30081742D /* VineyardBuilderModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
