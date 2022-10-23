@@ -129,6 +129,7 @@ final class Constants {
         case light = 0
         case medium = 1
         case full = 2
+        case noResponse = 3
     }
     
     enum Sweetness: Int {
@@ -137,6 +138,7 @@ final class Constants {
         case semiSweet = 2
         case sweet = 3
         case verySweet = 4
+        case noResponse = 5
     }
     
     enum AlcoholLevel: Int {
@@ -145,6 +147,7 @@ final class Constants {
         case neutral = 2
         case high = 3
         case extremelyHigh = 4
+        case noResponse = 5
     }
     
     enum AcidityLevel: Int {
@@ -153,6 +156,7 @@ final class Constants {
         case neutral = 2
         case high = 3
         case extremelyHigh = 4
+        case noResponse = 5
     }
     
     enum TanninLevel: Int {
@@ -161,12 +165,14 @@ final class Constants {
         case neutral = 2
         case high = 3
         case extremelyHigh = 4
+        case noResponse = 5
     }
     
     enum ViscosityLevel: Int {
         case low = 0
         case medium = 1
         case high = 2
+        case noResponse = 3
     }
     
     enum ClarityLevel: Int {
@@ -174,5 +180,6 @@ final class Constants {
         case dull = 1
         case clear = 2
         case brilliant = 3
+        case noResponse = 4
     }
 }
