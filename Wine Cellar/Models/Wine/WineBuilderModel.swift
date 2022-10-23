@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 struct WineBuilderModel {
+    let id: UUID
     let type: Constants.WineType
     let wineColor: Constants.WineColor
     let vintage: Int
