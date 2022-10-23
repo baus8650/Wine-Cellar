@@ -2,19 +2,16 @@ import Foundation
 import CoreData
 
 public final class WineService {
-    // MARK: - Properties
     let managedObjectContext: NSManagedObjectContext
     let coreDataStack: CoreDataStack
     
-    // MARK: - Initializers
     public init(managedObjectContext: NSManagedObjectContext, coreDataStack: CoreDataStack) {
         self.managedObjectContext = managedObjectContext
         self.coreDataStack = coreDataStack
     }
 }
 
-// MARK: - Public
-extension ReportService {
+extension WineService {
     @discardableResult
     public func add(_ newWine: Wine) -> Wine {
         let wine = Wine(context: managedObjectContext)
