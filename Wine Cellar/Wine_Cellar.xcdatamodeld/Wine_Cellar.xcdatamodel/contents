@@ -48,6 +48,7 @@
         <relationship name="wine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="personalDetails" inverseEntity="Wine"/>
     </entity>
     <entity name="SmellDetails" representedClassName="SmellDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="primaryAroma" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
         <attribute name="secondaryAroma" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
         <attribute name="tertiaryAroma" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
