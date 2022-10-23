@@ -44,6 +44,7 @@
 		22B07FE22904DCB800312C34 /* FoodPairingsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FE12904DCB800312C34 /* FoodPairingsBuilder.swift */; };
 		22B07FE62905BC5A00312C34 /* VineyardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FE52905BC5A00312C34 /* VineyardTests.swift */; };
 		22B07FE82905BCA700312C34 /* VineyardService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FE72905BCA700312C34 /* VineyardService.swift */; };
+		22B07FEA2905FE1500312C34 /* SmellDetailsServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FE92905FE1500312C34 /* SmellDetailsServices.swift */; };
 		22E8067529031187006E0629 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067429031187006E0629 /* AppDelegate.swift */; };
 		22E8067729031187006E0629 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067629031187006E0629 /* SceneDelegate.swift */; };
 		22E8067929031187006E0629 /* CellarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E8067829031187006E0629 /* CellarViewController.swift */; };
@@ -111,6 +112,7 @@
 		22B07FE12904DCB800312C34 /* FoodPairingsBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FoodPairingsBuilder.swift; sourceTree = "<group>"; };
 		22B07FE52905BC5A00312C34 /* VineyardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineyardTests.swift; sourceTree = "<group>"; };
 		22B07FE72905BCA700312C34 /* VineyardService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VineyardService.swift; sourceTree = "<group>"; };
+		22B07FE92905FE1500312C34 /* SmellDetailsServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmellDetailsServices.swift; sourceTree = "<group>"; };
 		22E8067129031187006E0629 /* Wine Cellar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Wine Cellar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		22E8067429031187006E0629 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		22E8067629031187006E0629 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 				22B07FC62904C94F00312C34 /* CoreDataStack.swift */,
 				22B07FC92904CC7600312C34 /* WineService.swift */,
 				22B07FE72905BCA700312C34 /* VineyardService.swift */,
+				22B07FE92905FE1500312C34 /* SmellDetailsServices.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -507,6 +510,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22B07FEA2905FE1500312C34 /* SmellDetailsServices.swift in Sources */,
 				22FB7FD529032A370058F90B /* SmellDetailsBuilderModel.swift in Sources */,
 				22B07FC72904C94F00312C34 /* CoreDataStack.swift in Sources */,
 				22FB7FF52903AB160058F90B /* Extensions.swift in Sources */,
