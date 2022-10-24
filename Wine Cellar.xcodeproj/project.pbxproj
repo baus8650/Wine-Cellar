@@ -180,6 +180,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		2211F5C0290620D300335D11 /* Test Services */ = {
+			isa = PBXGroup;
+			children = (
+				2282973C2904446F0081742D /* Builder Files */,
+				22B07FC42904C8F100312C34 /* TestCoreDataStack.swift */,
+			);
+			path = "Test Services";
+			sourceTree = "<group>";
+		};
 		226DE31A290614F4003D8E9D /* VisualDetails Tests */ = {
 			isa = PBXGroup;
 			children = (
@@ -241,12 +250,12 @@
 			path = "Dummy Data";
 			sourceTree = "<group>";
 		};
-		22B07FB729045F0300312C34 /* WineViewModel */ = {
+		22B07FB729045F0300312C34 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
 				22B07FB829045F1F00312C34 /* WineViewModel.swift */,
 			);
-			path = WineViewModel;
+			path = "View Models";
 			sourceTree = "<group>";
 		};
 		22B07FBC290461AE00312C34 /* Frameworks */ = {
@@ -319,13 +328,13 @@
 		22E8067329031187006E0629 /* Wine Cellar */ = {
 			isa = PBXGroup;
 			children = (
-				22B07FC82904CC6400312C34 /* Services */,
 				22E8067429031187006E0629 /* AppDelegate.swift */,
 				22E8067629031187006E0629 /* SceneDelegate.swift */,
 				22FB7FCF290328C80058F90B /* Models */,
-				22FB7FE829037FC80058F90B /* Views */,
 				22E806A4290311FB006E0629 /* View Controllers */,
-				22B07FB729045F0300312C34 /* WineViewModel */,
+				22B07FB729045F0300312C34 /* View Models */,
+				22FB7FE829037FC80058F90B /* Views */,
+				22B07FC82904CC6400312C34 /* Services */,
 				22FB7FE0290372800058F90B /* Supporting Files */,
 				22FB7FF32903AB0F0058F90B /* Utilities */,
 				22B07FC12904B98800312C34 /* Wine_Cellar.xcdatamodeld */,
@@ -336,13 +345,12 @@
 		22E8068A29031188006E0629 /* Wine CellarTests */ = {
 			isa = PBXGroup;
 			children = (
-				22B07FEB2905FF4000312C34 /* SmellDetails Tests */,
-				2282973C2904446F0081742D /* Builder Files */,
-				22B07FE42905BC0D00312C34 /* Vineyard Tests */,
-				22B07FE32905BBFD00312C34 /* Wine Tests */,
 				22829752290455430081742D /* Dummy Data */,
-				22B07FC42904C8F100312C34 /* TestCoreDataStack.swift */,
+				22B07FEB2905FF4000312C34 /* SmellDetails Tests */,
+				2211F5C0290620D300335D11 /* Test Services */,
+				22B07FE42905BC0D00312C34 /* Vineyard Tests */,
 				226DE31A290614F4003D8E9D /* VisualDetails Tests */,
+				22B07FE32905BBFD00312C34 /* Wine Tests */,
 			);
 			path = "Wine CellarTests";
 			sourceTree = "<group>";
