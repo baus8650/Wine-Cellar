@@ -48,11 +48,12 @@
         <relationship name="wine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="personalDetails" inverseEntity="Wine"/>
     </entity>
     <entity name="SmellDetails" representedClassName="SmellDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="primaryAroma" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
         <attribute name="secondaryAroma" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
         <attribute name="tertiaryAroma" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[String]"/>
-        <relationship name="wine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="smellDetails" inverseEntity="Wine"/>
+        <relationship name="wine" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Wine" inverseName="smellDetails" inverseEntity="Wine"/>
     </entity>
     <entity name="TasteDetails" representedClassName="TasteDetails" syncable="YES" codeGenerationType="class">
         <attribute name="acidity" optional="YES" attributeType="Integer 16" defaultValueString="5" usesScalarValueType="YES"/>
@@ -102,7 +103,7 @@
         <relationship name="foodPairing" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FoodPairing" inverseName="wine" inverseEntity="FoodPairing"/>
         <relationship name="notes" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Notes" inverseName="wine" inverseEntity="Notes"/>
         <relationship name="personalDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PersonalDetails" inverseName="wine" inverseEntity="PersonalDetails"/>
-        <relationship name="smellDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="SmellDetails" inverseName="wine" inverseEntity="SmellDetails"/>
+        <relationship name="smellDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SmellDetails" inverseName="wine" inverseEntity="SmellDetails"/>
         <relationship name="tasteDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TasteDetails" inverseName="wine" inverseEntity="TasteDetails"/>
         <relationship name="vineyard" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Vineyard" inverseName="wine" inverseEntity="Vineyard"/>
         <relationship name="visualDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="VisualDetails" inverseName="wine" inverseEntity="VisualDetails"/>

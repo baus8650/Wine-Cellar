@@ -13,9 +13,10 @@ public final class SmellDetailsService {
 
 extension SmellDetailsService {
     @discardableResult
-    public func add(id: UUID, primaryAroma: [String], secondaryAroma: [String], tertiaryAroma: [String]) -> SmellDetails {
+    public func add(id: UUID, date: Date, primaryAroma: [String], secondaryAroma: [String], tertiaryAroma: [String]) -> SmellDetails {
         let smellDetails = SmellDetails(context: managedObjectContext)
         smellDetails.id = id
+        smellDetails.date = date
         smellDetails.primaryAroma = primaryAroma
         smellDetails.secondaryAroma = secondaryAroma
         smellDetails.tertiaryAroma = tertiaryAroma
