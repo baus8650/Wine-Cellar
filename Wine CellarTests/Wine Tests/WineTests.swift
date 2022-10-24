@@ -9,12 +9,10 @@ import CoreData
 @testable import Wine_Cellar
 import XCTest
 
-final class WineTests: XCTestCase {
+class WineTests: XCTestCase {
 
     var coreDataStack: CoreDataStack!
     var wineService: WineService!
-    var vineyardService: VineyardService!
-    var smellDetailsService: SmellDetailsService!
     let newWine = WineBuilder().build()
     let secondWine = WineBuilder()
         .id(UUID())
@@ -25,8 +23,6 @@ final class WineTests: XCTestCase {
         super.setUp()
         coreDataStack = TestCoreDataStack()
         wineService = WineService(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
-        vineyardService = VineyardService(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
-        smellDetailsService = SmellDetailsService(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
     }
     
     override func tearDown() {
@@ -161,95 +157,4 @@ final class WineTests: XCTestCase {
         
         XCTAssertEqual(fetchedWines?.count, 0)
     }
-    
-    func testAddVineyardToWine() throws {
-        let vineyardToAdd = VineyardBuilder().build()
-        let wine = wineService.add(
-            id: newWine.id,
-            abv: newWine.abv,
-            ava: newWine.ava ?? "",
-            company: newWine.company,
-            isFavorited: newWine.isFavorited,
-            numberOwned: Int16(newWine.numberOwned),
-            type: newWine.type.rawValue,
-            varietal: newWine.varietal.rawValue,
-            vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
-        
-        let vineyard = vineyardService.add(id: vineyardToAdd.id, name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
-        
-        let wineWithVineyard = wineService.addVineyard(vineyard, to: wine)
-        XCTAssertEqual(wineWithVineyard.vineyard?.name, "Test Vineyard")
-    }
-    
-    func testRemoveVineyardFromWine() throws {
-        let vineyardToAdd = VineyardBuilder().build()
-        let wine = wineService.add(
-            id: newWine.id,
-            abv: newWine.abv,
-            ava: newWine.ava ?? "",
-            company: newWine.company,
-            isFavorited: newWine.isFavorited,
-            numberOwned: Int16(newWine.numberOwned),
-            type: newWine.type.rawValue,
-            varietal: newWine.varietal.rawValue,
-            vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
-        
-        let vineyard = vineyardService.add(id: vineyardToAdd.id, name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
-        
-        let wineWithVineyard = wineService.addVineyard(vineyard, to: wine)
-        XCTAssertEqual(wineWithVineyard.vineyard?.name, "Test Vineyard")
-        
-        let wineWithoutVineyard = wineService.removeVineyard(vineyard, from: wine)
-        XCTAssertNil(wineWithoutVineyard.vineyard)
-    }
-    
-    func testAddSmellDetailsToWine() throws {
-        let smellDetailsToAdd = SmellDetailsBuilder().build()
-        let wine = wineService.add(
-            id: newWine.id,
-            abv: newWine.abv,
-            ava: newWine.ava ?? "",
-            company: newWine.company,
-            isFavorited: newWine.isFavorited,
-            numberOwned: Int16(newWine.numberOwned),
-            type: newWine.type.rawValue,
-            varietal: newWine.varietal.rawValue,
-            vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
-        
-        let smellDetails = smellDetailsService.add(id: smellDetailsToAdd.id, date: smellDetailsToAdd.date, primaryAroma: smellDetailsToAdd.primaryAroma!, secondaryAroma: smellDetailsToAdd.secondaryAroma!, tertiaryAroma: smellDetailsToAdd.tertiaryAroma!)
-        
-        let wineWithSmellDetails = wineService.addSmellDetails(smellDetails, to: wine)
-        XCTAssertEqual(wineWithSmellDetails.smellDetails?.primaryAroma, ["Primary Aroma"])
-    }
-    
-    func testRemoveSmallDetailsFromWine() throws {
-        let smellDetailsToAdd = SmellDetailsBuilder().build()
-        let wine = wineService.add(
-            id: newWine.id,
-            abv: newWine.abv,
-            ava: newWine.ava ?? "",
-            company: newWine.company,
-            isFavorited: newWine.isFavorited,
-            numberOwned: Int16(newWine.numberOwned),
-            type: newWine.type.rawValue,
-            varietal: newWine.varietal.rawValue,
-            vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
-        
-        let smellDetails = smellDetailsService.add(id: smellDetailsToAdd.id, date: smellDetailsToAdd.date, primaryAroma: smellDetailsToAdd.primaryAroma!, secondaryAroma: smellDetailsToAdd.secondaryAroma!, tertiaryAroma: smellDetailsToAdd.tertiaryAroma!)
-        
-        let wineWithSmellDetails = wineService.addSmellDetails(smellDetails, to: wine)
-        XCTAssertEqual(wineWithSmellDetails.smellDetails?.primaryAroma, ["Primary Aroma"])
-        
-        let wineWithoutSmellDetails = wineService.removeSmellDetails(smellDetails, from: wine)
-        XCTAssertNil(wineWithoutSmellDetails.smellDetails)
-    }
-
 }
