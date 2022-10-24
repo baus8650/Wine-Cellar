@@ -35,17 +35,14 @@ extension VisualDetailsService {
         return nil
     }
     
-    public func getVisualDetails(with id: ObjectIdentifier) -> VisualDetails? {
-        let visualDetails: NSFetchRequest<VisualDetails> = VisualDetails.fetchRequest()
-        visualDetails.fetchLimit = 1
-        visualDetails.predicate = NSPredicate(format: "id == %@", id as! CVarArg)
-        do {
-            let result = try managedObjectContext.fetch(visualDetails)
-            return result.first ?? nil
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-        return nil
+    public func getVisualDetails(with id: NSManagedObjectID) -> VisualDetails? {
+//        let visualDetails: NSFetchRequest<VisualDetails> = VisualDetails.fetchRequest()
+//        visualDetails.fetchLimit = 1
+//        visualDetails.predicate = NSPredicate(format: "id == %@", id as! CVarArg)
+        
+        let result = managedObjectContext.object(with: id)
+        return result as? VisualDetails
+
     }
     
     @discardableResult

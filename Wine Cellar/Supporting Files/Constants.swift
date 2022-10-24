@@ -120,19 +120,19 @@ final class Constants {
         case zinfandel = "Zinfandel"
     }
     
-    enum TastingNotesOrigin: Int {
+    enum TastingNotesOrigin: Int16 {
         case userGenerated = 0
         case wineryGenerated = 1
     }
     
-    enum WineBody: Int {
+    enum WineBody: Int16 {
         case light = 0
         case medium = 1
         case full = 2
         case noResponse = 3
     }
     
-    enum Sweetness: Int {
+    enum Sweetness: Int16 {
         case boneDry = 0
         case dry = 1
         case semiSweet = 2
@@ -141,7 +141,7 @@ final class Constants {
         case noResponse = 5
     }
     
-    enum AlcoholLevel: Int {
+    enum AlcoholLevel: Int16 {
         case extremelyLow = 0
         case low = 1
         case neutral = 2
@@ -150,7 +150,7 @@ final class Constants {
         case noResponse = 5
     }
     
-    enum AcidityLevel: Int {
+    enum AcidityLevel: Int16 {
         case extremelyLow = 0
         case low = 1
         case neutral = 2
@@ -159,7 +159,7 @@ final class Constants {
         case noResponse = 5
     }
     
-    enum TanninLevel: Int {
+    enum TanninLevel: Int16 {
         case extremelyLow = 0
         case low = 1
         case neutral = 2
@@ -168,14 +168,14 @@ final class Constants {
         case noResponse = 5
     }
     
-    enum ViscosityLevel: Int {
+    enum ViscosityLevel: Int16 {
         case low = 0
         case medium = 1
         case high = 2
         case noResponse = 3
     }
     
-    enum ClarityLevel: Int {
+    enum ClarityLevel: Int16 {
         case hazy = 0
         case dull = 1
         case clear = 2
