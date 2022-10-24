@@ -16,7 +16,6 @@ final class WineTests_Vineyard: XCTestCase {
     var vineyardService: VineyardService!
     let newWine = WineBuilder().build()
     let secondWine = WineBuilder()
-        .id(UUID())
         .company("Second Wine Company")
         .build()
     
@@ -37,7 +36,6 @@ final class WineTests_Vineyard: XCTestCase {
     func testAddVineyardToWine() throws {
         let vineyardToAdd = VineyardBuilder().build()
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -49,7 +47,7 @@ final class WineTests_Vineyard: XCTestCase {
             wineColor: newWine.wineColor.rawValue
         )
         
-        let vineyard = vineyardService.add(id: vineyardToAdd.id, name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
+        let vineyard = vineyardService.add(name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
         
         let wineWithVineyard = wineService.addVineyard(vineyard, to: wine)
         XCTAssertEqual(wineWithVineyard.vineyard?.name, "Test Vineyard")
@@ -58,7 +56,6 @@ final class WineTests_Vineyard: XCTestCase {
     func testRemoveVineyardFromWine() throws {
         let vineyardToAdd = VineyardBuilder().build()
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -70,7 +67,7 @@ final class WineTests_Vineyard: XCTestCase {
             wineColor: newWine.wineColor.rawValue
         )
         
-        let vineyard = vineyardService.add(id: vineyardToAdd.id, name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
+        let vineyard = vineyardService.add(name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
         
         let wineWithVineyard = wineService.addVineyard(vineyard, to: wine)
         XCTAssertEqual(wineWithVineyard.vineyard?.name, "Test Vineyard")

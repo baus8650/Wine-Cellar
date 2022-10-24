@@ -13,9 +13,8 @@ public final class VineyardService {
 
 extension VineyardService {
     @discardableResult
-    public func add(id: UUID, name: String, address: String, latitude: Double, longitude: Double) -> Vineyard {
+    public func add(name: String, address: String, latitude: Double, longitude: Double) -> Vineyard {
         let vineyard = Vineyard(context: managedObjectContext)
-        vineyard.id = id
         vineyard.name = name
         vineyard.address = address
         vineyard.latitude = latitude
@@ -37,17 +36,9 @@ extension VineyardService {
         return nil
     }
     
-    public func getVineyard(with id: UUID) -> Vineyard? {
-        let vineyardFetch: NSFetchRequest<Vineyard> = Vineyard.fetchRequest()
-        vineyardFetch.fetchLimit = 1
-        vineyardFetch.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        do {
-            let result = try managedObjectContext.fetch(vineyardFetch)
-            return result.first ?? nil
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-        return nil
+    public func getVineyard(with id: NSManagedObjectID) -> Vineyard? {
+        let result = managedObjectContext.object(with: id)
+        return result as? Vineyard
     }
     
     @discardableResult

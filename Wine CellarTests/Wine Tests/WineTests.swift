@@ -15,7 +15,6 @@ class WineTests: XCTestCase {
     var wineService: WineService!
     let newWine = WineBuilder().build()
     let secondWine = WineBuilder()
-        .id(UUID())
         .company("Second Wine Company")
         .build()
     
@@ -33,7 +32,6 @@ class WineTests: XCTestCase {
 
     func testAddWineToCoreData() throws {
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -50,7 +48,6 @@ class WineTests: XCTestCase {
     
     func testFetchAllWines() throws {
         wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -63,7 +60,6 @@ class WineTests: XCTestCase {
         )
         
         wineService.add(
-            id: secondWine.id,
             abv: secondWine.abv,
             ava: secondWine.ava ?? "",
             company: secondWine.company,
@@ -81,8 +77,7 @@ class WineTests: XCTestCase {
     }
     
     func testFetchSingleWine() throws {
-        wineService.add(
-            id: newWine.id,
+        let wine1 = wineService.add(
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -94,8 +89,7 @@ class WineTests: XCTestCase {
             wineColor: newWine.wineColor.rawValue
         )
         
-        wineService.add(
-            id: secondWine.id,
+        let wine2 = wineService.add(
             abv: secondWine.abv,
             ava: secondWine.ava ?? "",
             company: secondWine.company,
@@ -107,16 +101,15 @@ class WineTests: XCTestCase {
             wineColor: secondWine.wineColor.rawValue
         )
         
-        let wine1 = wineService.getWine(with: newWine.id)
-        let wine2 = wineService.getWine(with: secondWine.id)
+        let fetchedWine1 = wineService.getWine(with: wine1.objectID)
+        let fetchedWine2 = wineService.getWine(with: wine2.objectID)
         
-        XCTAssertEqual(wine1?.company, "Test Wine Company")
-        XCTAssertEqual(wine2?.company, "Second Wine Company")
+        XCTAssertEqual(fetchedWine1?.company, "Test Wine Company")
+        XCTAssertEqual(fetchedWine2?.company, "Second Wine Company")
     }
 
     func testUpdateWine() throws {
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -134,8 +127,7 @@ class WineTests: XCTestCase {
     }
     
     func testDeleteWine() {
-        let _ = wineService.add(
-            id: newWine.id,
+        let wine1 = wineService.add(
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -150,7 +142,7 @@ class WineTests: XCTestCase {
         var fetchedWines = wineService.getWines()
         XCTAssertEqual(fetchedWines?.count, 1)
         
-        let fetchedWine = wineService.getWine(with: newWine.id)
+        let fetchedWine = wineService.getWine(with: wine1.objectID)
         wineService.delete(fetchedWine!)
         
         fetchedWines = wineService.getWines()

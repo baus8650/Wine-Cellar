@@ -36,10 +36,6 @@ extension VisualDetailsService {
     }
     
     public func getVisualDetails(with id: NSManagedObjectID) -> VisualDetails? {
-//        let visualDetails: NSFetchRequest<VisualDetails> = VisualDetails.fetchRequest()
-//        visualDetails.fetchLimit = 1
-//        visualDetails.predicate = NSPredicate(format: "id == %@", id as! CVarArg)
-        
         let result = managedObjectContext.object(with: id)
         return result as? VisualDetails
 

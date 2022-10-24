@@ -33,7 +33,6 @@ class WineTests_SmellDetails: XCTestCase {
     func testAddSmellDetailsToWine() throws {
         let smellDetailsToAdd = SmellDetailsBuilder().build()
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -45,7 +44,7 @@ class WineTests_SmellDetails: XCTestCase {
             wineColor: newWine.wineColor.rawValue
         )
         
-        let smellDetails = smellDetailsService.add(id: smellDetailsToAdd.id, date: smellDetailsToAdd.date, primaryAroma: smellDetailsToAdd.primaryAroma!, secondaryAroma: smellDetailsToAdd.secondaryAroma!, tertiaryAroma: smellDetailsToAdd.tertiaryAroma!)
+        let smellDetails = smellDetailsService.add(date: smellDetailsToAdd.date, primaryAroma: smellDetailsToAdd.primaryAroma!, secondaryAroma: smellDetailsToAdd.secondaryAroma!, tertiaryAroma: smellDetailsToAdd.tertiaryAroma!)
         
         let wineWithSmellDetails = wineService.addSmellDetails(smellDetails, to: wine)
         XCTAssertEqual(wineWithSmellDetails.smellDetails?.primaryAroma, ["Primary Aroma"])
@@ -54,7 +53,6 @@ class WineTests_SmellDetails: XCTestCase {
     func testRemoveSmallDetailsFromWine() throws {
         let smellDetailsToAdd = SmellDetailsBuilder().build()
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -66,7 +64,7 @@ class WineTests_SmellDetails: XCTestCase {
             wineColor: newWine.wineColor.rawValue
         )
         
-        let smellDetails = smellDetailsService.add(id: smellDetailsToAdd.id, date: smellDetailsToAdd.date, primaryAroma: smellDetailsToAdd.primaryAroma!, secondaryAroma: smellDetailsToAdd.secondaryAroma!, tertiaryAroma: smellDetailsToAdd.tertiaryAroma!)
+        let smellDetails = smellDetailsService.add(date: smellDetailsToAdd.date, primaryAroma: smellDetailsToAdd.primaryAroma!, secondaryAroma: smellDetailsToAdd.secondaryAroma!, tertiaryAroma: smellDetailsToAdd.tertiaryAroma!)
         
         let wineWithSmellDetails = wineService.addSmellDetails(smellDetails, to: wine)
         XCTAssertEqual(wineWithSmellDetails.smellDetails?.primaryAroma, ["Primary Aroma"])

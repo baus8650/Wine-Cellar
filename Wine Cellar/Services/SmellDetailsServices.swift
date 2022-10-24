@@ -13,9 +13,8 @@ public final class SmellDetailsService {
 
 extension SmellDetailsService {
     @discardableResult
-    public func add(id: UUID, date: Date, primaryAroma: [String], secondaryAroma: [String], tertiaryAroma: [String]) -> SmellDetails {
+    public func add(date: Date, primaryAroma: [String], secondaryAroma: [String], tertiaryAroma: [String]) -> SmellDetails {
         let smellDetails = SmellDetails(context: managedObjectContext)
-        smellDetails.id = id
         smellDetails.date = date
         smellDetails.primaryAroma = primaryAroma
         smellDetails.secondaryAroma = secondaryAroma
@@ -27,7 +26,6 @@ extension SmellDetailsService {
     
     public func getSmellDetails() -> [SmellDetails]? {
         let smellDetailsFetch: NSFetchRequest<SmellDetails> = SmellDetails.fetchRequest()
-        
         do {
             let results = try managedObjectContext.fetch(smellDetailsFetch)
             return results
@@ -37,17 +35,9 @@ extension SmellDetailsService {
         return nil
     }
     
-    public func getSmellDetails(with id: UUID) -> SmellDetails? {
-        let smellDetails: NSFetchRequest<SmellDetails> = SmellDetails.fetchRequest()
-        smellDetails.fetchLimit = 1
-        smellDetails.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        do {
-            let result = try managedObjectContext.fetch(smellDetails)
-            return result.first ?? nil
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-        return nil
+    public func getSmellDetails(with id: NSManagedObjectID) -> SmellDetails? {
+        let result = managedObjectContext.object(with: id)
+        return result as? SmellDetails
     }
     
     @discardableResult

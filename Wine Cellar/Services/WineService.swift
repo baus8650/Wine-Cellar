@@ -13,9 +13,8 @@ public final class WineService {
 
 extension WineService {
     @discardableResult
-    public func add(id: UUID, abv: Float, ava: String, company: String, isFavorited: Bool, numberOwned: Int16, type: String, varietal: String, vintage: Int16, wineColor: String) -> Wine {
+    public func add(abv: Float, ava: String, company: String, isFavorited: Bool, numberOwned: Int16, type: String, varietal: String, vintage: Int16, wineColor: String) -> Wine {
         let wine = Wine(context: managedObjectContext)
-        wine.id = id
         wine.abv = abv
         wine.ava = ava
         wine.company = company
@@ -42,22 +41,13 @@ extension WineService {
         return nil
     }
     
-    public func getWine(with id: UUID) -> Wine? {
-        let wineFetch: NSFetchRequest<Wine> = Wine.fetchRequest()
-        wineFetch.fetchLimit = 1
-        wineFetch.predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        do {
-            let result = try managedObjectContext.fetch(wineFetch)
-            return result.first ?? nil
-        } catch let error as NSError {
-            print("Fetch error: \(error) description: \(error.userInfo)")
-        }
-        return nil
+    public func getWine(with id: NSManagedObjectID) -> Wine? {
+        let result = managedObjectContext.object(with: id)
+        return result as? Wine
     }
     
     public func addVineyard(_ vineyard: Vineyard, to wine: Wine) -> Wine {
         let originalWine = Wine(context: managedObjectContext)
-        originalWine.id = wine.id
         originalWine.abv = wine.abv
         originalWine.ava = wine.ava
         originalWine.company = wine.company
@@ -75,7 +65,6 @@ extension WineService {
     
     public func removeVineyard(_ vineyard: Vineyard, from wine: Wine) -> Wine {
         let originalWine = Wine(context: managedObjectContext)
-        originalWine.id = wine.id
         originalWine.abv = wine.abv
         originalWine.ava = wine.ava
         originalWine.company = wine.company
@@ -93,7 +82,6 @@ extension WineService {
     
     public func addSmellDetails(_ smellDetails: SmellDetails, to wine: Wine) -> Wine {
         let originalWine = Wine(context: managedObjectContext)
-        originalWine.id = wine.id
         originalWine.abv = wine.abv
         originalWine.ava = wine.ava
         originalWine.company = wine.company
@@ -111,7 +99,6 @@ extension WineService {
     
     public func removeSmellDetails(_ smellDetails: SmellDetails, from wine: Wine) -> Wine {
         let originalWine = Wine(context: managedObjectContext)
-        originalWine.id = wine.id
         originalWine.abv = wine.abv
         originalWine.ava = wine.ava
         originalWine.company = wine.company
@@ -129,7 +116,6 @@ extension WineService {
     
     public func addVisualDetails(_ visualDetails: VisualDetails, to wine: Wine) -> Wine {
         let originalWine = Wine(context: managedObjectContext)
-        originalWine.id = wine.id
         originalWine.abv = wine.abv
         originalWine.ava = wine.ava
         originalWine.company = wine.company
@@ -147,7 +133,6 @@ extension WineService {
     
     public func removeVisualDetails(_ visualDetails: VisualDetails, from wine: Wine) -> Wine {
         let originalWine = Wine(context: managedObjectContext)
-        originalWine.id = wine.id
         originalWine.abv = wine.abv
         originalWine.ava = wine.ava
         originalWine.company = wine.company

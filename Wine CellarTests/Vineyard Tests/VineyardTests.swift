@@ -15,7 +15,6 @@ final class VineyardTests: XCTestCase {
     var vineyardService: VineyardService!
     let newVineyard = VineyardBuilder().build()
     let secondVineyard = VineyardBuilder()
-        .id(UUID())
         .name("Second Vineyard")
         .build()
 
@@ -32,47 +31,47 @@ final class VineyardTests: XCTestCase {
     }
 
     func testAddVineyard() throws {
-        let vineyard = vineyardService.add(id: newVineyard.id, name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
+        let vineyard = vineyardService.add(name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
         XCTAssertEqual(vineyard.name, "Test Vineyard")
     }
     
     func testGetAllVineyards() throws {
-        let _ = vineyardService.add(id: newVineyard.id, name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
-        let _ = vineyardService.add(id: secondVineyard.id, name: secondVineyard.name, address: secondVineyard.address, latitude: secondVineyard.latitude!, longitude: secondVineyard.longitude!)
+        let _ = vineyardService.add(name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
+        let _ = vineyardService.add(name: secondVineyard.name, address: secondVineyard.address, latitude: secondVineyard.latitude!, longitude: secondVineyard.longitude!)
         let vineyards = vineyardService.getVineyards()
         XCTAssertEqual(vineyards?.count, 2)
     }
     
     func testGetSingleVineyard() throws {
-        let _ = vineyardService.add(id: newVineyard.id, name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
-        let _ = vineyardService.add(id: secondVineyard.id, name: secondVineyard.name, address: secondVineyard.address, latitude: secondVineyard.latitude!, longitude: secondVineyard.longitude!)
-        let vineyard1 = vineyardService.getVineyard(with: newVineyard.id)
-        let vineyard2 = vineyardService.getVineyard(with: secondVineyard.id)
-        XCTAssertEqual(vineyard1?.name, "Test Vineyard")
-        XCTAssertEqual(vineyard2?.name, "Second Vineyard")
+        let vineyard1 = vineyardService.add(name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
+        let vineyard2 = vineyardService.add(name: secondVineyard.name, address: secondVineyard.address, latitude: secondVineyard.latitude!, longitude: secondVineyard.longitude!)
+        let fetchedVineyard1 = vineyardService.getVineyard(with: vineyard1.objectID)
+        let fetchedVineyard2 = vineyardService.getVineyard(with: vineyard2.objectID)
+        XCTAssertEqual(fetchedVineyard1?.name, "Test Vineyard")
+        XCTAssertEqual(fetchedVineyard2?.name, "Second Vineyard")
     }
     
     func testUpdateVineyard() throws {
-        let _ = vineyardService.add(id: newVineyard.id, name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
-        let oldVineyard = vineyardService.getVineyard(with: newVineyard.id)
+        let vineyard1 = vineyardService.add(name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
+        let oldVineyard = vineyardService.getVineyard(with: vineyard1.objectID)
         XCTAssertEqual(oldVineyard?.name, "Test Vineyard")
         
-        let updatedVineyard = vineyardService.getVineyard(with: newVineyard.id)
+        let updatedVineyard = vineyardService.getVineyard(with: vineyard1.objectID)
         updatedVineyard?.name = "Updated Name"
         vineyardService.update(updatedVineyard!)
         
-        let newVineyard = vineyardService.getVineyard(with: newVineyard.id)
+        let newVineyard = vineyardService.getVineyard(with: vineyard1.objectID)
         XCTAssertEqual(newVineyard?.name, "Updated Name")
     }
 
     func testDeleteVineyard() throws {
-        let _ = vineyardService.add(id: newVineyard.id, name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
-        let _ = vineyardService.add(id: secondVineyard.id, name: secondVineyard.name, address: secondVineyard.address, latitude: secondVineyard.latitude!, longitude: secondVineyard.longitude!)
+        let _ = vineyardService.add(name: newVineyard.name, address: newVineyard.address, latitude: newVineyard.latitude!, longitude: newVineyard.longitude!)
+        let vineyard2 = vineyardService.add(name: secondVineyard.name, address: secondVineyard.address, latitude: secondVineyard.latitude!, longitude: secondVineyard.longitude!)
         
         var vineyards = vineyardService.getVineyards()
         XCTAssertEqual(vineyards?.count, 2)
         
-        let wineToDelete = vineyardService.getVineyard(with: secondVineyard.id)
+        let wineToDelete = vineyardService.getVineyard(with: vineyard2.objectID)
         vineyardService.delete(wineToDelete!)
         vineyards = vineyardService.getVineyards()
         XCTAssertEqual(vineyards?.count, 1)

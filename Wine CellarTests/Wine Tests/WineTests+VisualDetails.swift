@@ -33,7 +33,6 @@ final class WineTests_VisualDetails: XCTestCase {
     func testAddSmellDetailsToWine() throws {
         let visualDetailsToAdd = VisualDetailsBuilder().build()
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -48,13 +47,13 @@ final class WineTests_VisualDetails: XCTestCase {
         let visualDetails = visualDetailsService.add(color: visualDetailsToAdd.Color, viscosity: visualDetailsToAdd.viscosity.rawValue, clarity: visualDetailsToAdd.clarity.rawValue)
         
         let wineWithVisualDetails = wineService.addVisualDetails(visualDetails, to: wine)
+        print(wineWithVisualDetails)
         XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 3)
     }
     
     func testRemoveSmallDetailsFromWine() throws {
         let visualDetailsToAdd = VisualDetailsBuilder().build()
         let wine = wineService.add(
-            id: newWine.id,
             abv: newWine.abv,
             ava: newWine.ava ?? "",
             company: newWine.company,
@@ -72,6 +71,7 @@ final class WineTests_VisualDetails: XCTestCase {
         XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 3)
         
         let wineWithoutVisualDetails = wineService.removeVisualDetails(visualDetails, from: wine)
-        XCTAssertNil(wineWithVisualDetails.smellDetails)
+        print(wineWithoutVisualDetails)
+        XCTAssertNil(wineWithoutVisualDetails.smellDetails)
     }
 }
