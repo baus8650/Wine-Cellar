@@ -8,8 +8,8 @@
 import Foundation
 
 struct WeatherDataBuilderModel {
-    let hourly: HourlyData
-    let daily: DailyData
+    let hourly: HourlyDataBuilderModel
+    let daily: DailyDataBuilderModel
     let id = UUID()
 }
 

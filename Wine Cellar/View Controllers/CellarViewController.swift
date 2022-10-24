@@ -15,6 +15,7 @@ class CellarViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Wine Cellar"
+        print(UUID())
     }
 
 
