@@ -60,7 +60,7 @@
         <attribute name="body" optional="YES" attributeType="Integer 16" defaultValueString="3" usesScalarValueType="YES"/>
         <attribute name="sweetness" optional="YES" attributeType="Integer 16" defaultValueString="5" usesScalarValueType="YES"/>
         <attribute name="tannin" optional="YES" attributeType="Integer 16" defaultValueString="5" usesScalarValueType="YES"/>
-        <relationship name="wine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="tasteDetails" inverseEntity="Wine"/>
+        <relationship name="wine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="tasteDetails" inverseEntity="Wine"/>
     </entity>
     <entity name="TastingNote" representedClassName="TastingNote" syncable="YES" codeGenerationType="class">
         <attribute name="noteOrigin" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>

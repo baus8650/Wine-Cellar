@@ -30,21 +30,24 @@ final class SmellDetailsTests: XCTestCase {
         smellDetailsService = nil
     }
     
-    func testAddVineyard() throws {
+    func testAddSmellDetails() throws {
         let smellDetails = smellDetailsService.add(date: newSmellDetails.date, primaryAroma: newSmellDetails.primaryAroma!, secondaryAroma: newSmellDetails.secondaryAroma!, tertiaryAroma: newSmellDetails.tertiaryAroma!)
         XCTAssertEqual(smellDetails.primaryAroma, ["Primary Aroma"])
     }
     
-    func testGetAllVineyards() throws {
+    func testGetAllSmellDetails() throws {
         let _ = smellDetailsService.add(date: newSmellDetails.date, primaryAroma: newSmellDetails.primaryAroma!, secondaryAroma: newSmellDetails.secondaryAroma!, tertiaryAroma: newSmellDetails.tertiaryAroma!)
         let _ = smellDetailsService.add(date: secondSmellDetails.date, primaryAroma: secondSmellDetails.primaryAroma!, secondaryAroma: secondSmellDetails.secondaryAroma!, tertiaryAroma: secondSmellDetails.tertiaryAroma!)
         let smellDetails = smellDetailsService.getSmellDetails()
         XCTAssertEqual(smellDetails?.count, 2)
     }
     
-    func testGetSingleVineyard() throws {
+    func testGetSingleSmellDetails() throws {
         let smellDetails1 = smellDetailsService.add(date: newSmellDetails.date, primaryAroma: newSmellDetails.primaryAroma!, secondaryAroma: newSmellDetails.secondaryAroma!, tertiaryAroma: newSmellDetails.tertiaryAroma!)
         let smellDetails2 = smellDetailsService.add(date: secondSmellDetails.date, primaryAroma: secondSmellDetails.primaryAroma!, secondaryAroma: secondSmellDetails.secondaryAroma!, tertiaryAroma: secondSmellDetails.tertiaryAroma!)
+        
+        print("HERE IS 1 \(smellDetails1.objectID)")
+        print("HERE IS 2 \(smellDetails2.objectID)")
 
         let fetchedSmellDetails1 = smellDetailsService.getSmellDetails(with: smellDetails1.objectID)
         let fetchedSmellDetails2 = smellDetailsService.getSmellDetails(with: smellDetails2.objectID)
@@ -52,7 +55,7 @@ final class SmellDetailsTests: XCTestCase {
         XCTAssertEqual(fetchedSmellDetails2?.primaryAroma, ["Second Primary Aroma"])
     }
     
-    func testUpdateVineyard() throws {
+    func testUpdateSmellDetails() throws {
         let smellDetails1 = smellDetailsService.add(date: newSmellDetails.date, primaryAroma: newSmellDetails.primaryAroma!, secondaryAroma: newSmellDetails.secondaryAroma!, tertiaryAroma: newSmellDetails.tertiaryAroma!)
         let oldSmellDetails = smellDetailsService.getSmellDetails(with: smellDetails1.objectID)
         XCTAssertEqual(oldSmellDetails?.primaryAroma, ["Primary Aroma"])
@@ -65,7 +68,7 @@ final class SmellDetailsTests: XCTestCase {
         XCTAssertEqual(newSmellDetails?.primaryAroma, ["Updated Primary Aroma"])
     }
     
-    func testDeleteVineyard() throws {
+    func testDeleteSmellDetails() throws {
         let _ = smellDetailsService.add(date: newSmellDetails.date, primaryAroma: newSmellDetails.primaryAroma!, secondaryAroma: newSmellDetails.secondaryAroma!, tertiaryAroma: newSmellDetails.tertiaryAroma!)
         let smellDetails2 = smellDetailsService.add(date: secondSmellDetails.date, primaryAroma: secondSmellDetails.primaryAroma!, secondaryAroma: secondSmellDetails.secondaryAroma!, tertiaryAroma: secondSmellDetails.tertiaryAroma!)
         
