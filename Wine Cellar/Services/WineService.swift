@@ -68,13 +68,6 @@ extension WineService {
         originalWine.vintage = wine.vintage
         originalWine.wineColor = wine.wineColor
         
-        let originalVineyard = Vineyard(context: managedObjectContext)
-        originalVineyard.id = vineyard.id
-        originalVineyard.name = vineyard.name
-        originalVineyard.address = vineyard.address
-        originalVineyard.latitude = vineyard.latitude
-        originalVineyard.longitude = vineyard.longitude
-        
         vineyard.addToWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
@@ -93,14 +86,43 @@ extension WineService {
         originalWine.vintage = wine.vintage
         originalWine.wineColor = wine.wineColor
         
-        let originalVineyard = Vineyard(context: managedObjectContext)
-        originalVineyard.id = vineyard.id
-        originalVineyard.name = vineyard.name
-        originalVineyard.address = vineyard.address
-        originalVineyard.latitude = vineyard.latitude
-        originalVineyard.longitude = vineyard.longitude
-        
         vineyard.removeFromWine(wine)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func addSmellDetails(_ smellDetails: SmellDetails, to wine: Wine) -> Wine {
+        let originalWine = Wine(context: managedObjectContext)
+        originalWine.id = wine.id
+        originalWine.abv = wine.abv
+        originalWine.ava = wine.ava
+        originalWine.company = wine.company
+        originalWine.isFavorited = wine.isFavorited
+        originalWine.numberOwned = wine.numberOwned
+        originalWine.type = wine.type
+        originalWine.varietal = wine.varietal
+        originalWine.vintage = wine.vintage
+        originalWine.wineColor = wine.wineColor
+        
+        smellDetails.addToWine(wine)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removeSmellDetails(_ smellDetails: SmellDetails, from wine: Wine) -> Wine {
+        let originalWine = Wine(context: managedObjectContext)
+        originalWine.id = wine.id
+        originalWine.abv = wine.abv
+        originalWine.ava = wine.ava
+        originalWine.company = wine.company
+        originalWine.isFavorited = wine.isFavorited
+        originalWine.numberOwned = wine.numberOwned
+        originalWine.type = wine.type
+        originalWine.varietal = wine.varietal
+        originalWine.vintage = wine.vintage
+        originalWine.wineColor = wine.wineColor
+        
+        smellDetails.removeFromWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
