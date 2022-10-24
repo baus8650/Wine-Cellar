@@ -80,7 +80,7 @@
         <attribute name="clarity" optional="YES" attributeType="Integer 16" defaultValueString="4" usesScalarValueType="YES"/>
         <attribute name="color" optional="YES" attributeType="String" defaultValueString="640700"/>
         <attribute name="viscosity" optional="YES" attributeType="Integer 16" defaultValueString="3" usesScalarValueType="YES"/>
-        <relationship name="wine" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Wine" inverseName="visualDetails" inverseEntity="Wine"/>
+        <relationship name="wine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="visualDetails" inverseEntity="Wine"/>
     </entity>
     <entity name="WeatherData" representedClassName="WeatherData" syncable="YES" codeGenerationType="class">
         <relationship name="dailyData" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="DailyData" inverseName="weatherData" inverseEntity="DailyData"/>
