@@ -97,7 +97,7 @@ final class Constants {
         case pinotGrigio = "Pinot Grigio"
         case pinotGris = "Pinot Gris"
         case pinoMeunier = "Pino Meunier"
-        case pinoNoir = "Pino Noir"
+        case pinoNoir = "Pinot Noir"
         case pinotage = "Pinotage"
         case port = "Port"
         case retsina = "Retsina"
