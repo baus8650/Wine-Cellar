@@ -18,6 +18,6 @@ struct WineBuilderModel {
     var historicalWeather: WeatherDataBuilderModel
     let numberOwned: Int
     let image: UIImage?
-    let foodPairings: FoodPairingsBuilderModel?
+    let foodPairings: [FoodPairingBuilderModel]?
     var isFavorited: Bool = false
 }

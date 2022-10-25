@@ -133,6 +133,34 @@ extension WineService {
         coreDataStack.saveContext(managedObjectContext)
     }
     
+    public func addSingleFoodPairing(_ foodPairing: FoodPairing, to wine: Wine) -> Wine {
+        foodPairing.addToWines(wine)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func addMultipleFoodPairings(_ foodPairings: [FoodPairing], to wine: Wine) -> Wine {
+        let _ = foodPairings.map {
+            $0.addToWines(wine)
+        }
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removeSingleFoodPairing(_ foodPairing: FoodPairing, from wine: Wine) -> Wine {
+        foodPairing.removeFromWines(wine)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removeMultipleFoodPairings(_ foodPairings: [FoodPairing], from wine: Wine) -> Wine {
+        let _ = foodPairings.map {
+            $0.removeFromWines(wine)
+        }
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
     @discardableResult
     public func update(_ wine: Wine) -> Wine {
         coreDataStack.saveContext(managedObjectContext)

@@ -17,7 +17,7 @@
     </entity>
     <entity name="FoodPairing" representedClassName="FoodPairing" syncable="YES" codeGenerationType="class">
         <attribute name="name" optional="YES" attributeType="String" defaultValueString="[&quot;&quot;]"/>
-        <relationship name="wine" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="foodPairing" inverseEntity="Wine"/>
+        <relationship name="wines" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Wine" inverseName="foodPairings" inverseEntity="Wine"/>
     </entity>
     <entity name="HourlyData" representedClassName="HourlyData" syncable="YES" codeGenerationType="class">
         <attribute name="cloudcover" optional="YES" attributeType="Transformable" valueTransformerName="NSSecureUnarchiveFromDataTransformerName" customClassName="[Int]"/>
@@ -93,7 +93,7 @@
         <attribute name="vintage" attributeType="Integer 16" defaultValueString="1976" usesScalarValueType="YES"/>
         <attribute name="wineColor" attributeType="String" defaultValueString="Red"/>
         <relationship name="flight" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Flight" inverseName="wines" inverseEntity="Flight"/>
-        <relationship name="foodPairing" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FoodPairing" inverseName="wine" inverseEntity="FoodPairing"/>
+        <relationship name="foodPairings" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="FoodPairing" inverseName="wines" inverseEntity="FoodPairing"/>
         <relationship name="personalDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="PersonalDetails" inverseName="wine" inverseEntity="PersonalDetails"/>
         <relationship name="smellDetails" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="SmellDetails" inverseName="wine" inverseEntity="SmellDetails"/>
         <relationship name="tasteDetails" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="TasteDetails" inverseName="wine" inverseEntity="TasteDetails"/>

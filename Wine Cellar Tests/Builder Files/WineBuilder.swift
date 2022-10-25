@@ -16,7 +16,7 @@ final class WineBuilder {
     private var smellDetails = SmellDetailsBuilder().build()
     private var personalDetails = PersonalDetailsBuilder().build()
     private var historicalWeather = WeatherDataBuilder().build()
-    private var foodPairings = FoodPairingsBuilder().build()
+    private var foodPairings = [FoodPairingBuilder().build()]
     private var numberOwned = 1
     private var image: UIImage? = nil
     private var isFavorited: Bool = true
@@ -81,7 +81,7 @@ final class WineBuilder {
         self.image = image
         return self
     }
-    func foodPairings(_ foodPairings: FoodPairingsBuilderModel) -> Self {
+    func foodPairings(_ foodPairings: [FoodPairingBuilderModel]) -> Self {
         self.foodPairings = foodPairings
         return self
     }
