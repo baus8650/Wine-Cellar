@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct WeatherDataBuilderModel {
-    let hourly: HourlyDataBuilderModel
-    let daily: DailyDataBuilderModel
-}
-
 struct HourlyDataBuilderModel {
     let time: [String]
     let temperature_2m: [Double]
@@ -29,14 +24,4 @@ struct HourlyDataBuilderModel {
     let soil_moisture_7_to_28cm: [Double]
     let soil_moisture_28_to_100cm: [Double]
     let soil_moisture_100_to_255cm: [Double]
-}
-
-struct DailyDataBuilderModel {
-    let time: [String]
-    let temperature_2m_max: [Double]
-    let temperature_2m_min: [Double]
-    let rain_sum: [Double]
-    let snowfall_sum: [Double]
-    let windspeed_10m_max: [Double]
-    let windgusts_10m_max: [Double]
 }

@@ -15,7 +15,8 @@ struct WineBuilderModel {
     let smellDetails: SmellDetailsBuilderModel?
     let tastingNotes: [TastingNoteBuilderModel]?
     let personalDetails: PersonalDetailsBuilderModel
-    var historicalWeather: WeatherDataBuilderModel
+    var hourlyData: HourlyDataBuilderModel
+    var dailyData: DailyDataBuilderModel
     let numberOwned: Int
     let image: UIImage?
     let foodPairings: [FoodPairingBuilderModel]?

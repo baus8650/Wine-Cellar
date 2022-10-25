@@ -161,6 +161,27 @@ extension WineService {
         return wine
     }
     
+    public func addHourlyData(_ hourlyData: HourlyData, to wine: Wine) -> Wine {
+        wine.hourlyData = hourlyData
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removeHourlyData(_ hourlyData: HourlyData, from wine: Wine) {
+        wine.hourlyData = nil
+        coreDataStack.saveContext(managedObjectContext)
+    }
+    
+    public func getWineFromHourlyData(with hourlyData: HourlyData) -> Wine? {
+        let hourlyData = managedObjectContext.object(with: hourlyData.objectID) as? HourlyData
+        return hourlyData?.wine ?? nil
+    }
+    
+    public func getHourlyDataFromWine(with wine: Wine) -> HourlyData? {
+        let wine = managedObjectContext.object(with: wine.objectID) as? Wine
+        return wine?.hourlyData ?? nil
+    }
+    
     @discardableResult
     public func update(_ wine: Wine) -> Wine {
         coreDataStack.saveContext(managedObjectContext)
