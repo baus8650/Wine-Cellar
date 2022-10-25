@@ -15,7 +15,7 @@ class FlightTests: XCTestCase {
     var flightService: FlightService!
     let newFlight = FlightBuilder().build()
     let secondFlight = FlightBuilder()
-        .numberOfWines("5")
+        .numberOfWines(5)
         .build()
     
     override func setUp() {
@@ -31,45 +31,14 @@ class FlightTests: XCTestCase {
     }
     
     func testAddFlightToCoreData() throws {
-        let flight = flightService.add(
-            abv: newFlight.abv,
-            ava: newFlight.ava ?? "",
-            company: newFlight.company,
-            isFavorited: newFlight.isFavorited,
-            numberOwned: Int16(newFlight.numberOwned),
-            type: newFlight.type.rawValue,
-            varietal: newFlight.varietal.rawValue,
-            vintage: Int16(newFlight.vintage),
-            flightColor: newFlight.flightColor.rawValue
-        )
-        
-        XCTAssertEqual(flight.vintage, 2022)
+        let flight = flightService.add(numberOfWines: newFlight.numberOfWines)
+        XCTAssertEqual(flight.numberOfWines, 1)
     }
     
     func testFetchAllFlights() throws {
-        flightService.add(
-            abv: newFlight.abv,
-            ava: newFlight.ava ?? "",
-            company: newFlight.company,
-            isFavorited: newFlight.isFavorited,
-            numberOwned: Int16(newFlight.numberOwned),
-            type: newFlight.type.rawValue,
-            varietal: newFlight.varietal.rawValue,
-            vintage: Int16(newFlight.vintage),
-            flightColor: newFlight.flightColor.rawValue
-        )
+        let _ = flightService.add(numberOfWines: newFlight.numberOfWines)
         
-        flightService.add(
-            abv: secondFlight.abv,
-            ava: secondFlight.ava ?? "",
-            company: secondFlight.company,
-            isFavorited: secondFlight.isFavorited,
-            numberOwned: Int16(secondFlight.numberOwned),
-            type: secondFlight.type.rawValue,
-            varietal: secondFlight.varietal.rawValue,
-            vintage: Int16(secondFlight.vintage),
-            flightColor: secondFlight.flightColor.rawValue
-        )
+        let _ = flightService.add(numberOfWines: secondFlight.numberOfWines)
         
         let flights = flightService.getFlights()
         
@@ -77,67 +46,27 @@ class FlightTests: XCTestCase {
     }
     
     func testFetchSingleFlight() throws {
-        let flight1 = flightService.add(
-            abv: newFlight.abv,
-            ava: newFlight.ava ?? "",
-            company: newFlight.company,
-            isFavorited: newFlight.isFavorited,
-            numberOwned: Int16(newFlight.numberOwned),
-            type: newFlight.type.rawValue,
-            varietal: newFlight.varietal.rawValue,
-            vintage: Int16(newFlight.vintage),
-            flightColor: newFlight.flightColor.rawValue
-        )
+        let flight1 = flightService.add(numberOfWines: newFlight.numberOfWines)
         
-        let flight2 = flightService.add(
-            abv: secondFlight.abv,
-            ava: secondFlight.ava ?? "",
-            company: secondFlight.company,
-            isFavorited: secondFlight.isFavorited,
-            numberOwned: Int16(secondFlight.numberOwned),
-            type: secondFlight.type.rawValue,
-            varietal: secondFlight.varietal.rawValue,
-            vintage: Int16(secondFlight.vintage),
-            flightColor: secondFlight.flightColor.rawValue
-        )
+        let flight2 = flightService.add(numberOfWines: secondFlight.numberOfWines)
         
         let fetchedFlight1 = flightService.getFlight(with: flight1.objectID)
         let fetchedFlight2 = flightService.getFlight(with: flight2.objectID)
         
-        XCTAssertEqual(fetchedFlight1?.company, "Test Flight Company")
-        XCTAssertEqual(fetchedFlight2?.company, "Second Flight Company")
+        XCTAssertEqual(fetchedFlight1?.numberOfWines, 1)
+        XCTAssertEqual(fetchedFlight2?.numberOfWines, 5)
     }
     
     func testUpdateFlight() throws {
-        let flight = flightService.add(
-            abv: newFlight.abv,
-            ava: newFlight.ava ?? "",
-            company: newFlight.company,
-            isFavorited: newFlight.isFavorited,
-            numberOwned: Int16(newFlight.numberOwned),
-            type: newFlight.type.rawValue,
-            varietal: newFlight.varietal.rawValue,
-            vintage: Int16(newFlight.vintage),
-            flightColor: newFlight.flightColor.rawValue
-        )
+        let flight = flightService.add(numberOfWines: newFlight.numberOfWines)
         
-        flight.company = "Updated Company"
+        flight.numberOfWines = 0
         let updatedFlight = flightService.update(flight)
-        XCTAssertEqual(updatedFlight.company, "Updated Company")
+        XCTAssertEqual(updatedFlight.numberOfWines, 0)
     }
     
     func testDeleteFlight() {
-        let flight1 = flightService.add(
-            abv: newFlight.abv,
-            ava: newFlight.ava ?? "",
-            company: newFlight.company,
-            isFavorited: newFlight.isFavorited,
-            numberOwned: Int16(newFlight.numberOwned),
-            type: newFlight.type.rawValue,
-            varietal: newFlight.varietal.rawValue,
-            vintage: Int16(newFlight.vintage),
-            flightColor: newFlight.flightColor.rawValue
-        )
+        let flight1 = flightService.add(numberOfWines: newFlight.numberOfWines)
         
         var fetchedFlights = flightService.getFlights()
         XCTAssertEqual(fetchedFlights?.count, 1)
