@@ -182,6 +182,29 @@ extension WineService {
         return wine?.hourlyData ?? nil
     }
     
+    
+    
+    public func addDailyData(_ dailyData: DailyData, to wine: Wine) -> Wine {
+        wine.dailyData = dailyData
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removeDailyData(_ dailyData: DailyData, from wine: Wine) {
+        wine.dailyData = nil
+        coreDataStack.saveContext(managedObjectContext)
+    }
+    
+    public func getWineFromDailyData(with dailyData: DailyData) -> Wine? {
+        let dailyData = managedObjectContext.object(with: dailyData.objectID) as? DailyData
+        return dailyData?.wine ?? nil
+    }
+    
+    public func getDailyDataFromWine(with wine: Wine) -> DailyData? {
+        let wine = managedObjectContext.object(with: wine.objectID) as? Wine
+        return wine?.dailyData ?? nil
+    }
+    
     @discardableResult
     public func update(_ wine: Wine) -> Wine {
         coreDataStack.saveContext(managedObjectContext)
