@@ -48,6 +48,10 @@
 		22A5534129086B1D00153EDF /* FlightTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5534029086B1D00153EDF /* FlightTests.swift */; };
 		22A5534529086B8900153EDF /* FlightBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5534429086B8900153EDF /* FlightBuilder.swift */; };
 		22A5534729086CEC00153EDF /* WineTastingBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5534629086CEC00153EDF /* WineTastingBuilder.swift */; };
+		22A5534929086FBE00153EDF /* WineTastingService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5534829086FBE00153EDF /* WineTastingService.swift */; };
+		22A5534C2908701E00153EDF /* WineTastingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5534B2908701E00153EDF /* WineTastingTests.swift */; };
+		22A55350290871AA00153EDF /* WineTastingTests+Flight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A5534F290871AA00153EDF /* WineTastingTests+Flight.swift */; };
+		22A553522908750500153EDF /* FlightTests+Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A553512908750500153EDF /* FlightTests+Wine.swift */; };
 		22B07FB929045F1F00312C34 /* WineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FB829045F1F00312C34 /* WineViewModel.swift */; };
 		22B07FBE290461AE00312C34 /* PureLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 22B07FBD290461AE00312C34 /* PureLayout */; };
 		22B07FC32904B98800312C34 /* Wine_Cellar.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FC12904B98800312C34 /* Wine_Cellar.xcdatamodeld */; };
@@ -143,6 +147,10 @@
 		22A5534029086B1D00153EDF /* FlightTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightTests.swift; sourceTree = "<group>"; };
 		22A5534429086B8900153EDF /* FlightBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlightBuilder.swift; sourceTree = "<group>"; };
 		22A5534629086CEC00153EDF /* WineTastingBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineTastingBuilder.swift; sourceTree = "<group>"; };
+		22A5534829086FBE00153EDF /* WineTastingService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineTastingService.swift; sourceTree = "<group>"; };
+		22A5534B2908701E00153EDF /* WineTastingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineTastingTests.swift; sourceTree = "<group>"; };
+		22A5534F290871AA00153EDF /* WineTastingTests+Flight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WineTastingTests+Flight.swift"; sourceTree = "<group>"; };
+		22A553512908750500153EDF /* FlightTests+Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FlightTests+Wine.swift"; sourceTree = "<group>"; };
 		22B07FB829045F1F00312C34 /* WineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineViewModel.swift; sourceTree = "<group>"; };
 		22B07FC22904B98800312C34 /* Wine_Cellar.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Wine_Cellar.xcdatamodel; sourceTree = "<group>"; };
 		22B07FC42904C8F100312C34 /* TestCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestCoreDataStack.swift; sourceTree = "<group>"; };
@@ -342,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				22A5533C29086A6700153EDF /* FlightService.swift */,
+				22A5534829086FBE00153EDF /* WineTastingService.swift */,
 			);
 			path = Tasting;
 			sourceTree = "<group>";
@@ -366,7 +375,8 @@
 		22A5533F29086B1300153EDF /* Tasting */ = {
 			isa = PBXGroup;
 			children = (
-				22A5534029086B1D00153EDF /* FlightTests.swift */,
+				22A5534D2908713600153EDF /* Flight Tests */,
+				22A5534E2908714000153EDF /* WineTasting Tests */,
 			);
 			path = Tasting;
 			sourceTree = "<group>";
@@ -395,6 +405,24 @@
 				22A5534629086CEC00153EDF /* WineTastingBuilder.swift */,
 			);
 			path = Tasting;
+			sourceTree = "<group>";
+		};
+		22A5534D2908713600153EDF /* Flight Tests */ = {
+			isa = PBXGroup;
+			children = (
+				22A5534029086B1D00153EDF /* FlightTests.swift */,
+				22A553512908750500153EDF /* FlightTests+Wine.swift */,
+			);
+			path = "Flight Tests";
+			sourceTree = "<group>";
+		};
+		22A5534E2908714000153EDF /* WineTasting Tests */ = {
+			isa = PBXGroup;
+			children = (
+				22A5534B2908701E00153EDF /* WineTastingTests.swift */,
+				22A5534F290871AA00153EDF /* WineTastingTests+Flight.swift */,
+			);
+			path = "WineTasting Tests";
 			sourceTree = "<group>";
 		};
 		22B07FB729045F0300312C34 /* View Models */ = {
@@ -734,6 +762,7 @@
 				22C9D52F290745CB001DB138 /* TasteDetailsService.swift in Sources */,
 				2239251229084F8A00BC92D4 /* HourlyDataService.swift in Sources */,
 				22B07FC32904B98800312C34 /* Wine_Cellar.xcdatamodeld in Sources */,
+				22A5534929086FBE00153EDF /* WineTastingService.swift in Sources */,
 				22B07FE82905BCA700312C34 /* VineyardService.swift in Sources */,
 				22FB7FDB290359950058F90B /* VineyardBuilderModel.swift in Sources */,
 				22E8067529031187006E0629 /* AppDelegate.swift in Sources */,
@@ -779,6 +808,7 @@
 				22829746290448C00081742D /* WineTastingBuilderModel.swift in Sources */,
 				2282974B290448C30081742D /* WineBuilderModel.swift in Sources */,
 				22A5534129086B1D00153EDF /* FlightTests.swift in Sources */,
+				22A5534C2908701E00153EDF /* WineTastingTests.swift in Sources */,
 				22B07FD82904D86300312C34 /* PersonalDetailsBuilder.swift in Sources */,
 				2239250629082EF500BC92D4 /* WineTests+PersonalDetails.swift in Sources */,
 				22392510290848D400BC92D4 /* WineTests+FoodPairing.swift in Sources */,
@@ -799,10 +829,12 @@
 				22A55336290865F000153EDF /* DailyDataTests.swift in Sources */,
 				2282974D290448C30081742D /* TasteDetailsBuilderModel.swift in Sources */,
 				22829748290448C30081742D /* SmellDetailsBuilderModel.swift in Sources */,
+				22A553522908750500153EDF /* FlightTests+Wine.swift in Sources */,
 				22B07FC52904C8F100312C34 /* TestCoreDataStack.swift in Sources */,
 				226DE31C29061C3A003D8E9D /* WineTests+VisualDetails.swift in Sources */,
 				22B07FDC2904DA3600312C34 /* DailyDataBuilder.swift in Sources */,
 				2282974A290448C30081742D /* HourlyDataBuilderModel.swift in Sources */,
+				22A55350290871AA00153EDF /* WineTastingTests+Flight.swift in Sources */,
 				228297452904489D0081742D /* Constants.swift in Sources */,
 				2282974F290448C30081742D /* VineyardBuilderModel.swift in Sources */,
 			);

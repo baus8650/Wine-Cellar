@@ -38,6 +38,32 @@ extension FlightService {
         return result as? Flight
     }
     
+    public func addSingleWine(_ wine: Wine, to flight: Flight) -> Flight {
+        wine.addToFlight(flight)
+        coreDataStack.saveContext(managedObjectContext)
+        return flight
+    }
+    
+    public func addMultipleWine(_ wines: [Wine], to flight: Flight) -> Flight {
+        let _ = wines.map {
+            $0.addToFlight(flight)
+        }
+        coreDataStack.saveContext(managedObjectContext)
+        return flight
+    }
+    
+    public func removeSingleWine(_ wine: Wine, from flight: Flight) {
+        wine.removeFromFlight(flight)
+        coreDataStack.saveContext(managedObjectContext)
+    }
+    
+    public func removeMultipleWine(_ wines: [Wine], from flight: Flight) {
+        let _ = wines.map {
+            $0.removeFromFlight(flight)
+        }
+        coreDataStack.saveContext(managedObjectContext)
+    }
+    
     @discardableResult
     public func update(_ flight: Flight) -> Flight {
         coreDataStack.saveContext(managedObjectContext)
