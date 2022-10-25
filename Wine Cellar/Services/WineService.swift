@@ -122,6 +122,17 @@ extension WineService {
         return wine
     }
     
+    public func addPersonalDetails(_ personalDetails: PersonalDetails, to wine: Wine) -> Wine {
+        wine.personalDetails = personalDetails
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removePersonalDetails(_ personalDetails: PersonalDetails, from wine: Wine) {
+        wine.personalDetails = nil
+        coreDataStack.saveContext(managedObjectContext)
+    }
+    
     @discardableResult
     public func update(_ wine: Wine) -> Wine {
         coreDataStack.saveContext(managedObjectContext)
