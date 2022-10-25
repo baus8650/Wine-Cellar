@@ -45,7 +45,6 @@ class WineTastingTests_Flight: XCTestCase {
         XCTAssertEqual(wineTasting.flight?.contains(flight), true)
         
         let _ = wineTastingService.removeFlight(flight, from: wineTasting)
-        
         XCTAssertEqual(wineTasting.flight?.count, 0)
     }
 }

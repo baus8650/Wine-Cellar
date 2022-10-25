@@ -37,30 +37,26 @@ class FlightTests: XCTestCase {
     
     func testFetchAllFlights() throws {
         let _ = flightService.add(numberOfWines: newFlight.numberOfWines)
-        
         let _ = flightService.add(numberOfWines: secondFlight.numberOfWines)
         
         let flights = flightService.getFlights()
-        
         XCTAssertEqual(flights?.count, 2)
     }
     
     func testFetchSingleFlight() throws {
         let flight1 = flightService.add(numberOfWines: newFlight.numberOfWines)
-        
         let flight2 = flightService.add(numberOfWines: secondFlight.numberOfWines)
         
         let fetchedFlight1 = flightService.getFlight(with: flight1.objectID)
         let fetchedFlight2 = flightService.getFlight(with: flight2.objectID)
-        
         XCTAssertEqual(fetchedFlight1?.numberOfWines, 1)
         XCTAssertEqual(fetchedFlight2?.numberOfWines, 5)
     }
     
     func testUpdateFlight() throws {
         let flight = flightService.add(numberOfWines: newFlight.numberOfWines)
-        
         flight.numberOfWines = 0
+        
         let updatedFlight = flightService.update(flight)
         XCTAssertEqual(updatedFlight.numberOfWines, 0)
     }
@@ -72,10 +68,9 @@ class FlightTests: XCTestCase {
         XCTAssertEqual(fetchedFlights?.count, 1)
         
         let fetchedFlight = flightService.getFlight(with: flight1.objectID)
+        
         flightService.delete(fetchedFlight!)
-        
         fetchedFlights = flightService.getFlights()
-        
         XCTAssertEqual(fetchedFlights?.count, 0)
     }
 }

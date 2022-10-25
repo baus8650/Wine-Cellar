@@ -40,9 +40,7 @@ class WineTests: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-            )
-        
+            wineColor: newWine.wineColor.rawValue)
         XCTAssertEqual(wine.vintage, 2022)
     }
     
@@ -56,9 +54,7 @@ class WineTests: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
-        
+            wineColor: newWine.wineColor.rawValue)
         wineService.add(
             abv: secondWine.abv,
             ava: secondWine.ava ?? "",
@@ -68,11 +64,9 @@ class WineTests: XCTestCase {
             type: secondWine.type.rawValue,
             varietal: secondWine.varietal.rawValue,
             vintage: Int16(secondWine.vintage),
-            wineColor: secondWine.wineColor.rawValue
-        )
-        
+            wineColor: secondWine.wineColor.rawValue)
+
         let wines = wineService.getWines()
-        
         XCTAssertEqual(wines?.count, 2)
     }
     
@@ -86,9 +80,7 @@ class WineTests: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
-        
+            wineColor: newWine.wineColor.rawValue)
         let wine2 = wineService.add(
             abv: secondWine.abv,
             ava: secondWine.ava ?? "",
@@ -98,13 +90,11 @@ class WineTests: XCTestCase {
             type: secondWine.type.rawValue,
             varietal: secondWine.varietal.rawValue,
             vintage: Int16(secondWine.vintage),
-            wineColor: secondWine.wineColor.rawValue
-        )
+            wineColor: secondWine.wineColor.rawValue)
         
         let fetchedWine1 = wineService.getWine(with: wine1.objectID)
-        let fetchedWine2 = wineService.getWine(with: wine2.objectID)
-        
         XCTAssertEqual(fetchedWine1?.company, "Test Wine Company")
+        let fetchedWine2 = wineService.getWine(with: wine2.objectID)
         XCTAssertEqual(fetchedWine2?.company, "Second Wine Company")
     }
 
@@ -118,10 +108,9 @@ class WineTests: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
-        
+            wineColor: newWine.wineColor.rawValue)
         wine.company = "Updated Company"
+        
         let updatedWine = wineService.update(wine)
         XCTAssertEqual(updatedWine.company, "Updated Company")
     }
@@ -136,17 +125,15 @@ class WineTests: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
+            wineColor: newWine.wineColor.rawValue)
         
         var fetchedWines = wineService.getWines()
         XCTAssertEqual(fetchedWines?.count, 1)
         
         let fetchedWine = wineService.getWine(with: wine1.objectID)
-        wineService.delete(fetchedWine!)
         
+        wineService.delete(fetchedWine!)       
         fetchedWines = wineService.getWines()
-        
         XCTAssertEqual(fetchedWines?.count, 0)
     }
 }

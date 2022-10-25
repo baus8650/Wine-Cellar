@@ -30,30 +30,26 @@ class WineTastingTests: XCTestCase {
     
     func testFetchAllWineTastings() throws {
         let _ = wineTastingService.add(date: newWineTasting.date, winery: newWineTasting.winery)
-        
         let _ = wineTastingService.add(date: secondWineTasting.date, winery: secondWineTasting.winery)
         
         let wineTastings = wineTastingService.getWineTastings()
-        
         XCTAssertEqual(wineTastings?.count, 2)
     }
     
     func testFetchSingleWineTasting() throws {
         let wineTasting1 = wineTastingService.add(date: newWineTasting.date, winery: newWineTasting.winery)
-        
         let wineTasting2 = wineTastingService.add(date: secondWineTasting.date, winery: secondWineTasting.winery)
         
         let fetchedWineTasting1 = wineTastingService.getWineTasting(with: wineTasting1.objectID)
         let fetchedWineTasting2 = wineTastingService.getWineTasting(with: wineTasting2.objectID)
-        
         XCTAssertEqual(fetchedWineTasting1?.winery, "Test Winery")
         XCTAssertEqual(fetchedWineTasting2?.winery, "Second Winery")
     }
     
     func testUpdateWineTasting() throws {
         let wineTasting = wineTastingService.add(date: newWineTasting.date, winery: newWineTasting.winery)
-        
         wineTasting.winery = "Updated Winery"
+        
         let updatedWineTasting = wineTastingService.update(wineTasting)
         XCTAssertEqual(updatedWineTasting.winery, "Updated Winery")
     }
@@ -65,10 +61,10 @@ class WineTastingTests: XCTestCase {
         XCTAssertEqual(fetchedWineTastings?.count, 1)
         
         let fetchedWineTasting = wineTastingService.getWineTasting(with: wineTasting1.objectID)
+        
         wineTastingService.delete(fetchedWineTasting!)
         
         fetchedWineTastings = wineTastingService.getWineTastings()
-        
         XCTAssertEqual(fetchedWineTastings?.count, 0)
     }
 }

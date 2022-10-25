@@ -9,7 +9,6 @@ class FlightTests_Wine: XCTestCase {
     var wineService: WineService!
     let flight = FlightBuilder().build()
     
-    
     override func setUp() {
         super.setUp()
         coreDataStack = TestCoreDataStack()
@@ -37,11 +36,9 @@ class FlightTests_Wine: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
+            wineColor: newWine.wineColor.rawValue)
         
-        
-        let flightWithWine = flightService.addSingleWine(wine, to: flight)
+        let _ = flightService.addSingleWine(wine, to: flight)
         XCTAssertEqual(flight.wines?.count, 1)
         XCTAssertEqual(flight.wines?.contains(wine), true)
     }
@@ -62,9 +59,7 @@ class FlightTests_Wine: XCTestCase {
             type: newWine1.type.rawValue,
             varietal: newWine1.varietal.rawValue,
             vintage: Int16(newWine1.vintage),
-            wineColor: newWine1.wineColor.rawValue
-        )
-        
+            wineColor: newWine1.wineColor.rawValue)
         let wine2 = wineService.add(
             abv: newWine2.abv,
             ava: newWine2.ava ?? "",
@@ -74,11 +69,9 @@ class FlightTests_Wine: XCTestCase {
             type: newWine2.type.rawValue,
             varietal: newWine2.varietal.rawValue,
             vintage: Int16(newWine2.vintage),
-            wineColor: newWine2.wineColor.rawValue
-        )
+            wineColor: newWine2.wineColor.rawValue)
         
-        
-        let flightWithWine = flightService.addMultipleWine([wine1, wine2], to: flight)
+        let _ = flightService.addMultipleWine([wine1, wine2], to: flight)
         XCTAssertEqual(flight.wines?.count, 2)
         XCTAssertEqual(flight.wines?.contains(wine1), true)
         XCTAssertEqual(flight.wines?.contains(wine2), true)
@@ -97,11 +90,9 @@ class FlightTests_Wine: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
+            wineColor: newWine.wineColor.rawValue)
         
-        
-        let flightWithWine = flightService.addSingleWine(wine, to: flight)
+        let _ = flightService.addSingleWine(wine, to: flight)
         XCTAssertEqual(flight.wines?.count, 1)
         
         flightService.removeSingleWine(wine, from: flight)
@@ -124,9 +115,7 @@ class FlightTests_Wine: XCTestCase {
             type: newWine1.type.rawValue,
             varietal: newWine1.varietal.rawValue,
             vintage: Int16(newWine1.vintage),
-            wineColor: newWine1.wineColor.rawValue
-        )
-        
+            wineColor: newWine1.wineColor.rawValue)
         let wine2 = wineService.add(
             abv: newWine2.abv,
             ava: newWine2.ava ?? "",
@@ -136,11 +125,9 @@ class FlightTests_Wine: XCTestCase {
             type: newWine2.type.rawValue,
             varietal: newWine2.varietal.rawValue,
             vintage: Int16(newWine2.vintage),
-            wineColor: newWine2.wineColor.rawValue
-        )
+            wineColor: newWine2.wineColor.rawValue)
         
-        
-        let flightWithWine = flightService.addMultipleWine([wine1, wine2], to: flight)
+        let _ = flightService.addMultipleWine([wine1, wine2], to: flight)
         XCTAssertEqual(flight.wines?.count, 2)
         XCTAssertEqual(flight.wines?.contains(wine1), true)
         XCTAssertEqual(flight.wines?.contains(wine2), true)
@@ -167,9 +154,7 @@ class FlightTests_Wine: XCTestCase {
             type: newWine1.type.rawValue,
             varietal: newWine1.varietal.rawValue,
             vintage: Int16(newWine1.vintage),
-            wineColor: newWine1.wineColor.rawValue
-        )
-        
+            wineColor: newWine1.wineColor.rawValue)
         let wine2 = wineService.add(
             abv: newWine2.abv,
             ava: newWine2.ava ?? "",
@@ -179,11 +164,9 @@ class FlightTests_Wine: XCTestCase {
             type: newWine2.type.rawValue,
             varietal: newWine2.varietal.rawValue,
             vintage: Int16(newWine2.vintage),
-            wineColor: newWine2.wineColor.rawValue
-        )
+            wineColor: newWine2.wineColor.rawValue)
         
-        
-        let flightWithWine = flightService.addMultipleWine([wine1, wine2], to: flight)
+        let _ = flightService.addMultipleWine([wine1, wine2], to: flight)
         XCTAssertEqual(flight.wines?.count, 2)
         XCTAssertEqual(flight.wines?.contains(wine1), true)
         XCTAssertEqual(flight.wines?.contains(wine2), true)

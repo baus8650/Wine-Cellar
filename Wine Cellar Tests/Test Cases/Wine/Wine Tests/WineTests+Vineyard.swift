@@ -37,8 +37,7 @@ final class WineTests_Vineyard: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
+            wineColor: newWine.wineColor.rawValue)
         
         let vineyard = vineyardService.add(name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
         
@@ -57,8 +56,7 @@ final class WineTests_Vineyard: XCTestCase {
             type: newWine.type.rawValue,
             varietal: newWine.varietal.rawValue,
             vintage: Int16(newWine.vintage),
-            wineColor: newWine.wineColor.rawValue
-        )
+            wineColor: newWine.wineColor.rawValue)
         
         let vineyard = vineyardService.add(name: vineyardToAdd.name, address: vineyardToAdd.address, latitude: vineyardToAdd.latitude!, longitude: vineyardToAdd.longitude!)
         
