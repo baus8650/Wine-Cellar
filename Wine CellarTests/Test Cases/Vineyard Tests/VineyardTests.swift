@@ -1,10 +1,3 @@
-//
-//  VineyardTests.swift
-//  Wine CellarTests
-//
-//  Created by Tim Bausch on 10/23/22.
-//
-
 import CoreData
 @testable import Wine_Cellar
 import XCTest

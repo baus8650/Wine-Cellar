@@ -5,7 +5,7 @@ import XCTest
 final class TastingNoteTests: XCTestCase {
     
     var coreDataStack: CoreDataStack!
-    var tastingNoteService: TastingNoteService!
+    var tastingNoteService: TastingNotesService!
     let newTastingNote = TastingNoteBuilder().build()
     let secondTastingNote = TastingNoteBuilder()
         .testingNoteText("Second Text")
@@ -14,7 +14,7 @@ final class TastingNoteTests: XCTestCase {
     override func setUpWithError() throws {
         super.setUp()
         coreDataStack = TestCoreDataStack()
-        tastingNoteService = TastingNoteService(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
+        tastingNoteService = TastingNotesService(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
     }
     
     override func tearDownWithError() throws {

@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-public final class TastingNoteService {
+public final class TastingNotesService {
     let managedObjectContext: NSManagedObjectContext
     let coreDataStack: CoreDataStack
     
@@ -18,7 +18,7 @@ public final class TastingNoteService {
     }
 }
 
-extension TastingNoteService {
+extension TastingNotesService {
     @discardableResult
     public func add(noteOrigin: Int16, tastingNoteText: String) -> TastingNote {
         let tastingNote = TastingNote(context: managedObjectContext)
@@ -46,7 +46,18 @@ extension TastingNoteService {
         return result as? TastingNote
         
     }
-    
+
+//    func addWineToTastingNote(_ tastingNote: TastingNote, wine: Wine) -> TastingNote {
+//        let newTastingNote = TastingNote(context: managedObjectContext)
+//        newTastingNote.noteOrigin = tastingNote.noteOrigin
+//        newTastingNote.tastingNoteText = tastingNote.tastingNoteText
+//        
+//        wine.addToTastingNotes(newTastingNote)
+//        
+//        coreDataStack.saveContext(managedObjectContext)
+//        return 
+//    }
+  
     @discardableResult
     public func update(_ tastingNote: TastingNote) -> TastingNote {
         coreDataStack.saveContext(managedObjectContext)

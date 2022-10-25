@@ -1,10 +1,3 @@
-//
-//  WineTests+VisualDetails.swift
-//  Wine CellarTests
-//
-//  Created by Tim Bausch on 10/23/22.
-//
-
 import CoreData
 @testable import Wine_Cellar
 import XCTest
@@ -30,7 +23,7 @@ final class WineTests_VisualDetails: XCTestCase {
         visualDetailsService = nil
     }
     
-    func testAddSmellDetailsToWine() throws {
+    func testAddVisualDetailsToWine() throws {
         let visualDetailsToAdd = VisualDetailsBuilder().build()
         let wine = wineService.add(
             abv: newWine.abv,
@@ -47,11 +40,11 @@ final class WineTests_VisualDetails: XCTestCase {
         let visualDetails = visualDetailsService.add(color: visualDetailsToAdd.Color, viscosity: visualDetailsToAdd.viscosity.rawValue, clarity: visualDetailsToAdd.clarity.rawValue)
         
         let wineWithVisualDetails = wineService.addVisualDetails(visualDetails, to: wine)
-        print(wineWithVisualDetails)
+
         XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 3)
     }
     
-    func testRemoveSmallDetailsFromWine() throws {
+    func testRemoveVisualDetailsFromWine() throws {
         let visualDetailsToAdd = VisualDetailsBuilder().build()
         let wine = wineService.add(
             abv: newWine.abv,
@@ -71,7 +64,7 @@ final class WineTests_VisualDetails: XCTestCase {
         XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 3)
         
         let wineWithoutVisualDetails = wineService.removeVisualDetails(visualDetails, from: wine)
-        print(wineWithoutVisualDetails)
-        XCTAssertNil(wineWithoutVisualDetails.smellDetails)
+        
+        XCTAssertNil(wineWithoutVisualDetails.visualDetails)
     }
 }

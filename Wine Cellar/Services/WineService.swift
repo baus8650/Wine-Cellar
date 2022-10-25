@@ -47,137 +47,77 @@ extension WineService {
     }
     
     public func addVineyard(_ vineyard: Vineyard, to wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         vineyard.addToWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
     public func removeVineyard(_ vineyard: Vineyard, from wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         vineyard.removeFromWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
     public func addSmellDetails(_ smellDetails: SmellDetails, to wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         smellDetails.addToWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
     public func removeSmellDetails(_ smellDetails: SmellDetails, from wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         smellDetails.removeFromWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
     public func addVisualDetails(_ visualDetails: VisualDetails, to wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         visualDetails.addToWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
     public func removeVisualDetails(_ visualDetails: VisualDetails, from wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         visualDetails.removeFromWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
     public func addTasteDetails(_ tasteDetails: TasteDetails, to wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         tasteDetails.addToWine(wine)
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }
     
     public func removeTasteDetails(_ tasteDetails: TasteDetails, from wine: Wine) -> Wine {
-        let originalWine = Wine(context: managedObjectContext)
-        originalWine.abv = wine.abv
-        originalWine.ava = wine.ava
-        originalWine.company = wine.company
-        originalWine.isFavorited = wine.isFavorited
-        originalWine.numberOwned = wine.numberOwned
-        originalWine.type = wine.type
-        originalWine.varietal = wine.varietal
-        originalWine.vintage = wine.vintage
-        originalWine.wineColor = wine.wineColor
-        
         tasteDetails.removeFromWine(wine)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func addSingleTastingNotes(_ tastingNotes: TastingNote, to wine: Wine) -> Wine {
+        wine.addToTastingNotes(tastingNotes)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func addMultipleTastingNotes(_ tastingNotes: [TastingNote], to wine: Wine) -> Wine {
+        let _ = tastingNotes.map {
+            wine.addToTastingNotes($0)
+        }
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+
+    public func removeSingleTastingNote(_ tastingNote: TastingNote, from wine: Wine) -> Wine {
+        wine.removeFromTastingNotes(tastingNote)
+        coreDataStack.saveContext(managedObjectContext)
+        return wine
+    }
+    
+    public func removeMultipleTastingNote(_ tastingNotes: [TastingNote], from wine: Wine) -> Wine {
+        let _ = tastingNotes.map {
+            wine.removeFromTastingNotes($0)
+        }
         coreDataStack.saveContext(managedObjectContext)
         return wine
     }

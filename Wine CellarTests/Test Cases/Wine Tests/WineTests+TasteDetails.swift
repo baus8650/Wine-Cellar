@@ -1,10 +1,3 @@
-//
-//  WineTests+TasteDetails.swift
-//  Wine CellarTests
-//
-//  Created by Tim Bausch on 10/24/22.
-//
-
 import CoreData
 @testable import Wine_Cellar
 import XCTest
@@ -70,7 +63,7 @@ final class WineTests_TasteDetails: XCTestCase {
         XCTAssertEqual(wineWithTasteDetails.tasteDetails?.body, 3)
         
         let wineWithoutTasteDetails = wineService.removeTasteDetails(tasteDetails, from: wine)
-        print(wineWithoutTasteDetails)
+        
         XCTAssertNil(wineWithoutTasteDetails.tasteDetails)
     }
 

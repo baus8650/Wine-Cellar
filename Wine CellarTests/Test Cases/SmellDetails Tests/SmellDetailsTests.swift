@@ -1,10 +1,3 @@
-//
-//  VineyardTests.swift
-//  Wine CellarTests
-//
-//  Created by Tim Bausch on 10/23/22.
-//
-
 import CoreData
 @testable import Wine_Cellar
 import XCTest
@@ -46,9 +39,6 @@ final class SmellDetailsTests: XCTestCase {
         let smellDetails1 = smellDetailsService.add(date: newSmellDetails.date, primaryAroma: newSmellDetails.primaryAroma!, secondaryAroma: newSmellDetails.secondaryAroma!, tertiaryAroma: newSmellDetails.tertiaryAroma!)
         let smellDetails2 = smellDetailsService.add(date: secondSmellDetails.date, primaryAroma: secondSmellDetails.primaryAroma!, secondaryAroma: secondSmellDetails.secondaryAroma!, tertiaryAroma: secondSmellDetails.tertiaryAroma!)
         
-        print("HERE IS 1 \(smellDetails1.objectID)")
-        print("HERE IS 2 \(smellDetails2.objectID)")
-
         let fetchedSmellDetails1 = smellDetailsService.getSmellDetails(with: smellDetails1.objectID)
         let fetchedSmellDetails2 = smellDetailsService.getSmellDetails(with: smellDetails2.objectID)
         XCTAssertEqual(fetchedSmellDetails1?.primaryAroma, ["Primary Aroma"])

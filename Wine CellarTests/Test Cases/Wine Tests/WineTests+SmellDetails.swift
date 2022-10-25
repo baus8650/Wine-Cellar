@@ -1,10 +1,3 @@
-//
-//  Wine_CellarTests.swift
-//  Wine CellarTests
-//
-//  Created by Tim Bausch on 10/21/22.
-//
-
 import CoreData
 @testable import Wine_Cellar
 import XCTest
@@ -47,10 +40,11 @@ class WineTests_SmellDetails: XCTestCase {
         let smellDetails = smellDetailsService.add(date: smellDetailsToAdd.date, primaryAroma: smellDetailsToAdd.primaryAroma!, secondaryAroma: smellDetailsToAdd.secondaryAroma!, tertiaryAroma: smellDetailsToAdd.tertiaryAroma!)
         
         let wineWithSmellDetails = wineService.addSmellDetails(smellDetails, to: wine)
+
         XCTAssertEqual(wineWithSmellDetails.smellDetails?.primaryAroma, ["Primary Aroma"])
     }
     
-    func testRemoveSmallDetailsFromWine() throws {
+    func testRemoveSmellDetailsFromWine() throws {
         let smellDetailsToAdd = SmellDetailsBuilder().build()
         let wine = wineService.add(
             abv: newWine.abv,

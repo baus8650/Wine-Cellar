@@ -1,10 +1,3 @@
-//
-//  VineyardTests.swift
-//  Wine CellarTests
-//
-//  Created by Tim Bausch on 10/23/22.
-//
-
 import CoreData
 @testable import Wine_Cellar
 import XCTest
@@ -65,7 +58,7 @@ final class VisualDetailsTests: XCTestCase {
         XCTAssertEqual(newVisualDetails?.viscosity, 2)
     }
 
-    func testDeleteVineyard() throws {
+    func testDeleteVisualDetail() throws {
         let _ = visualDetailsService.add(color: newVisualDetails.Color, viscosity: newVisualDetails.viscosity.rawValue, clarity: newVisualDetails.clarity.rawValue)
         let detail2 = visualDetailsService.add(color: secondVisualDetails.Color, viscosity: secondVisualDetails.viscosity.rawValue, clarity: secondVisualDetails.clarity.rawValue)
 
