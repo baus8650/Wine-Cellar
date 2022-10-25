@@ -1,6 +1,5 @@
 import Foundation
 
 struct FlightBuilderModel {
-    let numberOfWines: Int
-    let wines: [WineBuilderModel]
+    let numberOfWines: Int16
 }
