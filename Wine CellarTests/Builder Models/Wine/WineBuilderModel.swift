@@ -13,7 +13,7 @@ struct WineBuilderModel {
     let visualDetails: VisualDetailsBuilderModel?
     let tasteDetails: TasteDetailsBuilderModel?
     let smellDetails: SmellDetailsBuilderModel?
-    let notes: NotesBuilderModel?
+    let tastingNotes: [TastingNoteBuilderModel]?
     let personalDetails: PersonalDetailsBuilderModel
     var historicalWeather: WeatherDataBuilderModel
     let numberOwned: Int
