@@ -349,7 +349,7 @@
 			isa = PBXGroup;
 			children = (
 				22E8067329031187006E0629 /* Wine Cellar */,
-				22E8068A29031188006E0629 /* Wine CellarTests */,
+				22E8068A29031188006E0629 /* Wine Cellar Tests */,
 				22E8069429031188006E0629 /* Wine CellarUITests */,
 				22E8067229031187006E0629 /* Products */,
 				22B07FBC290461AE00312C34 /* Frameworks */,
@@ -382,7 +382,7 @@
 			path = "Wine Cellar";
 			sourceTree = "<group>";
 		};
-		22E8068A29031188006E0629 /* Wine CellarTests */ = {
+		22E8068A29031188006E0629 /* Wine Cellar Tests */ = {
 			isa = PBXGroup;
 			children = (
 				22FB7FCF290328C80058F90B /* Builder Models */,
@@ -391,7 +391,7 @@
 				2211F5C0290620D300335D11 /* Test Services */,
 				22392502290829DA00BC92D4 /* Test Cases */,
 			);
-			path = "Wine CellarTests";
+			path = "Wine Cellar Tests";
 			sourceTree = "<group>";
 		};
 		22E8069429031188006E0629 /* Wine CellarUITests */ = {
