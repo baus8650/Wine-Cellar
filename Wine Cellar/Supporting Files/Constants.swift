@@ -18,160 +18,168 @@ final class Constants {
      
      */
     
-    enum WineType {
-        case still
-        case sparkling
+    enum WineType: String {
+        case still = "Still"
+        case sparkling = "Sparkling"
     }
     
-    enum WineColor {
-        case white
-        case rose
-        case red
+    enum WineColor: String {
+        case white = "White"
+        case rose = "Rosé"
+        case red = "Red"
     }
     
-    enum Varietal {
-        case albariño
-        case aligoté
-        case amarone
-        case arneis
-        case astiSpumante
-        case auslese
-        case banylus
-        case barbaresco
-        case bardolino
-        case barolo
-        case beaujolais
-        case blancDeBlancs
-        case blancDeNoirs
-        case blush
-        case boal
-        case bual
-        case brunello
-        case cabernetFranc
-        case cabernetSauvignon
-        case carignan
-        case carmenere
-        case cava
-        case charbono
-        case champagne
-        case chardonnay
-        case châteauneufDuPape
-        case cheninBlanc
-        case chianti
-        case chiantiClassico
-        case claret
-        case colombard
-        case constantia
-        case cortese
-        case dolcetto
-        case eiswein
-        case frascati
-        case fuméBlanc
-        case gamay
-        case gamayBeaujolais
-        case gattinara
-        case gewürztraminer
-        case grappa
-        case grenache
-        case johannisbergRiesling
-        case kir
-        case lambrusco
-        case liebfraumilch
-        case madeira
-        case malbec
-        case marc
-        case marsala
-        case marsanne
-        case mead
-        case meritage
-        case merlot
-        case montepulciano
-        case moscato
-        case mourvedre
-        case müllerThurgau
-        case muscat
-        case nebbiolo
-        case petitVerdot
-        case petiteSirah
-        case pinotBlanc
-        case pinotGrigio
-        case pinotGris
-        case pinoMeunier
-        case pinoNoir
-        case pinotage
-        case port
-        case retsina
-        case rosé
-        case roussanne
-        case sangiovese
-        case sauterns
-        case sauvignonBlanc
-        case sémillon
-        case sherry
-        case soave
-        case tokay
-        case traminer
-        case trebbiano
-        case ugniBlanc
-        case valpolicella
-        case verdicchio
-        case viognier
-        case zinfandel
+    enum Varietal: String {
+        case albariño = "Albariño"
+        case aligoté = "Aligoté"
+        case amarone = "Amarone"
+        case arneis = "Arneis"
+        case astiSpumante = "Asti Spumante"
+        case auslese = "Auslese"
+        case banylus = "Banylus"
+        case barbaresco = "Barbaresco"
+        case bardolino = "Bardolino"
+        case barolo = "Barolo"
+        case beaujolais = "Beaujolais"
+        case blancDeBlancs = "Blanc de Blancs"
+        case blancDeNoirs = "Blanc de Noirs"
+        case blush = "Blush"
+        case boal = "Boal"
+        case bual = "Bual"
+        case brunello = "Brunello"
+        case cabernetFranc = "Cabernet Franc"
+        case cabernetSauvignon = "Cabernet Sauvignon"
+        case carignan = "Carignan"
+        case carmenere = "Carmenere"
+        case cava = "Cava"
+        case charbono = "Charbono"
+        case champagne = "Champagne"
+        case chardonnay = "Chardonnay"
+        case châteauneufDuPape = "Châteauneuf-du-Pape"
+        case cheninBlanc = "CheninBlanc"
+        case chianti = "Chianti"
+        case chiantiClassico = "Chianti Classico"
+        case claret = "Claret"
+        case colombard = "Colombard"
+        case constantia = "Constantia"
+        case cortese = "Cortese"
+        case dolcetto = "Dolcetto"
+        case eiswein = "Eiswein"
+        case frascati = "Frascati"
+        case fuméBlanc = "Fumé Blanc"
+        case gamay = "Gamay"
+        case gamayBeaujolais = "Gamay Beaujolais"
+        case gattinara = "Gattinara"
+        case gewürztraminer = "Gewürztraminer"
+        case grappa = "Grappa"
+        case grenache = "Grenache"
+        case johannisbergRiesling = "Johannisberg Riesling"
+        case kir = "Kir"
+        case lambrusco = "Lambrusco"
+        case liebfraumilch = "Liebfraumilch"
+        case madeira = "Madeira"
+        case malbec = "Malbec"
+        case marc = "Marc"
+        case marsala = "Marsala"
+        case marsanne = "Marsanne"
+        case mead = "Mead"
+        case meritage = "Meritage"
+        case merlot = "Merlot"
+        case montepulciano = "Montepulciano"
+        case moscato = "Moscato"
+        case mourvedre = "Mourvedre"
+        case müllerThurgau = "Müller-Thurgau"
+        case muscat = "Muscat"
+        case nebbiolo = "Nebbiolo"
+        case petitVerdot = "Petit Verdot"
+        case petiteSirah = "Petite Sirah"
+        case pinotBlanc = "Pinot Blanc"
+        case pinotGrigio = "Pinot Grigio"
+        case pinotGris = "Pinot Gris"
+        case pinotMeunier = "Pinot Meunier"
+        case pinotNoir = "Pinot Noir"
+        case pinotage = "Pinotage"
+        case port = "Port"
+        case retsina = "Retsina"
+        case rosé = "Rosé"
+        case roussanne = "Roussanne"
+        case sangiovese = "Sangiovese"
+        case sauterns = "Sauterns"
+        case sauvignonBlanc = "Sauvignon Blanc"
+        case sémillon = "Sémillon"
+        case sherry = "Sherry"
+        case soave = "Soave"
+        case syrah = "Syrah"
+        case tokay = "Tokay"
+        case traminer = "Traminer"
+        case trebbiano = "Trebbiano"
+        case ugniBlanc = "Ugni Blanc"
+        case valpolicella = "Valpolicella"
+        case verdicchio = "Verdicchio"
+        case viognier = "Viognier"
+        case zinfandel = "Zinfandel"
     }
     
-    enum TastingNotesOrigin {
-        case userGenerated
-        case wineryGenerated
+    enum TastingNotesOrigin: Int16 {
+        case userGenerated = 0
+        case wineryGenerated = 1
     }
     
-    enum WineBody {
-        case light
-        case medium
-        case full
+    enum WineBody: Int16 {
+        case light = 0
+        case medium = 1
+        case full = 2
+        case noResponse = 3
     }
     
-    enum Sweetness {
-        case boneDry
-        case dry
-        case semiSweet
-        case sweet
-        case verySweet
+    enum Sweetness: Int16 {
+        case boneDry = 0
+        case dry = 1
+        case semiSweet = 2
+        case sweet = 3
+        case verySweet = 4
+        case noResponse = 5
     }
     
-    enum AlcoholLevel {
-        case extremelyLow
-        case low
-        case neutral
-        case high
-        case extremelyHigh
+    enum AlcoholLevel: Int16 {
+        case extremelyLow = 0
+        case low = 1
+        case neutral = 2
+        case high = 3
+        case extremelyHigh = 4
+        case noResponse = 5
     }
     
-    enum AcidityLevel {
-        case extremelyLow
-        case low
-        case neutral
-        case high
-        case extremelyHigh
+    enum AcidityLevel: Int16 {
+        case extremelyLow = 0
+        case low = 1
+        case neutral = 2
+        case high = 3
+        case extremelyHigh = 4
+        case noResponse = 5
     }
     
-    enum TanninLevel {
-        case extremelyLow
-        case low
-        case neutral
-        case high
-        case extremelyHigh
+    enum TanninLevel: Int16 {
+        case extremelyLow = 0
+        case low = 1
+        case neutral = 2
+        case high = 3
+        case extremelyHigh = 4
+        case noResponse = 5
     }
     
-    enum ViscosityLevel {
-        case low
-        case medium
-        case high
+    enum ViscosityLevel: Int16 {
+        case low = 0
+        case medium = 1
+        case high = 2
+        case noResponse = 3
     }
     
-    enum ClarityLevel {
-        case brilliant
-        case clear
-        case dull
-        case hazy
+    enum ClarityLevel: Int16 {
+        case hazy = 0
+        case dull = 1
+        case clear = 2
+        case brilliant = 3
+        case noResponse = 4
     }
 }
