@@ -29,5 +29,6 @@ final class CellarViewModel {
                  vintage: Int16,
                  wineColor: String) {
         let _ = wineService.add(abv: abv, ava: ava, company: company, isFavorited: isFavorited, numberOwned: numberOwned, type: type, varietal: varietal, vintage: vintage, wineColor: wineColor)
+        fetchWines()
     }
 }

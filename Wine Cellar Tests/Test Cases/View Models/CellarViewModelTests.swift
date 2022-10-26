@@ -31,7 +31,6 @@ final class CellarViewModelTests: XCTestCase {
         let newWine = WineBuilder().build()
         cellarViewModel.addWine(abv: newWine.abv, ava: newWine.ava!, company: newWine.company, isFavorited: newWine.isFavorited, numberOwned: Int16(newWine.numberOwned), type: newWine.type.rawValue, varietal: newWine.varietal.rawValue, vintage: Int16(newWine.vintage), wineColor: newWine.wineColor.rawValue)
         
-        cellarViewModel.fetchWines()
         cellarViewModel.$wines.sink { wines in
             XCTAssertEqual(wines.count, 1)
         }.store(in: &cancellables)
