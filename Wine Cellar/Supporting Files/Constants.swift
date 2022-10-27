@@ -126,60 +126,60 @@ final class Constants {
     }
     
     enum WineBody: Int16 {
-        case light = 0
-        case medium = 1
-        case full = 2
-        case noResponse = 3
+        case noResponse = 0
+        case light = 1
+        case medium = 2
+        case full = 3
     }
     
     enum Sweetness: Int16 {
-        case boneDry = 0
-        case dry = 1
-        case semiSweet = 2
-        case sweet = 3
-        case verySweet = 4
-        case noResponse = 5
+        case noResponse = 0
+        case boneDry = 1
+        case dry = 2
+        case semiSweet = 3
+        case sweet = 4
+        case verySweet = 5
     }
     
     enum AlcoholLevel: Int16 {
-        case extremelyLow = 0
-        case low = 1
-        case neutral = 2
-        case high = 3
-        case extremelyHigh = 4
-        case noResponse = 5
+        case noResponse = 0
+        case extremelyLow = 1
+        case low = 2
+        case neutral = 3
+        case high = 4
+        case extremelyHigh = 5
     }
     
     enum AcidityLevel: Int16 {
-        case extremelyLow = 0
-        case low = 1
-        case neutral = 2
-        case high = 3
-        case extremelyHigh = 4
-        case noResponse = 5
+        case noResponse = 0
+        case extremelyLow = 1
+        case low = 2
+        case neutral = 3
+        case high = 4
+        case extremelyHigh = 5
     }
     
     enum TanninLevel: Int16 {
-        case extremelyLow = 0
-        case low = 1
-        case neutral = 2
-        case high = 3
-        case extremelyHigh = 4
-        case noResponse = 5
+        case noResponse = 0
+        case extremelyLow = 1
+        case low = 2
+        case neutral = 3
+        case high = 4
+        case extremelyHigh = 5
     }
     
     enum ViscosityLevel: Int16 {
-        case low = 0
-        case medium = 1
-        case high = 2
-        case noResponse = 3
+        case noResponse = 0
+        case low = 1
+        case medium = 2
+        case high = 3
     }
     
     enum ClarityLevel: Int16 {
-        case hazy = 0
-        case dull = 1
-        case clear = 2
-        case brilliant = 3
-        case noResponse = 4
+        case noResponse = 0
+        case hazy = 1
+        case dull = 2
+        case clear = 3
+        case brilliant = 4
     }
 }
