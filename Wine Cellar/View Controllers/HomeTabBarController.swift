@@ -10,13 +10,17 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     private func configureTabBar() {
-        tabBar.backgroundColor = UIColor(named: "WineColor")
+        let appearance = UITabBarAppearance()
+        appearance.configureWithOpaqueBackground()
+        appearance.backgroundColor = UIColor(named: "NavigationElements")
+        tabBar.standardAppearance = appearance
+        tabBar.scrollEdgeAppearance = appearance
         tabBar.tintColor = UIColor(named: "WineColorAccent")
     }
     
     private func addTabs() {
         let barAppearance = UINavigationBarAppearance()
-        barAppearance.backgroundColor = UIColor(named: "WineColor")
+        barAppearance.backgroundColor = UIColor(named: "NavigationElements")
         barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "WineColorAccent")!]
         
         
