@@ -40,12 +40,13 @@ class CellarViewController: UIViewController {
     private lazy var collectionView: UICollectionView = {
         let layout = generateLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.register(WineCollectionViewCell.self, forCellWithReuseIdentifier: "WineCell")
+        collectionView.register(
+            UICollectionViewCell.self,
+            forCellWithReuseIdentifier: "WineCell")
         collectionView.register(
             SectionHeaderReusableView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier
-        )
+            withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier)
         return collectionView
     }()
     
@@ -97,7 +98,22 @@ class CellarViewController: UIViewController {
             .company("Rosé wine")
             .wineColor(Constants.WineColor.rose)
             .build()
-        let demoWines = [redWine, whiteWine, roseWine]
+        let whiteWineSparkling = WineBuilder()
+            .company("Sparkling White wine")
+            .type(.sparkling)
+            .wineColor(Constants.WineColor.white)
+            .build()
+        let redWineSparkling = WineBuilder()
+            .company("Sparkling Red wine")
+            .type(.sparkling)
+            .wineColor(Constants.WineColor.red)
+            .build()
+        let roseWineSparkling = WineBuilder()
+            .company("Sparkling Rosé wine")
+            .type(.sparkling)
+            .wineColor(Constants.WineColor.rose)
+            .build()
+        let demoWines = [redWine, whiteWine, roseWine, redWineSparkling, whiteWineSparkling, roseWineSparkling]
         let testWine = demoWines.randomElement()!
         cellarViewModel.addWine(
             abv: testWine.abv, 
@@ -118,14 +134,11 @@ class CellarViewController: UIViewController {
                 UICollectionViewCell? in
                 let cell = collectionView.dequeueReusableCell(
                     withReuseIdentifier: "WineCell",
-                    for: indexPath) as? WineCollectionViewCell
-                cell?.company.text = wine.company
-                cell?.vintage.text = "\(wine.vintage) -"
-                cell?.varietal.text = wine.varietal
-                cell?.abv.text = "\(wine.abv)%"
-                cell?.vineyard.text = wine.vineyard?.name
-                cell?.ava.text = wine.ava
-                cell?.backgroundColor = cell?.setBackgroundColor(with: wine.wineColor!)
+                    for: indexPath)
+                cell.contentConfiguration = UIHostingConfiguration {
+                    WineCellView(wine: wine, color: wine.wineColor ?? "Red")
+                        .cornerRadius(8)
+                }
                 return cell
             })
         dataSource.supplementaryViewProvider = { collectionView, section, indexPath in
@@ -169,11 +182,11 @@ class CellarViewController: UIViewController {
         item.contentInsets = NSDirectionalEdgeInsets(top: 4, leading: 8, bottom: 4, trailing: 8)
         let groupSize = NSCollectionLayoutSize(
             widthDimension: .fractionalWidth(1.0),
-            heightDimension: .fractionalHeight(UIDevice.current.userInterfaceIdiom == .pad ? 1/6 : 1/5))
+            heightDimension: .estimated(190))
         let group = NSCollectionLayoutGroup.horizontal(
             layoutSize: groupSize,
             repeatingSubitem: item,
-            count: 2)
+            count: UIDevice.current.userInterfaceIdiom == .pad ? 2 : 1)
         let section = NSCollectionLayoutSection(group: group)
         section.contentInsets = NSDirectionalEdgeInsets(top: 0, leading: 0, bottom: 16, trailing: 0)
         let headerFooterSize = NSCollectionLayoutSize(
