@@ -23,10 +23,10 @@ final class Constants {
         case sparkling = "Sparkling"
     }
     
-    enum WineColor: String {
-        case white = "White"
-        case rose = "Rosé"
+    enum WineColor: String, CaseIterable {
         case red = "Red"
+        case rose = "Rosé"
+        case white = "White"
     }
     
     enum Varietal: String {
