@@ -4,6 +4,9 @@ import Foundation
 
 final class CellarViewModel {
     @Published var wines = [Wine]()
+    @Published var redWines = [Wine]()
+    @Published var roseWines = [Wine]()
+    @Published var whiteWines = [Wine]()
     let managedObjectContext: NSManagedObjectContext
     let coreDataStack: CoreDataStack
     let wineService: WineService!
@@ -17,6 +20,15 @@ final class CellarViewModel {
     
     func fetchWines() {
         wines = wineService.getWines() ?? []
+        redWines = wines.filter {
+            $0.wineColor! == Constants.WineColor.red.rawValue
+        }
+        roseWines = wines.filter {
+            $0.wineColor! == Constants.WineColor.rose.rawValue
+        }
+        whiteWines = wines.filter {
+            $0.wineColor! == Constants.WineColor.white.rawValue
+        }
     }
     
     func addWine(abv: Float,

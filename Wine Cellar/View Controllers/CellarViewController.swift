@@ -12,7 +12,12 @@ class CellarViewController: UIViewController {
     var horizontalClass: UIUserInterfaceSizeClass!
     
     var wines = [Wine]()
+    var redWines = [Wine]()
+    var roseWines = [Wine]()
+    var whiteWines = [Wine]()
     var cancellables = Set<AnyCancellable>()
+    
+    var isEditingEnabled: Bool = false
     typealias DataSource = UICollectionViewDiffableDataSource<Constants.WineColor, Wine>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Constants.WineColor, Wine>
     
@@ -37,9 +42,32 @@ class CellarViewController: UIViewController {
         return button
     }()
     
+    private lazy var editButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(systemItem: .edit, primaryAction: UIAction(handler: { [weak self] _ in
+            print("TAPPED EDIT")
+            guard let self else { return }
+            self.isEditingEnabled = true
+            self.toggleEditMode()
+        }))
+        button.tintColor = UIColor(named: "WineColorAccent")
+        return button
+    }()
+    
+    private lazy var doneButton: UIBarButtonItem = {
+        let button = UIBarButtonItem(systemItem: .done, primaryAction: UIAction(handler: { [weak self] _ in
+            guard let self else { return }
+            self.isEditingEnabled = false
+            self.toggleEditMode()
+        }))
+        button.isHidden = true
+        button.tintColor = UIColor(named: "WineColorAccent")
+        return button
+    }()
+    
     private lazy var collectionView: UICollectionView = {
         let layout = generateLayout()
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        
         collectionView.register(
             UICollectionViewCell.self,
             forCellWithReuseIdentifier: "WineCell")
@@ -47,6 +75,7 @@ class CellarViewController: UIViewController {
             SectionHeaderReusableView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier)
+        collectionView.allowsMultipleSelection = true
         return collectionView
     }()
     
@@ -55,10 +84,12 @@ class CellarViewController: UIViewController {
         view.backgroundColor = .systemBackground
         title = "Wine Cellar"
         navigationItem.rightBarButtonItem = addWineButton
+        navigationItem.leftBarButtonItems = [editButton, doneButton]
         horizontalClass = view.traitCollection.horizontalSizeClass
         coreDataStack = CoreDataStack()
         cellarViewModel = CellarViewModel(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
         collectionView.dataSource = datasource
+        collectionView.delegate = self
         setUpSubviews()
         setUpBindings()
     }
@@ -67,6 +98,24 @@ class CellarViewController: UIViewController {
         cellarViewModel.$wines.sink { [weak self] wines in
             guard let self else { return }
             self.wines = wines
+            self.applySnapshot(animatingDifferences: true)
+        }.store(in: &cancellables)
+        
+        cellarViewModel.$redWines.sink { [weak self] wines in
+            guard let self else { return }
+            self.redWines = wines
+            self.applySnapshot(animatingDifferences: true)
+        }.store(in: &cancellables)
+        
+        cellarViewModel.$roseWines.sink { [weak self] wines in
+            guard let self else { return }
+            self.roseWines = wines
+            self.applySnapshot(animatingDifferences: true)
+        }.store(in: &cancellables)
+        
+        cellarViewModel.$whiteWines.sink { [weak self] wines in
+            guard let self else { return }
+            self.whiteWines = wines
             self.applySnapshot(animatingDifferences: true)
         }.store(in: &cancellables)
     }
@@ -83,6 +132,18 @@ class CellarViewController: UIViewController {
             horizontalClass = .regular
         }
         collectionView.collectionViewLayout = generateLayout()
+    }
+    
+    private func toggleEditMode() {
+        print("Should be toggling")
+        switch isEditingEnabled {
+        case true:
+            editButton.isEnabled = false
+            doneButton.isHidden = false
+        case false:
+            editButton.isEnabled = true
+            doneButton.isHidden = true
+        }
     }
     
     private func addWine() {
@@ -136,7 +197,7 @@ class CellarViewController: UIViewController {
                     withReuseIdentifier: "WineCell",
                     for: indexPath)
                 cell.contentConfiguration = UIHostingConfiguration {
-                    WineCellView(wine: wine, color: wine.wineColor ?? "Red")
+                    WineCellView(wine: wine, color: wine.wineColor ?? "Red", isEditing: self.isEditingEnabled)
                         .cornerRadius(8)
                 }
                 return cell
@@ -158,19 +219,9 @@ class CellarViewController: UIViewController {
     private func applySnapshot(animatingDifferences: Bool = true) {
         var snapshot = Snapshot()
         snapshot.appendSections(Constants.WineColor.allCases)
-        let reds = wines.filter { wine in
-            wine.wineColor == Constants.WineColor.red.rawValue
-        }
-        let whites = wines.filter { wine in
-            wine.wineColor == Constants.WineColor.white.rawValue
-        }
-        let roses = wines.filter { wine in
-            wine.wineColor == Constants.WineColor.rose.rawValue
-        }
-        
-        snapshot.appendItems(roses, toSection: .rose)
-        snapshot.appendItems(whites, toSection: .white)
-        snapshot.appendItems(reds, toSection: .red)
+        snapshot.appendItems(redWines, toSection: .red)
+        snapshot.appendItems(roseWines, toSection: .rose)
+        snapshot.appendItems(whiteWines, toSection: .white)
         datasource?.apply(snapshot, animatingDifferences: animatingDifferences)
     }
     
@@ -202,5 +253,28 @@ class CellarViewController: UIViewController {
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
     }
+}
+
+extension CellarViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        if isEditingEnabled {
+            cell?.backgroundColor = UIColor(named: "WineColorAccent")
+        }
+    }
     
+    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        let cell = collectionView.cellForItem(at: indexPath)
+        switch indexPath.section {
+        case 0:
+            cell?.backgroundColor = .clear
+            print("Red \(redWines[indexPath.row])")
+        case 1:
+            print("Rosé \(roseWines[indexPath.row])")
+        case 2:
+            print("White \(whiteWines[indexPath.row])")
+        default:
+            print("Just testing")
+        }
+    }
 }
