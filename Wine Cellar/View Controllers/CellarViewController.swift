@@ -135,7 +135,6 @@ class CellarViewController: UIViewController {
     }
     
     private func toggleEditMode() {
-        print("Should be toggling")
         switch isEditingEnabled {
         case true:
             editButton.isEnabled = false
@@ -197,7 +196,7 @@ class CellarViewController: UIViewController {
                     withReuseIdentifier: "WineCell",
                     for: indexPath)
                 cell.contentConfiguration = UIHostingConfiguration {
-                    WineCellView(wine: wine, color: wine.wineColor ?? "Red", isEditing: self.isEditingEnabled)
+                    WineCellView(wine: wine, color: wine.wineColor ?? Constants.WineColor.red.rawValue)
                         .cornerRadius(8)
                 }
                 return cell
@@ -249,6 +248,7 @@ class CellarViewController: UIViewController {
             elementKind: UICollectionView.elementKindSectionHeader,
             alignment: .top
         )
+        sectionHeader.pinToVisibleBounds = true
         section.boundarySupplementaryItems = [sectionHeader]
         let layout = UICollectionViewCompositionalLayout(section: section)
         return layout
