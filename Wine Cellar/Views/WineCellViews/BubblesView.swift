@@ -13,11 +13,6 @@ struct BubblesView: View {
         ForEach (1...150, id:\.self) { _ in
             Circle()
                 .foregroundColor(Color(uiColor: UIColor(named: "WineColorAccent")!).opacity(0.11))
-                .animation (Animation.spring (dampingFraction: 0.5)
-                    .repeatForever()
-                    .speed (.random(in: 0.05...0.4))
-                    .delay(.random (in: 0...1)), value: scale
-                )
                 .scaleEffect(self.scale * .random(in: 0.1...0.6))
                 .frame(width: .random(in: 1...100),
                        height: CGFloat.random (in:20...100),
