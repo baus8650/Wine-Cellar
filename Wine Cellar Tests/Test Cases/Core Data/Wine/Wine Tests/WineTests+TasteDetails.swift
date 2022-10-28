@@ -40,7 +40,7 @@ final class WineTests_TasteDetails: XCTestCase {
         let tasteDetails = tasteDetailsService.add(body: tasteDetailsToAdd.body.rawValue, sweetness: tasteDetailsToAdd.sweetness.rawValue, alcohol: tasteDetailsToAdd.alcohol.rawValue, acidityLevel: tasteDetailsToAdd.acidityLevel.rawValue, tanninLevel: tasteDetailsToAdd.tanninLevel.rawValue)
         
         let wineWithTasteDetails = wineService.addTasteDetails(tasteDetails, to: wine)
-        XCTAssertEqual(wineWithTasteDetails.tasteDetails?.body, 3)
+        XCTAssertEqual(wineWithTasteDetails.tasteDetails?.body, 0)
     }
     
     func testRemoveTasteDetailsFromWine() throws {
@@ -60,7 +60,7 @@ final class WineTests_TasteDetails: XCTestCase {
         let tasteDetails = tasteDetailsService.add(body: tasteDetailsToAdd.body.rawValue, sweetness: tasteDetailsToAdd.sweetness.rawValue, alcohol: tasteDetailsToAdd.alcohol.rawValue, acidityLevel: tasteDetailsToAdd.acidityLevel.rawValue, tanninLevel: tasteDetailsToAdd.tanninLevel.rawValue)
         
         let wineWithTasteDetails = wineService.addTasteDetails(tasteDetails, to: wine)
-        XCTAssertEqual(wineWithTasteDetails.tasteDetails?.body, 3)
+        XCTAssertEqual(wineWithTasteDetails.tasteDetails?.body, 0)
         
         let wineWithoutTasteDetails = wineService.removeTasteDetails(tasteDetails, from: wine)
         

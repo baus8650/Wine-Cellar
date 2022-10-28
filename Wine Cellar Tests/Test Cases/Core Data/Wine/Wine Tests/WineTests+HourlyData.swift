@@ -134,7 +134,7 @@ final class WineTests_HourlyData: XCTestCase {
             soil_moisture_28_to_100cm: newHourlyData.soil_moisture_28_to_100cm,
             soil_moisture_100_to_255cm: newHourlyData.soil_moisture_100_to_255cm)
         
-        let wineWithHourlyData = wineService.addHourlyData(hourlyData, to: wine)
+        let _ = wineService.addHourlyData(hourlyData, to: wine)
         let retrievedWine = wineService.getWineFromHourlyData(with: hourlyData)
         let retrievedWineID = retrievedWine?.objectID
         

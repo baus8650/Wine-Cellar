@@ -105,7 +105,7 @@ final class WineTests_DailyData: XCTestCase {
             snowfall_sum: newDailyData.snowfall_sum,
             windspeed_10m_max: newDailyData.windspeed_10m_max,
             windgusts_10m_max: newDailyData.windgusts_10m_max)
-        let wineWithDailyData = wineService.addDailyData(dailyData, to: wine)
+        let _ = wineService.addDailyData(dailyData, to: wine)
         
         let retrievedWine = wineService.getWineFromDailyData(with: dailyData)
         let retrievedWineID = retrievedWine?.objectID

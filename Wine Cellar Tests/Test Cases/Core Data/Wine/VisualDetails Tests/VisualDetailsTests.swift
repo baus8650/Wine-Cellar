@@ -25,7 +25,7 @@ final class VisualDetailsTests: XCTestCase {
     
     func testAddVisualDetails() throws {
         let visualDetails = visualDetailsService.add(color: newVisualDetails.Color, viscosity: newVisualDetails.viscosity.rawValue, clarity: newVisualDetails.clarity.rawValue)
-        XCTAssertEqual(visualDetails.viscosity, 3)
+        XCTAssertEqual(visualDetails.viscosity, 0)
     }
     
     func testGetAllVisualDetails() throws {
@@ -41,14 +41,14 @@ final class VisualDetailsTests: XCTestCase {
         
         let visualDetails1 = visualDetailsService.getVisualDetails(with: detail1.objectID)
         let visualDetails2 = visualDetailsService.getVisualDetails(with: detail2.objectID)
-        XCTAssertEqual(visualDetails1?.viscosity, 3)
-        XCTAssertEqual(visualDetails2?.viscosity, 2)
+        XCTAssertEqual(visualDetails1?.viscosity, 0)
+        XCTAssertEqual(visualDetails2?.viscosity, 3)
     }
 
     func testUpdateVisualDetails() throws {
         let detail = visualDetailsService.add(color: newVisualDetails.Color, viscosity: newVisualDetails.viscosity.rawValue, clarity: newVisualDetails.clarity.rawValue)
         let oldVisualDetails = visualDetailsService.getVisualDetails(with: detail.objectID)
-        XCTAssertEqual(oldVisualDetails?.viscosity, 3)
+        XCTAssertEqual(oldVisualDetails?.viscosity, 0)
 
         let updatedVisualDetails = visualDetailsService.getVisualDetails(with: detail.objectID)
         updatedVisualDetails?.viscosity = 2
@@ -69,7 +69,7 @@ final class VisualDetailsTests: XCTestCase {
         visualDetailsService.delete(visualDetailsToDelete!)
         visualDetails = visualDetailsService.getVisualDetails()
         XCTAssertEqual(visualDetails?.count, 1)
-        XCTAssertEqual(visualDetails?[0].viscosity, 3)
+        XCTAssertEqual(visualDetails?[0].viscosity, 0)
     }
     
 }

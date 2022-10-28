@@ -41,7 +41,7 @@ final class WineTests_VisualDetails: XCTestCase {
         
         let wineWithVisualDetails = wineService.addVisualDetails(visualDetails, to: wine)
 
-        XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 3)
+        XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 0)
     }
     
     func testRemoveVisualDetailsFromWine() throws {
@@ -61,7 +61,7 @@ final class WineTests_VisualDetails: XCTestCase {
         let visualDetails = visualDetailsService.add(color: visualDetailsToAdd.Color, viscosity: visualDetailsToAdd.viscosity.rawValue, clarity: visualDetailsToAdd.clarity.rawValue)
         
         let wineWithVisualDetails = wineService.addVisualDetails(visualDetails, to: wine)
-        XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 3)
+        XCTAssertEqual(wineWithVisualDetails.visualDetails?.viscosity, 0)
         
         let wineWithoutVisualDetails = wineService.removeVisualDetails(visualDetails, from: wine)
         
