@@ -186,64 +186,66 @@ class CellarViewController: UIViewController {
     }
     
     private func createContextMenu() {
+        var circleCheckImage = UIImage(systemName: "checkmark.circle.fill")!
+        circleCheckImage = circleCheckImage.withTintColor(UIColor(named: "WineColorAccent")!, renderingMode: .alwaysOriginal)
         let sortOptions = UIMenu(title: "Sorting Options", children: [
             UIAction(
                 title: Constants.SortingOptions.abvAscending.rawValue,
-                image: sortParameter == Constants.SortingOptions.abvAscending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.abvAscending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .abvAscending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.abvDescending.rawValue,
-                image: sortParameter == Constants.SortingOptions.abvDescending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.abvDescending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .abvDescending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.dateAscending.rawValue,
-                image: sortParameter == Constants.SortingOptions.dateAscending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.dateAscending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .dateAscending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.dateDescending.rawValue,
-                image: sortParameter == Constants.SortingOptions.dateDescending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.dateDescending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .dateDescending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.companyAscending.rawValue,
-                image: sortParameter == Constants.SortingOptions.companyAscending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.companyAscending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .companyAscending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.companyDescending.rawValue,
-                image: sortParameter == Constants.SortingOptions.companyDescending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.companyDescending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .companyDescending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.varietalAscending.rawValue,
-                image: sortParameter == Constants.SortingOptions.varietalAscending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.varietalAscending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .varietalAscending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.varietalDescending.rawValue,
-                image: sortParameter == Constants.SortingOptions.varietalDescending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.varietalDescending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .varietalDescending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.vintageAscending.rawValue,
-                image: sortParameter == Constants.SortingOptions.vintageAscending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.vintageAscending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .vintageAscending
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.SortingOptions.vintageDescending.rawValue,
-                image: sortParameter == Constants.SortingOptions.vintageDescending ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: sortParameter == Constants.SortingOptions.vintageDescending ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.sortParameter = .vintageDescending
                     self.cellarViewModel.fetchWines()
                 }]
@@ -252,19 +254,19 @@ class CellarViewController: UIViewController {
         let filterOptions = UIMenu(title: "Filter Options", children: [
             UIAction(
                 title: Constants.FilterOptions.allWines.rawValue,
-                image: filterParameter == Constants.FilterOptions.allWines ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: filterParameter == Constants.FilterOptions.allWines ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.filterParameter = .allWines
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.FilterOptions.sparklingOnly.rawValue,
-                image: filterParameter == Constants.FilterOptions.sparklingOnly ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: filterParameter == Constants.FilterOptions.sparklingOnly ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.filterParameter = .sparklingOnly
                     self.cellarViewModel.fetchWines()
                 },
             UIAction(
                 title: Constants.FilterOptions.stillOnly.rawValue,
-                image: filterParameter == Constants.FilterOptions.stillOnly ?  UIImage(systemName: "checkmark.circle.fill")! : nil) { action in
+                image: filterParameter == Constants.FilterOptions.stillOnly ?  circleCheckImage : nil) { action in
                     self.cellarViewModel.filterParameter = .stillOnly
                     self.cellarViewModel.fetchWines()
                 }
