@@ -10,6 +10,7 @@
 		221ECCDF290B0BB300C5BEA1 /* WineContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221ECCDE290B0BB300C5BEA1 /* WineContentView.swift */; };
 		221ECCE1290B0F0500C5BEA1 /* WineCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221ECCE0290B0F0500C5BEA1 /* WineCellView.swift */; };
 		221ECCE3290B324800C5BEA1 /* BubblesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221ECCE2290B324800C5BEA1 /* BubblesView.swift */; };
+		221ECCEA290D78C000C5BEA1 /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221ECCE9290D78C000C5BEA1 /* Bubble.swift */; };
 		2239250429082C5300BC92D4 /* PersonalDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239250329082C5300BC92D4 /* PersonalDetailsService.swift */; };
 		2239250629082EF500BC92D4 /* WineTests+PersonalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2239250529082EF500BC92D4 /* WineTests+PersonalDetails.swift */; };
 		223925092908330A00BC92D4 /* PersonalDetailsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 223925082908330A00BC92D4 /* PersonalDetailsTests.swift */; };
@@ -140,6 +141,7 @@
 		221ECCDE290B0BB300C5BEA1 /* WineContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineContentView.swift; sourceTree = "<group>"; };
 		221ECCE0290B0F0500C5BEA1 /* WineCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineCellView.swift; sourceTree = "<group>"; };
 		221ECCE2290B324800C5BEA1 /* BubblesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BubblesView.swift; sourceTree = "<group>"; };
+		221ECCE9290D78C000C5BEA1 /* Bubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		2239250329082C5300BC92D4 /* PersonalDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsService.swift; sourceTree = "<group>"; };
 		2239250529082EF500BC92D4 /* WineTests+PersonalDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "WineTests+PersonalDetails.swift"; sourceTree = "<group>"; };
 		223925082908330A00BC92D4 /* PersonalDetailsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalDetailsTests.swift; sourceTree = "<group>"; };
@@ -261,6 +263,14 @@
 				22B07FC42904C8F100312C34 /* TestCoreDataStack.swift */,
 			);
 			path = "Test Services";
+			sourceTree = "<group>";
+		};
+		221ECCE8290D78B300C5BEA1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				221ECCE9290D78C000C5BEA1 /* Bubble.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		22392502290829DA00BC92D4 /* Test Cases */ = {
@@ -578,6 +588,7 @@
 		22E8067329031187006E0629 /* Wine Cellar */ = {
 			isa = PBXGroup;
 			children = (
+				221ECCE8290D78B300C5BEA1 /* Models */,
 				22E806A4290311FB006E0629 /* View Controllers */,
 				22B07FB729045F0300312C34 /* View Models */,
 				22FB7FE829037FC80058F90B /* Views */,
@@ -814,6 +825,7 @@
 				22A5535A2908B20200153EDF /* TasteDetailsBuilder.swift in Sources */,
 				22A5534729086CEC00153EDF /* WineTastingBuilder.swift in Sources */,
 				22B07FB929045F1F00312C34 /* CellarViewModel.swift in Sources */,
+				221ECCEA290D78C000C5BEA1 /* Bubble.swift in Sources */,
 				22829739290442120081742D /* WineTastingBuilderModel.swift in Sources */,
 				2239250429082C5300BC92D4 /* PersonalDetailsService.swift in Sources */,
 				22E8067929031187006E0629 /* CellarViewController.swift in Sources */,
