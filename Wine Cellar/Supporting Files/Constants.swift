@@ -182,4 +182,24 @@ final class Constants {
         case clear = 3
         case brilliant = 4
     }
+    
+    enum SortingOptions: String {
+        case abvAscending = "ABV Ascending"
+        case abvDescending = "ABV Descending"
+        case dateAscending = "Date Ascending"
+        case dateDescending = "Date Descending"
+        case companyAscending = "Company Ascending"
+        case companyDescending = "Company Descending"
+        case varietalAscending = "Varietal Ascending"
+        case varietalDescending = "Varietal Descending"
+        case vintageAscending = "Vintage Ascending"
+        case vintageDescending = "Vintage Descending"
+
+    }
+    
+    enum FilterOptions: String {
+        case allWines = "All Wines"
+        case stillOnly = "Still Wines Only"
+        case sparklingOnly = "Sparkling Wines Only"
+    }
 }
