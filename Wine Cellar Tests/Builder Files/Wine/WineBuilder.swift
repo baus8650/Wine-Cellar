@@ -2,6 +2,7 @@ import Foundation
 import UIKit
 
 final class WineBuilder {
+    private var date = Date()
     private var type = Constants.WineType.still
     private var wineColor = Constants.WineColor.red
     private var vintage = 2022
@@ -21,6 +22,11 @@ final class WineBuilder {
     private var numberOwned = 1
     private var image: UIImage? = nil
     private var isFavorited: Bool = true
+    
+    func date(_ date: Date) -> Self {
+        self.date = date
+        return self
+    }
     
     func type(_ type: Constants.WineType) -> Self {
         self.type = type
@@ -113,6 +119,6 @@ final class WineBuilder {
     }
     
     func build() -> WineBuilderModel {
-        return WineBuilderModel(type: type, wineColor: wineColor, vintage: vintage, varietal: varietal, company: company, vineyard: vineyard, ava: ava, abv: abv, visualDetails: visualDetails, tasteDetails: tasteDetails, smellDetails: smellDetails, tastingNotes: tastingNotes, personalDetails: personalDetails, hourlyData: hourlyData, dailyData: dailyData, numberOwned: numberOwned, image: image,foodPairings: foodPairings, isFavorited: isFavorited)
+        return WineBuilderModel(date: date, type: type, wineColor: wineColor, vintage: vintage, varietal: varietal, company: company, vineyard: vineyard, ava: ava, abv: abv, visualDetails: visualDetails, tasteDetails: tasteDetails, smellDetails: smellDetails, tastingNotes: tastingNotes, personalDetails: personalDetails, hourlyData: hourlyData, dailyData: dailyData, numberOwned: numberOwned, image: image,foodPairings: foodPairings, isFavorited: isFavorited)
     }
 }
