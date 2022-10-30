@@ -37,7 +37,7 @@ class SectionHeaderReusableView: UICollectionReusableView {
     private func setUpSubviews() {
         addSubview(labelContainer)
         labelContainer.autoPinEdgesToSuperviewEdges(with: .zero, excludingEdge: .bottom)
-        labelContainer.autoSetDimension(.height, toSize: 40)
+        labelContainer.autoSetDimension(.height, toSize: 36)
         labelContainer.addSubview(titleLabel)
         titleLabel.autoPinEdgesToSuperviewMargins()
 
