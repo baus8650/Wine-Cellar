@@ -9,6 +9,7 @@ class CellarViewController: UIViewController {
     // MARK: - Properties
     typealias DataSource = UICollectionViewDiffableDataSource<Constants.WineColor, Wine>
     typealias Snapshot = NSDiffableDataSourceSnapshot<Constants.WineColor, Wine>
+    var sections = Constants.WineColor.allCases
     var coreDataStack: CoreDataStack!
     var cellarViewModel: CellarViewModel!
     var horizontalClass: UIUserInterfaceSizeClass!
@@ -29,11 +30,7 @@ class CellarViewController: UIViewController {
     private lazy var datasource = makeDataSource()
     // MARK: - Views
     
-    private lazy var searchBar: UISearchBar = {
-        let searchBar = UISearchBar(forAutoLayout: ())
-        searchBar.placeholder = "Search..."
-        return searchBar
-    }()
+    private var searchController = UISearchController(searchResultsController: nil)
     
     private lazy var addMenu: UIMenu = {
         let menu = UIMenu(title: "", children: [
@@ -112,6 +109,7 @@ class CellarViewController: UIViewController {
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: SectionHeaderReusableView.reuseIdentifier)
         collectionView.allowsMultipleSelection = true
+        collectionView.keyboardDismissMode = .onDrag
         return collectionView
     }()
     
@@ -119,6 +117,7 @@ class CellarViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Wine Cellar"
+        configureSearchController()
         horizontalClass = view.traitCollection.horizontalSizeClass
         coreDataStack = CoreDataStack()
         cellarViewModel = CellarViewModel(managedObjectContext: coreDataStack.mainContext, coreDataStack: coreDataStack)
@@ -178,11 +177,8 @@ class CellarViewController: UIViewController {
     }
     
     private func setUpSubviews() {
-        view.addSubview(searchBar)
-        searchBar.autoPinEdgesToSuperviewSafeArea(with: .zero, excludingEdge: .bottom)
         view.addSubview(collectionView)
-        collectionView.autoPinEdgesToSuperviewSafeArea(with: .zero, excludingEdge: .top)
-        collectionView.autoPinEdge(.top, to: .bottom, of: searchBar)
+        collectionView.autoPinEdgesToSuperviewSafeArea()
     }
     
     private func createContextMenu() {
@@ -296,13 +292,16 @@ class CellarViewController: UIViewController {
         let whiteWine = WineBuilder()
             .company("New White wine")
             .wineColor(Constants.WineColor.white)
+            .varietal(.chardonnay)
             .build()
         let redWine = WineBuilder()
             .company("New Red wine")
+            .varietal(.cabernetSauvignon)
             .wineColor(Constants.WineColor.red)
             .build()
         let roseWine = WineBuilder()
             .company("New Rosé wine")
+            .varietal(.zinfandel)
             .wineColor(Constants.WineColor.rose)
             .build()
         let whiteWineSparkling = WineBuilder()
@@ -332,6 +331,18 @@ class CellarViewController: UIViewController {
             varietal: testWine.varietal.rawValue,
             vintage: Int16(testWine.vintage),
             wineColor: testWine.wineColor.rawValue)
+    }
+    
+    private func splitWines(_ wines: [Wine]) {
+        redWines = wines.filter({ wine in
+            wine.wineColor == Constants.WineColor.red.rawValue
+        })
+        roseWines = wines.filter({ wine in
+            wine.wineColor == Constants.WineColor.rose.rawValue
+        })
+        whiteWines = wines.filter({ wine in
+            wine.wineColor == Constants.WineColor.white.rawValue
+        })
     }
     
     private func deleteWines() {
@@ -452,6 +463,44 @@ extension CellarViewController: UICollectionViewDelegate {
                 }
             }
         }
+    }
+}
+
+extension CellarViewController: UISearchResultsUpdating {
+    func updateSearchResults(for searchController: UISearchController) {
+        wines = filteredWines(for: searchController.searchBar.text)
+        splitWines(wines)
+        applySnapshot(animatingDifferences: true)
+    }
+    
+    func filteredWines(for query: String?) -> [Wine] {
+        cellarViewModel.fetchWines()
+        guard let searchString = query, !searchString.isEmpty else {
+            return wines
+        }
+        var matches = Set<Wine>()
+        let _ = wines.map {
+            if $0.company?.lowercased().contains((query?.lowercased())!) == true {
+                matches.insert($0)
+            } else if $0.varietal?.lowercased().contains((query?.lowercased())!) == true {
+                matches.insert($0)
+            } else if $0.vineyard?.name?.lowercased().contains((query?.lowercased())!) == true {
+                matches.insert($0)
+            } else if $0.ava?.lowercased().contains((query?.lowercased())!) == true {
+                matches.insert($0)
+            }
+        }
+        
+        return Array(matches)
+    }
+    
+    private func configureSearchController() {
+        searchController.searchResultsUpdater = self
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.placeholder = "Search..."
+        searchController.searchBar.tintColor = UIColor(named: "WineColorAccent")
+        navigationItem.searchController = searchController
+        definesPresentationContext = true
     }
 }
 
