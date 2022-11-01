@@ -186,8 +186,8 @@ final class Constants {
     enum SortingOptions: String {
         case abvAscending = "ABV Ascending"
         case abvDescending = "ABV Descending"
-        case dateAscending = "Date Ascending"
-        case dateDescending = "Date Descending"
+        case dateAscending = "Add Date Ascending"
+        case dateDescending = "Add Date Descending"
         case companyAscending = "Company Ascending"
         case companyDescending = "Company Descending"
         case varietalAscending = "Varietal Ascending"
