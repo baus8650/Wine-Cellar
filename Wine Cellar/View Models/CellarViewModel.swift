@@ -2,7 +2,7 @@ import Combine
 import CoreData
 import Foundation
 
-final class CellarViewModel {
+final class CellarViewModel: ObservableObject {
     @Published var wines = [Wine]()
     @Published var redWines = [Wine]()
     @Published var roseWines = [Wine]()
@@ -65,6 +65,12 @@ final class CellarViewModel {
                  vintage: Int16,
                  wineColor: String) {
         let _ = wineService.add(dateAdded: dateAdded, abv: abv, ava: ava, company: company, isFavorited: isFavorited, numberOwned: numberOwned, type: type, varietal: varietal, vintage: vintage, wineColor: wineColor)
+        fetchWines()
+    }
+    
+    func updateWine(_ wine: Wine) {
+        print("Updating")
+        wineService.update(wine)
         fetchWines()
     }
     

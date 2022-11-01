@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct WineContentView: View {
+    @ObservedObject var cellarViewModel: CellarViewModel
+    var wine: Wine
     let company: String
     let vintage: Int16
     let varietal: String
@@ -23,9 +25,10 @@ struct WineContentView: View {
                     .foregroundColor(Color(uiColor: color))
                 Spacer()
                 Button {
-                    isFavorited.toggle()
+                    wine.isFavorited.toggle()
+                    cellarViewModel.updateWine(wine)
                 } label: {
-                    Image(systemName: isFavorited ? "heart.fill" : "heart")
+                    Image(systemName: wine.isFavorited ? "heart.fill" : "heart")
                         .resizable()
                         .frame(width: 12, height: 12)
                         .foregroundColor(Color(uiColor: color))
@@ -46,8 +49,8 @@ struct WineContentView: View {
     }
 }
 
-struct WineContentView_Previews: PreviewProvider {
-    static var previews: some View {
-        WineContentView(company: "Flying Goat Cellars", vintage: 2016, varietal: "Pinot Noir", vineyard: "Rio Vista Vineyard", color: UIColor(named: "WineColorAccent")!, isFavorited: true)
-    }
-}
+//struct WineContentView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        WineContentView(company: "Flying Goat Cellars", vintage: 2016, varietal: "Pinot Noir", vineyard: "Rio Vista Vineyard", color: UIColor(named: "WineColorAccent")!, isFavorited: true)
+//    }
+//}

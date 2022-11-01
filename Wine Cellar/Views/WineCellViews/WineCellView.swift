@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct WineCellView: View {
+    @ObservedObject var cellarViewModel: CellarViewModel
     let wine: Wine
     let color: String
     var isEditing: Bool
@@ -22,8 +23,9 @@ struct WineCellView: View {
                         Image(systemName: isSelected ? "checkmark.circle.fill" : "circle")
                             .padding(.leading)
                             .foregroundColor(Color(uiColor: UIColor(named: "WineColorAccent")!))
+                        
                     }
-                    WineContentView(company: wine.company!, vintage: wine.vintage, varietal: wine.varietal!, vineyard: (wine.vineyard?.name), color: UIColor(named: "WineColorAccent")!, isFavorited: wine.isFavorited)
+                    WineContentView(cellarViewModel: cellarViewModel, wine: wine, company: wine.company!, vintage: wine.vintage, varietal: wine.varietal!, vineyard: (wine.vineyard?.name), color: UIColor(named: "WineColorAccent")!, isFavorited: wine.isFavorited)
                         .padding(.top, 8)
                 }
                 CircleRowView(

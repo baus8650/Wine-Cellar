@@ -375,7 +375,7 @@ class CellarViewController: UIViewController {
                 cell.contentConfiguration = UIHostingConfiguration {
                     ZStack {
                         WineCellView(
-                            wine: wine,
+                            cellarViewModel: self.cellarViewModel, wine: wine,
                             color: wine.wineColor ?? Constants.WineColor.red.rawValue,
                             isEditing: self.isEditingEnabled,
                             isSelected: self.selectedIndices.contains(indexPath) ? true : false,
