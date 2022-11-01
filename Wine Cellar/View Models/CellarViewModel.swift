@@ -69,7 +69,6 @@ final class CellarViewModel: ObservableObject {
     }
     
     func updateWine(_ wine: Wine) {
-        print("Updating")
         wineService.update(wine)
         fetchWines()
     }
