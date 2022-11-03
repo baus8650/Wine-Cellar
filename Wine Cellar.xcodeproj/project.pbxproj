@@ -276,8 +276,8 @@
 		22392502290829DA00BC92D4 /* Test Cases */ = {
 			isa = PBXGroup;
 			children = (
-				22A553542908A8D600153EDF /* View Models */,
-				22A553532908A8CC00153EDF /* Core Data */,
+				22A5533F29086B1300153EDF /* Tasting */,
+				22A5533E29086B0600153EDF /* Wine */,
 			);
 			path = "Test Cases";
 			sourceTree = "<group>";
@@ -461,23 +461,6 @@
 			path = "WineTasting Tests";
 			sourceTree = "<group>";
 		};
-		22A553532908A8CC00153EDF /* Core Data */ = {
-			isa = PBXGroup;
-			children = (
-				22A5533F29086B1300153EDF /* Tasting */,
-				22A5533E29086B0600153EDF /* Wine */,
-			);
-			path = "Core Data";
-			sourceTree = "<group>";
-		};
-		22A553542908A8D600153EDF /* View Models */ = {
-			isa = PBXGroup;
-			children = (
-				22A553552908A8E600153EDF /* CellarViewModelTests.swift */,
-			);
-			path = "View Models";
-			sourceTree = "<group>";
-		};
 		22A5536D290AFD6600153EDF /* WineCellViews */ = {
 			isa = PBXGroup;
 			children = (
@@ -493,7 +476,7 @@
 		22B07FB729045F0300312C34 /* View Models */ = {
 			isa = PBXGroup;
 			children = (
-				22B07FB829045F1F00312C34 /* CellarViewModel.swift */,
+				22B07FB829045F1F00312C34 /* WineViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -595,8 +578,6 @@
 				22B07FC82904CC6400312C34 /* Services */,
 				22FB7FE0290372800058F90B /* Supporting Files */,
 				22FB7FF32903AB0F0058F90B /* Utilities */,
-				22E8067429031187006E0629 /* AppDelegate.swift */,
-				22E8067629031187006E0629 /* SceneDelegate.swift */,
 				22B07FC12904B98800312C34 /* Wine_Cellar.xcdatamodeld */,
 			);
 			path = "Wine Cellar";
@@ -819,10 +800,7 @@
 				22B07FC72904C94F00312C34 /* CoreDataStack.swift in Sources */,
 				22FB7FF52903AB160058F90B /* Extensions.swift in Sources */,
 				2282975629045DCD0081742D /* FoodPairingBuilderModel.swift in Sources */,
-				22A5535F2908B20200153EDF /* VisualDetailsBuilder.swift in Sources */,
-				22A553602908B20200153EDF /* HourlyDataBuilder.swift in Sources */,
 				22FB7FD729032A470058F90B /* VisualDetailsBuilderModel.swift in Sources */,
-				22A5535A2908B20200153EDF /* TasteDetailsBuilder.swift in Sources */,
 				22A5534729086CEC00153EDF /* WineTastingBuilder.swift in Sources */,
 				22B07FB929045F1F00312C34 /* CellarViewModel.swift in Sources */,
 				221ECCEA290D78C000C5BEA1 /* Bubble.swift in Sources */,
@@ -831,8 +809,6 @@
 				22E8067929031187006E0629 /* CellarViewController.swift in Sources */,
 				22FB7FD1290329BA0058F90B /* TasteDetailsBuilderModel.swift in Sources */,
 				22FB7FCE290328C30058F90B /* WineBuilderModel.swift in Sources */,
-				22A5535E2908B20200153EDF /* TastingNoteBuilder.swift in Sources */,
-				22A553572908B15E00153EDF /* WineBuilder.swift in Sources */,
 				22FB7FD929032A620058F90B /* TastingNoteBuilderModel.swift in Sources */,
 				22C9D52F290745CB001DB138 /* TasteDetailsService.swift in Sources */,
 				22A5535B2908B20200153EDF /* PersonalDetailsBuilder.swift in Sources */,
@@ -855,8 +831,6 @@
 				22A55333290863FB00153EDF /* DailyDataService.swift in Sources */,
 				22FB7FEE2903A1040058F90B /* FlightAttendantViewController.swift in Sources */,
 				22E8067729031187006E0629 /* SceneDelegate.swift in Sources */,
-				22A5535D2908B20200153EDF /* FoodPairingBuilder.swift in Sources */,
-				22A553582908B20200153EDF /* DailyDataBuilder.swift in Sources */,
 				2282973B290442630081742D /* FlightBuilderModel.swift in Sources */,
 				22FB7FF22903A1890058F90B /* SettingsViewController.swift in Sources */,
 				22FB7FE22903728C0058F90B /* Constants.swift in Sources */,
@@ -868,7 +842,6 @@
 				22FB7FE4290373DE0058F90B /* HourlyDataBuilderModel.swift in Sources */,
 				22C9D53629075E2B001DB138 /* TastingNotesService.swift in Sources */,
 				22392514290850BC00BC92D4 /* DailyDataBuilderModel.swift in Sources */,
-				22A553592908B20200153EDF /* VineyardBuilder.swift in Sources */,
 				22A5533D29086A6700153EDF /* FlightService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -884,7 +857,6 @@
 				22A5533129085B1100153EDF /* WineTests+HourlyData.swift in Sources */,
 				2282973E2904447E0081742D /* WineBuilder.swift in Sources */,
 				226DE31329060FE2003D8E9D /* WineTests+Vineyard.swift in Sources */,
-				22A553562908A8E600153EDF /* CellarViewModelTests.swift in Sources */,
 				22B07FED2905FF5400312C34 /* SmellDetailsTests.swift in Sources */,
 				22B07FE02904DC4E00312C34 /* FoodPairingBuilder.swift in Sources */,
 				223925172908546100BC92D4 /* HourlyDataTests.swift in Sources */,
