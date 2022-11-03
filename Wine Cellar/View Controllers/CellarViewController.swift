@@ -289,48 +289,50 @@ class CellarViewController: UIViewController {
     }
     
     private func addWine() {
-        let whiteWine = WineBuilder()
-            .company("New White wine")
-            .wineColor(Constants.WineColor.white)
-            .varietal(.chardonnay)
-            .build()
-        let redWine = WineBuilder()
-            .company("New Red wine")
-            .varietal(.cabernetSauvignon)
-            .wineColor(Constants.WineColor.red)
-            .build()
-        let roseWine = WineBuilder()
-            .company("New Rosé wine")
-            .varietal(.zinfandel)
-            .wineColor(Constants.WineColor.rose)
-            .build()
-        let whiteWineSparkling = WineBuilder()
-            .company("New Sparkling White wine")
-            .type(.sparkling)
-            .wineColor(Constants.WineColor.white)
-            .build()
-        let redWineSparkling = WineBuilder()
-            .company("New Sparkling Red wine")
-            .type(.sparkling)
-            .wineColor(Constants.WineColor.red)
-            .build()
-        let roseWineSparkling = WineBuilder()
-            .company("New Sparkling Rosé wine")
-            .type(.sparkling)
-            .wineColor(Constants.WineColor.rose)
-            .build()
-        let demoWines = [redWine, whiteWine, roseWine, redWineSparkling, whiteWineSparkling, roseWineSparkling]
-        let testWine = demoWines.randomElement()!
-        cellarViewModel.addWine(
-            abv: testWine.abv,
-            ava: testWine.ava!,
-            company: testWine.company,
-            isFavorited: testWine.isFavorited,
-            numberOwned: Int16(testWine.numberOwned),
-            type: testWine.type.rawValue,
-            varietal: testWine.varietal.rawValue,
-            vintage: Int16(testWine.vintage),
-            wineColor: testWine.wineColor.rawValue)
+//        let whiteWine = WineBuilder()
+//            .company("New White wine")
+//            .wineColor(Constants.WineColor.white)
+//            .varietal(.chardonnay)
+//            .build()
+//        let redWine = WineBuilder()
+//            .company("New Red wine")
+//            .varietal(.cabernetSauvignon)
+//            .wineColor(Constants.WineColor.red)
+//            .build()
+//        let roseWine = WineBuilder()
+//            .company("New Rosé wine")
+//            .varietal(.zinfandel)
+//            .wineColor(Constants.WineColor.rose)
+//            .build()
+//        let whiteWineSparkling = WineBuilder()
+//            .company("New Sparkling White wine")
+//            .type(.sparkling)
+//            .wineColor(Constants.WineColor.white)
+//            .build()
+//        let redWineSparkling = WineBuilder()
+//            .company("New Sparkling Red wine")
+//            .type(.sparkling)
+//            .wineColor(Constants.WineColor.red)
+//            .build()
+//        let roseWineSparkling = WineBuilder()
+//            .company("New Sparkling Rosé wine")
+//            .type(.sparkling)
+//            .wineColor(Constants.WineColor.rose)
+//            .build()
+//        let demoWines = [redWine, whiteWine, roseWine, redWineSparkling, whiteWineSparkling, roseWineSparkling]
+//        let testWine = demoWines.randomElement()!
+//        cellarViewModel.addWine(
+//            abv: testWine.abv,
+//            ava: testWine.ava!,
+//            company: testWine.company,
+//            isFavorited: testWine.isFavorited,
+//            numberOwned: Int16(testWine.numberOwned),
+//            type: testWine.type.rawValue,
+//            varietal: testWine.varietal.rawValue,
+//            vintage: Int16(testWine.vintage),
+//            wineColor: testWine.wineColor.rawValue)
+        let wineVC = WineDetailViewController()
+        navigationController?.pushViewController(wineVC, animated: true)
     }
     
     private func splitWines(_ wines: [Wine]) {
