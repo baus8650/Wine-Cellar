@@ -23,12 +23,12 @@ class WineDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
-        let barAppearance = UINavigationBarAppearance()
-        barAppearance.backgroundColor = UIColor(named: "NavigationElements")
-        barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "WineColorAccent")!]
-        navigationItem.standardAppearance = barAppearance
-        navigationItem.scrollEdgeAppearance = barAppearance
-        navigationController?.navigationBar.tintColor = UIColor(named: "WineColorAccent")
+//        let barAppearance = UINavigationBarAppearance()
+//        barAppearance.backgroundColor = UIColor(named: "NavigationElements")
+//        barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "WineColorAccent")!]
+//        navigationItem.standardAppearance = barAppearance
+//        navigationItem.scrollEdgeAppearance = barAppearance
+//        navigationController?.navigationBar.tintColor = UIColor(named: "WineColorAccent")
         // Do any additional setup after loading the view.
     }
 

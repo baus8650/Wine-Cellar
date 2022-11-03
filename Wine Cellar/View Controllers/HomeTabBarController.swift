@@ -19,15 +19,7 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
     }
     
     private func addTabs() {
-        let barAppearance = UINavigationBarAppearance()
-        barAppearance.backgroundColor = UIColor(named: "NavigationElements")
-        barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "WineColorAccent")!]
-        
-        
-        
         let cellarVC = CellarViewController()
-        cellarVC.navigationItem.standardAppearance = barAppearance
-        cellarVC.navigationItem.scrollEdgeAppearance = barAppearance
         let cellarNav = UINavigationController(rootViewController: cellarVC)
         var cellarImage = UIImage(named: "CellarImage")
         cellarImage = cellarImage?.resizeImageTo(size: CGSize(width: 48, height: 32))
@@ -40,8 +32,6 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
             selectedImage: cellarSelectedImage?.withTintColor(UIColor(named: "WineColorAccent")!, renderingMode: .alwaysOriginal))
         
         let flightAttendantVC = FlightAttendantViewController()
-        flightAttendantVC.navigationItem.standardAppearance = barAppearance
-        flightAttendantVC.navigationItem.scrollEdgeAppearance = barAppearance
         var flightAttendantImage = UIImage(named: "FlightAttendantImage")
         flightAttendantImage = flightAttendantImage?.resizeImageTo(size: CGSize(width: 48, height: 32))
         var flightAttendantSelectedImage = UIImage(named: "FlightAttendantSelectedImage")
@@ -53,8 +43,6 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
             selectedImage: flightAttendantSelectedImage?.withTintColor(UIColor(named: "WineColorAccent")!, renderingMode: .alwaysTemplate))
         
         let pastFlightsVC = PastTastingsViewController()
-        pastFlightsVC.navigationItem.standardAppearance = barAppearance
-        pastFlightsVC.navigationItem.scrollEdgeAppearance = barAppearance
         let pastFlightsImage = UIImage(systemName: "book")
         let pastFlightsSelectedImage = UIImage(systemName: "book.fill")
         
@@ -64,8 +52,6 @@ class HomeTabBarController: UITabBarController, UITabBarControllerDelegate {
             selectedImage: pastFlightsSelectedImage?.withTintColor(UIColor(named: "WineColorAccent")!, renderingMode: .alwaysOriginal))
         
         let settingsVC = SettingsViewController()
-        settingsVC.navigationItem.standardAppearance = barAppearance
-        settingsVC.navigationItem.scrollEdgeAppearance = barAppearance
         let settingsImage = UIImage(systemName: "gearshape")
         let settingsSelectedImage = UIImage(systemName: "gearshape.fill")
         

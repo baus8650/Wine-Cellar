@@ -13,7 +13,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        let barAppearance = UINavigationBarAppearance()
+        barAppearance.backgroundColor = UIColor(named: "NavigationElements")
+        barAppearance.titleTextAttributes = [NSAttributedString.Key.foregroundColor : UIColor(named: "WineColorAccent")!]
+        UINavigationBar.appearance().standardAppearance = barAppearance
+        UINavigationBar.appearance().scrollEdgeAppearance = barAppearance
+        UINavigationBar.appearance().tintColor = UIColor(named: "WineColorAccent")
         return true
     }
 
