@@ -117,6 +117,7 @@
 		22FEB6CE291469DF00216D69 /* VisualDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FCB2904D44600312C34 /* VisualDetailsBuilder.swift */; };
 		22FEB6CF291469DF00216D69 /* VineyardBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22829750290451D10081742D /* VineyardBuilder.swift */; };
 		22FEB6D0291469DF00216D69 /* TasteDetailsBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22B07FCD2904D4FC00312C34 /* TasteDetailsBuilder.swift */; };
+		22FEB6D229146AC600216D69 /* WineViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22FEB6D129146AC600216D69 /* WineViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -228,6 +229,7 @@
 		22FB7FEF2903A17D0058F90B /* PastTastingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PastTastingsViewController.swift; sourceTree = "<group>"; };
 		22FB7FF12903A1890058F90B /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		22FB7FF42903AB160058F90B /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		22FEB6D129146AC600216D69 /* WineViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -486,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				22B07FB829045F1F00312C34 /* CellarViewModel.swift */,
+				22FEB6D129146AC600216D69 /* WineViewModel.swift */,
 			);
 			path = "View Models";
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				220A8A022914680600B1C58D /* AppDelegate.swift in Sources */,
 				22FEB6CD291469DF00216D69 /* HourlyDataBuilder.swift in Sources */,
 				22E8067929031187006E0629 /* CellarViewController.swift in Sources */,
+				22FEB6D229146AC600216D69 /* WineViewModel.swift in Sources */,
 				22FB7FD1290329BA0058F90B /* TasteDetailsBuilderModel.swift in Sources */,
 				22FB7FCE290328C30058F90B /* WineBuilderModel.swift in Sources */,
 				22FB7FD929032A620058F90B /* TastingNoteBuilderModel.swift in Sources */,
