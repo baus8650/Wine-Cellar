@@ -25,7 +25,7 @@ final class TasteDetailsTest: XCTestCase {
     
     func testAddTasteDetails() throws {
         let tasteDetails = tasteDetailsService.add(body: newTasteDetails.body.rawValue, sweetness: newTasteDetails.sweetness.rawValue, alcohol: newTasteDetails.alcohol.rawValue, acidityLevel: newTasteDetails.acidityLevel.rawValue, tanninLevel: newTasteDetails.tanninLevel.rawValue)
-        XCTAssertEqual(tasteDetails.body, 3)
+        XCTAssertEqual(tasteDetails.body, 0)
     }
     
     func testGetAllTasteDetails() throws {
@@ -51,14 +51,14 @@ final class TasteDetailsTest: XCTestCase {
         
         let fetchedTasteDetails1 = tasteDetailsService.getTasteDetails(with: tasteDetails1.objectID)
         let fetchedTasteDetails2 = tasteDetailsService.getTasteDetails(with: tasteDetails2.objectID)
-        XCTAssertEqual(fetchedTasteDetails1?.body, 3)
-        XCTAssertEqual(fetchedTasteDetails2?.body, 0)
+        XCTAssertEqual(fetchedTasteDetails1?.body, 0)
+        XCTAssertEqual(fetchedTasteDetails2?.body, 1)
     }
     
     func testUpdateTasteDetails() throws {
         let tasteDetails1 = tasteDetailsService.add(body: newTasteDetails.body.rawValue, sweetness: newTasteDetails.sweetness.rawValue, alcohol: newTasteDetails.alcohol.rawValue, acidityLevel: newTasteDetails.acidityLevel.rawValue, tanninLevel: newTasteDetails.tanninLevel.rawValue)
         let oldTasteDetails = tasteDetailsService.getTasteDetails(with: tasteDetails1.objectID)
-        XCTAssertEqual(oldTasteDetails?.body, 3)
+        XCTAssertEqual(oldTasteDetails?.body, 0)
         
         let updatedTasteDetails = tasteDetailsService.getTasteDetails(with: tasteDetails1.objectID)
         updatedTasteDetails?.body = 2
@@ -79,7 +79,7 @@ final class TasteDetailsTest: XCTestCase {
         tasteDetailsService.delete(tasteDetailsToDelete!)
         tasteDetails = tasteDetailsService.getTasteDetails()
         XCTAssertEqual(tasteDetails?.count, 1)
-        XCTAssertEqual(tasteDetails?[0].body, 3)
+        XCTAssertEqual(tasteDetails?[0].body, 0)
     }
     
 }

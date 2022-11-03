@@ -44,7 +44,122 @@ class WineTests: XCTestCase {
         XCTAssertEqual(wine.vintage, 2022)
     }
     
-    func testFetchAllWines() throws {
+    func testFetchAllWinesWithDefaultDateDescending() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            dateAdded:Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+
+        let wines = wineService.getWines()
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.company, "Test Wine Company")
+    }
+    
+    func testFetchAllWinesSortedByDateAscending() throws {
+        wineService.add(
+            dateAdded: Date(),
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            dateAdded: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .dateAscending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.company, "Second Wine Company")
+    }
+    
+    func testFetchAllWinesSortedByABVAscending() throws {
+        wineService.add(
+            dateAdded: Date(),
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            dateAdded: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
+            abv: Float(80),
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .abvAscending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.company, "Test Wine Company")
+    }
+    
+    func testFetchAllWinesSortedByABVDescending() throws {
+        wineService.add(
+            dateAdded: Date(),
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            dateAdded: Calendar.current.date(byAdding: .day, value: -1, to: Date())!,
+            abv: Float(80),
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .abvDescending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.company, "Second Wine Company")
+    }
+    
+    func testFetchAllWinesSortedByCompanyAscending() throws {
         wineService.add(
             abv: newWine.abv,
             ava: newWine.ava ?? "",
@@ -65,9 +180,199 @@ class WineTests: XCTestCase {
             varietal: secondWine.varietal.rawValue,
             vintage: Int16(secondWine.vintage),
             wineColor: secondWine.wineColor.rawValue)
-
-        let wines = wineService.getWines()
+        
+        let wines = wineService.getWines(with: .companyAscending)
         XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.company, "Second Wine Company")
+    }
+    
+    func testFetchAllWinesSortedByCompanyDescending() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .companyDescending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.company, "Test Wine Company")
+    }
+    
+    func testFetchAllWinesSortedByVarietalAscending() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: Constants.Varietal.chardonnay.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .varietalAscending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.varietal, "Chardonnay")
+    }
+    
+    func testFetchAllWinesSortedByVarietalDescending() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: Constants.Varietal.chardonnay.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .varietalDescending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.varietal, "Pinot Noir")
+    }
+    
+    func testFetchAllWinesSortedByVintageAscending() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(2000),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .vintageAscending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.vintage, Int16(2000))
+    }
+    
+    func testFetchAllWinesSortedByVintageDescending() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: secondWine.type.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(2000),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(with: .vintageDescending)
+        XCTAssertEqual(wines?.count, 2)
+        XCTAssertEqual(wines?.first!.vintage, Int16(2022))
+    }
+    
+    func testFilterWinesForStillWinesOnly() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: Constants.WineType.sparkling.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(filteredFor: .stillOnly)
+        XCTAssertEqual(wines?.count, 1)
+        XCTAssertEqual(wines?.first!.type, "Still")
+    }
+    
+    func testFilterWinesForSparklingWinesOnly() throws {
+        wineService.add(
+            abv: newWine.abv,
+            ava: newWine.ava ?? "",
+            company: newWine.company,
+            isFavorited: newWine.isFavorited,
+            numberOwned: Int16(newWine.numberOwned),
+            type: newWine.type.rawValue,
+            varietal: newWine.varietal.rawValue,
+            vintage: Int16(newWine.vintage),
+            wineColor: newWine.wineColor.rawValue)
+        wineService.add(
+            abv: secondWine.abv,
+            ava: secondWine.ava ?? "",
+            company: secondWine.company,
+            isFavorited: secondWine.isFavorited,
+            numberOwned: Int16(secondWine.numberOwned),
+            type: Constants.WineType.sparkling.rawValue,
+            varietal: secondWine.varietal.rawValue,
+            vintage: Int16(secondWine.vintage),
+            wineColor: secondWine.wineColor.rawValue)
+        
+        let wines = wineService.getWines(filteredFor: .sparklingOnly)
+        XCTAssertEqual(wines?.count, 1)
+        XCTAssertEqual(wines?.first!.type, "Sparkling")
     }
     
     func testFetchSingleWine() throws {

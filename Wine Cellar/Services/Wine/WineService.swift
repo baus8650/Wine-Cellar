@@ -13,8 +13,9 @@ public final class WineService {
 
 extension WineService {
     @discardableResult
-    public func add(abv: Float, ava: String, company: String, isFavorited: Bool, numberOwned: Int16, type: String, varietal: String, vintage: Int16, wineColor: String) -> Wine {
+    public func add(dateAdded: Date = Date(), abv: Float, ava: String, company: String, isFavorited: Bool, numberOwned: Int16, type: String, varietal: String, vintage: Int16, wineColor: String) -> Wine {
         let wine = Wine(context: managedObjectContext)
+        wine.dateAdded = dateAdded
         wine.abv = abv
         wine.ava = ava
         wine.company = company
@@ -29,9 +30,10 @@ extension WineService {
         return wine
     }
     
-    public func getWines() -> [Wine]? {
+    func getWines(with sortingOption: Constants.SortingOptions = .dateDescending, filteredFor filterOption: Constants.FilterOptions = .allWines) -> [Wine]? {
         let wineFetch: NSFetchRequest<Wine> = Wine.fetchRequest()
-        
+        wineFetch.sortDescriptors = [sortWintes(with: sortingOption)]
+        wineFetch.predicate = filterWines(with: filterOption)
         do {
             let results = try managedObjectContext.fetch(wineFetch)
             return results
@@ -39,6 +41,42 @@ extension WineService {
             print("Fetch error: \(error) description: \(error.userInfo)")
         }
         return nil
+    }
+    
+    private func filterWines(with filterOption: Constants.FilterOptions) -> NSPredicate? {
+        switch filterOption {
+        case .allWines:
+            return nil
+        case .stillOnly:
+            return NSPredicate(format: "type = %@", Constants.WineType.still.rawValue)
+        case .sparklingOnly:
+            return NSPredicate(format: "type = %@", Constants.WineType.sparkling.rawValue)
+        }
+    }
+    
+    private func sortWintes(with sortingOption: Constants.SortingOptions) -> NSSortDescriptor {
+        switch sortingOption {
+        case .abvAscending:
+            return NSSortDescriptor(key: "abv", ascending: true)
+        case .abvDescending:
+            return NSSortDescriptor(key: "abv", ascending: false)
+        case .dateAscending:
+            return NSSortDescriptor(key: "dateAdded", ascending: true)
+        case .dateDescending:
+            return NSSortDescriptor(key: "dateAdded", ascending: false)
+        case .companyAscending:
+            return NSSortDescriptor(key: "company", ascending: true)
+        case .companyDescending:
+            return NSSortDescriptor(key: "company", ascending: false)
+        case .varietalAscending:
+            return NSSortDescriptor(key: "varietal", ascending: true)
+        case .varietalDescending:
+            return NSSortDescriptor(key: "varietal", ascending: false)
+        case .vintageAscending:
+            return NSSortDescriptor(key: "vintage", ascending: true)
+        case .vintageDescending:
+            return NSSortDescriptor(key: "vintage", ascending: false)
+        }
     }
     
     public func getWine(with id: NSManagedObjectID) -> Wine? {
@@ -181,8 +219,6 @@ extension WineService {
         let wine = managedObjectContext.object(with: wine.objectID) as? Wine
         return wine?.hourlyData ?? nil
     }
-    
-    
     
     public func addDailyData(_ dailyData: DailyData, to wine: Wine) -> Wine {
         wine.dailyData = dailyData
