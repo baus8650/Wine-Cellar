@@ -10,37 +10,42 @@ import SwiftUI
 struct WineContentView: View {
     @ObservedObject var cellarViewModel: CellarViewModel
     var wine: Wine
-    let company: String
-    let vintage: Int16
-    let varietal: String
-    let vineyard: String?
+//    let company: String
+//    let vintage: Int16
+//    let varietal: String
+//    let vineyard: String?
     let color: UIColor
     @State var isFavorited: Bool = false
     
     var body: some View {
         VStack(alignment: .leading, spacing: 4) {
             HStack {
-                Text(company)
+                Text(wine.company ?? "Couldn't load company")
                     .font(Font(UIFont(name: "Avenir Next Bold", size: 16)!))
                     .foregroundColor(Color(uiColor: color))
                 Spacer()
-                Button {
-                    wine.isFavorited.toggle()
-                    cellarViewModel.updateWine(wine)
-                } label: {
-                    Image(systemName: wine.isFavorited ? "heart.fill" : "heart")
-                        .resizable()
-                        .frame(width: 12, height: 12)
+                VStack(alignment: .trailing, spacing: 0) {
+                    Button {
+                        wine.isFavorited.toggle()
+                        cellarViewModel.updateWine(wine)
+                    } label: {
+                        Image(systemName: wine.isFavorited ? "heart.fill" : "heart")
+                            .resizable()
+                            .frame(width: 12, height: 12)
+                            .foregroundColor(Color(uiColor: color))
+                            .frame(width: 30, height: 30)
+                            .padding([.top, .trailing], -10)
+                    }
+                    Text(String(wine.numberOwned ?? 0))
+                        .font(Font(UIFont(name: "Avenir Next", size: 14)!))
                         .foregroundColor(Color(uiColor: color))
-                        .frame(width: 30, height: 30)
-                        .padding([.top, .trailing], -10)
                 }
             }
-            Text("\(String(vintage)) \(varietal)")
+            Text("\(String(wine.vintage)) \(wine.varietal ?? "")")
                 .font(Font(UIFont(name: "Avenir Next Medium", size: 14)!))
                 .foregroundColor(Color(uiColor: color))
-            if vineyard != nil {
-                Text(vineyard ?? "No vineyard added yet!")
+            if wine.vineyard != nil {
+                Text(wine.vineyard?.name ?? "No vineyard added yet!")
                     .font(Font(UIFont(name: "Avenir Next", size: 14)!))
                     .foregroundColor(Color(uiColor: color))
             }

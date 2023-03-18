@@ -83,7 +83,7 @@ struct CircleRowView: View {
             case 2:
                 return "Low"
             case 3:
-                return "Neutral"
+                return "Med."
             case 4:
                 return "High"
             case 5:

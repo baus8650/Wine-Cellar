@@ -18,7 +18,7 @@ final class Constants {
      
      */
     
-    enum WineType: String {
+    enum WineType: String, CaseIterable {
         case still = "Still"
         case sparkling = "Sparkling"
     }
@@ -29,7 +29,7 @@ final class Constants {
         case white = "White"
     }
     
-    enum Varietal: String {
+    enum Varietal: String, CaseIterable {
         case albariño = "Albariño"
         case aligoté = "Aligoté"
         case amarone = "Amarone"
@@ -120,67 +120,176 @@ final class Constants {
         case zinfandel = "Zinfandel"
     }
     
-    enum TastingNotesOrigin: Int16 {
+    enum TastingNotesOrigin: Int16, CaseIterable {
         case userGenerated = 0
         case wineryGenerated = 1
     }
     
-    enum WineBody: Int16 {
+    enum WineBody: Int16, CaseIterable {
         case noResponse = 0
         case light = 1
         case medium = 2
         case full = 3
+        
+        var description: String {
+            switch self {
+            case .noResponse:
+                return "No Response"
+            case .light:
+                return "Light"
+            case .medium:
+                return "Medium"
+            case .full:
+                return "Full"
+            }
+        }
     }
     
-    enum Sweetness: Int16 {
+    enum Sweetness: Int16, CaseIterable {
         case noResponse = 0
         case boneDry = 1
         case dry = 2
         case semiSweet = 3
         case sweet = 4
         case verySweet = 5
+        
+        var description: String {
+            switch self {
+            case .noResponse:
+                return "No Response"
+            case .boneDry:
+                return "Bone Dry"
+            case .dry:
+                return "Dry"
+            case .semiSweet:
+                return "Semi-Sweet"
+            case .sweet:
+                return "Sweet"
+            case .verySweet:
+                return "Very Sweet"
+            }
+        }
     }
     
-    enum AlcoholLevel: Int16 {
+    enum AlcoholLevel: Int16, CaseIterable {
         case noResponse = 0
         case extremelyLow = 1
         case low = 2
         case neutral = 3
         case high = 4
         case extremelyHigh = 5
+        
+        var description: String {
+            switch self {
+            case .noResponse:
+                return "No Response"
+            case .extremelyLow:
+                return "Very Low"
+            case .low:
+                return "Low"
+            case .neutral:
+                return "Medium"
+            case .high:
+                return "High"
+            case .extremelyHigh:
+                return "Very High"
+            }
+        }
     }
     
-    enum AcidityLevel: Int16 {
+    enum AcidityLevel: Int16, CaseIterable {
         case noResponse = 0
         case extremelyLow = 1
         case low = 2
         case neutral = 3
         case high = 4
         case extremelyHigh = 5
+        
+        var description: String {
+            switch self {
+            case .noResponse:
+                return "No Response"
+            case .extremelyLow:
+                return "Very Low"
+            case .low:
+                return "Low"
+            case .neutral:
+                return "Medium"
+            case .high:
+                return "High"
+            case .extremelyHigh:
+                return "Very High"
+            }
+        }
     }
     
-    enum TanninLevel: Int16 {
+    enum TanninLevel: Int16, CaseIterable {
         case noResponse = 0
         case extremelyLow = 1
         case low = 2
         case neutral = 3
         case high = 4
         case extremelyHigh = 5
+        
+        var description: String {
+            switch self {
+            case .noResponse:
+                return "No Response"
+            case .extremelyLow:
+                return "Very Low"
+            case .low:
+                return "Low"
+            case .neutral:
+                return "Medium"
+            case .high:
+                return "High"
+            case .extremelyHigh:
+                return "Very High"
+            }
+        }
     }
     
-    enum ViscosityLevel: Int16 {
+    enum ViscosityLevel: Int16, CaseIterable {
         case noResponse = 0
         case low = 1
         case medium = 2
         case high = 3
+        
+        var description: String {
+            switch self {
+            case .noResponse:
+                return "No Response"
+            case .low:
+                return "Low"
+            case .medium:
+                return "Medium"
+            case .high:
+                return "High"
+            }
+        }
     }
     
-    enum ClarityLevel: Int16 {
+    enum ClarityLevel: Int16, CaseIterable {
         case noResponse = 0
         case hazy = 1
         case dull = 2
         case clear = 3
         case brilliant = 4
+        
+        var description: String {
+            switch self {
+            case .noResponse:
+                return "No Response"
+            case .hazy:
+                return "Hazy"
+            case .dull:
+                return "Dull"
+            case .clear:
+                return "Clear"
+            case .brilliant:
+                return "Brilliant"
+            }
+        }
     }
     
     enum SortingOptions: String {

@@ -128,6 +128,10 @@ class CellarViewController: UIViewController {
         setUpBindings()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        cellarViewModel.fetchWines()
+    }
+    
     private func setUpBindings() {
         cellarViewModel.$wines.sink { [weak self] wines in
             guard let self else { return }
@@ -331,8 +335,8 @@ class CellarViewController: UIViewController {
 //            varietal: testWine.varietal.rawValue,
 //            vintage: Int16(testWine.vintage),
 //            wineColor: testWine.wineColor.rawValue)
-        let wineVC = WineDetailViewController()
-        navigationController?.pushViewController(wineVC, animated: true)
+        let wineVC = AddWineViewController(coreDataStack: coreDataStack, cellarViewModel: cellarViewModel)
+        present(wineVC, animated: true)
     }
     
     private func splitWines(_ wines: [Wine]) {
@@ -464,6 +468,20 @@ extension CellarViewController: UICollectionViewDelegate {
                     fatalError("Wine out of index range")
                 }
             }
+        } else {
+            var wine: Wine?
+            switch indexPath.section {
+            case 0:
+                wine = redWines[indexPath.row]
+            case 1:
+                wine = roseWines[indexPath.row]
+            case 2:
+                wine = whiteWines[indexPath.row]
+            default:
+                wine = redWines[indexPath.row]
+            }
+            print(wine?.visualDetails?.color)
+//            present(AddWineViewController(coreDataStack: coreDataStack, wine: wine, isEditingWine: true), animated: true)
         }
     }
 }
